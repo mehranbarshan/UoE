@@ -40,7 +40,7 @@ const stats: {
   {
     icon: Globe,
     value: 48,
-    format: "number",
+    format: "compact",
     labelKey: "stats.countries",
   },
 ];

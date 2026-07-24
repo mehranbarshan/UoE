@@ -49,7 +49,7 @@ const categories = [
 
 interface QuestionDraft {
   id: string;
-  type: "single" | "multi" | "text" | "scale";
+  type: "single" | "multi" | "text" | "scale" | "likert" | "matrix" | "ranking" | "demographic" | "openended" | "file" | "consent";
   text: string;
 }
 
@@ -250,6 +250,13 @@ export function CreateSurveyView() {
                                 <SelectItem value="multi">{t("create.qtype.multi")}</SelectItem>
                                 <SelectItem value="text">{t("create.qtype.text")}</SelectItem>
                                 <SelectItem value="scale">{t("create.qtype.scale")}</SelectItem>
+                                <SelectItem value="likert">{t("create.qtype.likert")}</SelectItem>
+                                <SelectItem value="matrix">{t("create.qtype.matrix")}</SelectItem>
+                                <SelectItem value="ranking">{t("create.qtype.ranking")}</SelectItem>
+                                <SelectItem value="demographic">{t("create.qtype.demographic")}</SelectItem>
+                                <SelectItem value="openended">{t("create.qtype.openended")}</SelectItem>
+                                <SelectItem value="file">{t("create.qtype.file")}</SelectItem>
+                                <SelectItem value="consent">{t("create.qtype.consent")}</SelectItem>
                               </SelectContent>
                             </Select>
                             {questions.length > 1 && (

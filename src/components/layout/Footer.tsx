@@ -6,7 +6,7 @@ import { useLanguage } from "@/lib/i18n";
 import { useNav, type ViewId } from "@/lib/store";
 
 export function Footer() {
-  const { t, locale, formatNumber } = useLanguage();
+  const { t, locale, localeDigits } = useLanguage();
   const { setView } = useNav();
 
   const cols: { title: string; links: { label: string; view?: ViewId }[] }[] = [
@@ -46,7 +46,7 @@ export function Footer() {
     },
   ];
 
-  const year = formatNumber(new Date().getFullYear());
+  const year = localeDigits(new Date().getFullYear());
 
   return (
     <footer className="mt-auto border-t border-border bg-muted/30">

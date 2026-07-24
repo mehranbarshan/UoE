@@ -381,7 +381,65 @@ export type TranslationKey =
   | "gamify.badge.health"
   | "gamify.badge.points"
   | "gamify.badge.champion"
-  | "gamify.player.name";
+  | "gamify.player.name"
+  | "templates.title"
+  | "templates.subtitle"
+  | "templates.use"
+  | "templates.preview"
+  | "trust.title"
+  | "trust.subtitle"
+  | "trust.score"
+  | "trust.basedOn"
+  | "trust.completion"
+  | "trust.attention"
+  | "trust.consistency"
+  | "trust.timeBehavior"
+  | "trust.history"
+  | "academic.title"
+  | "academic.subtitle"
+  | "academic.citations"
+  | "academic.hypothesis"
+  | "academic.variables"
+  | "academic.validation"
+  | "academic.methodology"
+  | "academic.scaleLibrary"
+  | "analysis.title"
+  | "analysis.subtitle"
+  | "analysis.finding"
+  | "analysis.test"
+  | "analysis.effectSize"
+  | "analysis.recommendation"
+  | "university.title"
+  | "university.subtitle"
+  | "university.groups"
+  | "university.departments"
+  | "university.students"
+  | "university.pool"
+  | "university.analytics"
+  | "university.repository"
+  | "rewards.title"
+  | "rewards.subtitle"
+  | "rewards.earn"
+  | "rewards.redeem"
+  | "rewards.completion"
+  | "rewards.quality"
+  | "rewards.streak"
+  | "rewards.referral"
+  | "security.title"
+  | "security.subtitle"
+  | "security.gdpr"
+  | "security.anonymization"
+  | "security.consent"
+  | "security.ethics"
+  | "security.encryption"
+  | "security.audit"
+  | "create.qtype.likert"
+  | "create.qtype.matrix"
+  | "create.qtype.ranking"
+  | "create.qtype.demographic"
+  | "create.qtype.openended"
+  | "create.qtype.file"
+  | "create.qtype.consent";
 
 type Dict = Record<TranslationKey, string>;
 
@@ -801,6 +859,72 @@ const en: Dict = {
   "gamify.badge.points": "10,000 points",
   "gamify.badge.champion": "Champion of the month",
   "gamify.player.name": "Niloofar",
+
+  "templates.title": "Research Templates",
+  "templates.subtitle": "Start with a validated scale and customize it with AI.",
+  "templates.use": "Use template",
+  "templates.preview": "Preview",
+
+  "trust.title": "Participant Trust Score",
+  "trust.subtitle": "Every participant has a reputation score based on their research behavior.",
+  "trust.score": "Trust Score",
+  "trust.basedOn": "Based on",
+  "trust.completion": "Completion rate",
+  "trust.attention": "Attention checks passed",
+  "trust.consistency": "Response consistency",
+  "trust.timeBehavior": "Time behavior",
+  "trust.history": "Research history",
+
+  "academic.title": "Academic Mode",
+  "academic.subtitle": "Tools designed for rigorous academic research.",
+  "academic.citations": "Citation suggestions",
+  "academic.hypothesis": "Hypothesis builder",
+  "academic.variables": "Variable mapping",
+  "academic.validation": "Questionnaire validation",
+  "academic.methodology": "Methodology suggestions",
+  "academic.scaleLibrary": "Scale library",
+
+  "analysis.title": "AI Research Analyst",
+  "analysis.subtitle": "Let AI analyze your dataset and suggest the next steps.",
+  "analysis.finding": "Main Finding",
+  "analysis.test": "Recommended Test",
+  "analysis.effectSize": "Effect Size",
+  "analysis.recommendation": "Recommendation",
+
+  "university.title": "University Portal",
+  "university.subtitle": "Manage research across departments and teams.",
+  "university.groups": "Research groups",
+  "university.departments": "Department management",
+  "university.students": "Student accounts",
+  "university.pool": "Shared participant pool",
+  "university.analytics": "Institutional analytics",
+  "university.repository": "Research repository",
+
+  "rewards.title": "Reward System",
+  "rewards.subtitle": "Earn points for quality participation and redeem them for real rewards.",
+  "rewards.earn": "Earn Points",
+  "rewards.redeem": "Redeem",
+  "rewards.completion": "Survey completion",
+  "rewards.quality": "High quality response",
+  "rewards.streak": "7-day streak",
+  "rewards.referral": "Referral bonus",
+
+  "security.title": "Security & Ethics",
+  "security.subtitle": "Research-grade security and ethics compliance.",
+  "security.gdpr": "GDPR compliance",
+  "security.anonymization": "Data anonymization",
+  "security.consent": "Consent management",
+  "security.ethics": "Ethics approval workflow",
+  "security.encryption": "End-to-end encryption",
+  "security.audit": "Audit logs",
+
+  "create.qtype.likert": "Likert scale",
+  "create.qtype.matrix": "Matrix",
+  "create.qtype.ranking": "Ranking",
+  "create.qtype.demographic": "Demographic",
+  "create.qtype.openended": "Open-ended",
+  "create.qtype.file": "File upload",
+  "create.qtype.consent": "Consent form",
 };
 
 const fa: Dict = {
@@ -1219,6 +1343,72 @@ const fa: Dict = {
   "gamify.badge.points": "۱۰٬۰۰۰ امتیاز",
   "gamify.badge.champion": "قهرمان ماه",
   "gamify.player.name": "نیلوفر",
+
+  "templates.title": "قالب‌های پژوهشی",
+  "templates.subtitle": "با یک مقیاس معتبر شروع کنید و با هوش مصنوعی سفارشی کنید.",
+  "templates.use": "استفاده از قالب",
+  "templates.preview": "پیش‌نمایش",
+
+  "trust.title": "امتیاز اعتماد شرکت‌کننده",
+  "trust.subtitle": "هر شرکت‌کننده بر اساس رفتار پژوهشی خود امتیاز اعتبار دارد.",
+  "trust.score": "امتیاز اعتماد",
+  "trust.basedOn": "بر اساس",
+  "trust.completion": "نرخ تکمیل",
+  "trust.attention": "سوالات اعتبارسنجی عبور شده",
+  "trust.consistency": "سازگاری پاسخ‌ها",
+  "trust.timeBehavior": "رفتار زمانی",
+  "trust.history": "سابقه پژوهش",
+
+  "academic.title": "حالت دانشگاهی",
+  "academic.subtitle": "ابزارهای طراحی‌شده برای پژوهش دانشگاهی دقیق.",
+  "academic.citations": "پیشنهادات ارجاع",
+  "academic.hypothesis": "سازنده فرضیه",
+  "academic.variables": "نقشه‌برداری متغیرها",
+  "academic.validation": "اعتبارسنجی پرسشنامه",
+  "academic.methodology": "پیشنهادات روش‌شناسی",
+  "academic.scaleLibrary": "کتابخانه مقیاس‌ها",
+
+  "analysis.title": "تحلیلگر پژوهش هوش مصنوعی",
+  "analysis.subtitle": "بگذارید هوش مصنوعی مجموعه داده شما را تحلیل و مراحل بعدی را پیشنهاد کند.",
+  "analysis.finding": "یافته اصلی",
+  "analysis.test": "آزمون پیشنهادی",
+  "analysis.effectSize": "اندازه اثر",
+  "analysis.recommendation": "توصیه",
+
+  "university.title": "پرتال دانشگاه",
+  "university.subtitle": "پژوهش را در بخش‌ها و تیم‌ها مدیریت کنید.",
+  "university.groups": "گروه‌های پژوهشی",
+  "university.departments": "مدیریت بخش‌ها",
+  "university.students": "حساب‌های دانشجویی",
+  "university.pool": "مخزن مشترک شرکت‌کنندگان",
+  "university.analytics": "تحلیل‌های نهادی",
+  "university.repository": "مخزن پژوهش",
+
+  "rewards.title": "سیستم پاداش",
+  "rewards.subtitle": "برای مشارکت باکیفیت امتیاز کسب کنید و آنها را با پاداش‌های واقعی مبادله کنید.",
+  "rewards.earn": "کسب امتیاز",
+  "rewards.redeem": "بازخرید",
+  "rewards.completion": "تکمیل پرسشنامه",
+  "rewards.quality": "پاسخ باکیفیت",
+  "rewards.streak": "پشت‌سرهم ۷ روزه",
+  "rewards.referral": "پاداش معرفی",
+
+  "security.title": "امنیت و اخلاق",
+  "security.subtitle": "امنیت و انطباق اخلاقی در سطح پژوهش.",
+  "security.gdpr": "انطباق GDPR",
+  "security.anonymization": "ناشناس‌سازی داده",
+  "security.consent": "مدیریت رضایت",
+  "security.ethics": "گردش کار تأیید اخلاق",
+  "security.encryption": "رمزنگاری سرتاسری",
+  "security.audit": "گزارش‌های حسابرسی",
+
+  "create.qtype.likert": "مقیاس لیکرت",
+  "create.qtype.matrix": "ماتریسی",
+  "create.qtype.ranking": "رتبه‌بندی",
+  "create.qtype.demographic": "جمعیت‌شناختی",
+  "create.qtype.openended": "باز",
+  "create.qtype.file": "بارگذاری فایل",
+  "create.qtype.consent": "فرم رضایت",
 };
 
 export const translations: Record<Locale, Dict> = { en, fa };

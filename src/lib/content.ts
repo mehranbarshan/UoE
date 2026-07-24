@@ -264,3 +264,131 @@ export const qualityData = [
   { name: "mid", label: { fa: "متوسط", en: "Average" }, value: 9, color: "#e9c46a" },
   { name: "low", label: { fa: "ضعیف", en: "Poor" }, value: 5, color: "#e5484d" },
 ];
+
+export interface ResearchTemplate {
+  id: string;
+  nameFa: string;
+  nameEn: string;
+  descFa: string;
+  descEn: string;
+  items: number;
+  category: string;
+  reliability: string;
+}
+
+export const researchTemplates: ResearchTemplate[] = [
+  {
+    id: "t1",
+    nameFa: "رضایت مشتری (CSAT)",
+    nameEn: "Customer Satisfaction (CSAT)",
+    descFa: "اندازه‌گیری رضایت مشتری از محصول یا خدمات",
+    descEn: "Measure customer satisfaction with product or service",
+    items: 10,
+    category: "business",
+    reliability: "α = 0.89",
+  },
+  {
+    id: "t2",
+    nameFa: "مشارکت کارکنان",
+    nameEn: "Employee Engagement",
+    descFa: "ارزیابی مشارکت و انگیزه کارکنان",
+    descEn: "Assess employee engagement and motivation levels",
+    items: 15,
+    category: "social",
+    reliability: "α = 0.91",
+  },
+  {
+    id: "t3",
+    nameFa: "سلامت روان (PHQ-9)",
+    nameEn: "Mental Health (PHQ-9)",
+    descFa: "غربالگری افسردگی در پژوهش‌های بالینی",
+    descEn: "Depression screening for clinical research",
+    items: 9,
+    category: "health",
+    reliability: "α = 0.87",
+  },
+  {
+    id: "t4",
+    nameFa: "انگیزه تحصیلی",
+    nameEn: "Academic Motivation",
+    descFa: "سنجش انگیزه درونی و بیرونی دانشجویان",
+    descEn: "Measure intrinsic and extrinsic student motivation",
+    items: 12,
+    category: "education",
+    reliability: "α = 0.83",
+  },
+  {
+    id: "t5",
+    nameFa: "قصد کارآفرینی",
+    nameEn: "Startup Intention",
+    descFa: "ارزیابی قصد راه‌اندازی کسب‌وکار",
+    descEn: "Assess entrepreneurial startup intention",
+    items: 8,
+    category: "business",
+    reliability: "α = 0.85",
+  },
+  {
+    id: "t6",
+    nameFa: "سبک رهبری",
+    nameEn: "Leadership Style",
+    descFa: "شناسایی سبک رهبری مدیران",
+    descEn: "Identify managerial leadership styles",
+    items: 15,
+    category: "social",
+    reliability: "α = 0.88",
+  },
+  {
+    id: "t7",
+    nameFa: "مقیاس تاب‌آوری (RSA)",
+    nameEn: "Resilience Scale (RSA)",
+    descFa: "سنجش تاب‌آوری روان‌شناختی",
+    descEn: "Measure psychological resilience",
+    items: 25,
+    category: "health",
+    reliability: "α = 0.92",
+  },
+];
+
+export interface TrustFactor {
+  nameFa: string;
+  nameEn: string;
+  weight: number;
+  score: number;
+}
+
+export const trustFactors: TrustFactor[] = [
+  { nameFa: "نرخ تکمیل", nameEn: "Completion rate", weight: 25, score: 98 },
+  { nameFa: "عبور از سوالات اعتبارسنجی", nameEn: "Attention checks passed", weight: 25, score: 96 },
+  { nameFa: "سازگاری پاسخ‌ها", nameEn: "Response consistency", weight: 20, score: 92 },
+  { nameFa: "رفتار زمانی", nameEn: "Time behavior", weight: 15, score: 88 },
+  { nameFa: "سابقه پژوهش", nameEn: "Research history", weight: 15, score: 100 },
+];
+
+export const rewardActions = [
+  { actionFa: "تکمیل پرسشنامه", actionEn: "Survey completion", points: 50 },
+  { actionFa: "پاسخ باکیفیت", actionEn: "High quality response", points: 20 },
+  { actionFa: "پشت‌سرهم ۷ روزه", actionEn: "7-day streak", points: 100 },
+  { actionFa: "پشت‌سرهم ۳۰ روزه", actionEn: "30-day streak", points: 500 },
+  { actionFa: "معرفی دوست", actionEn: "Referral bonus", points: 25 },
+  { actionFa: "تکمیل پروفایل", actionEn: "Profile completion", points: 15 },
+  { actionFa: "اولین پرسشنامه", actionEn: "First survey", points: 30 },
+];
+
+export const redemptionOptions = [
+  { rewardFa: "کارت هدیه (آمازون و غیره)", rewardEn: "Gift cards (Amazon, etc.)", cost: 5000 },
+  { rewardFa: "گواهینامه پژوهشی", rewardEn: "Research certificates", cost: 2000 },
+  { rewardFa: "اعتبار پژوهشی", rewardEn: "Research credits", cost: 1000 },
+  { rewardFa: "نشان ویژه", rewardEn: "Premium badge", cost: 3000 },
+  { rewardFa: "تطابق اولویت‌دار", rewardEn: "Priority matching", cost: 1500 },
+];
+
+export const levelProgression = [
+  { level: 1, titleFa: "مشارکت‌کننده تازه‌کار", titleEn: "Novice Contributor", points: 0 },
+  { level: 2, titleFa: "شرکت‌کننده منظم", titleEn: "Regular Participant", points: 500 },
+  { level: 3, titleFa: "پاسخ‌دهنده مورد اعتماد", titleEn: "Trusted Respondent", points: 1500 },
+  { level: 4, titleFa: "متخصص کیفیت", titleEn: "Quality Expert", points: 3500 },
+  { level: 5, titleFa: "کهنه‌کار پژوهش", titleEn: "Research Veteran", points: 6000 },
+  { level: 6, titleFa: "قهرمان داده", titleEn: "Data Champion", points: 10000 },
+  { level: 7, titleFa: "پژوهشگر برجسته", titleEn: "Research Scholar", points: 15000 },
+  { level: 8, titleFa: "پژوهشگر استاد", titleEn: "Master Researcher", points: 25000 },
+];
