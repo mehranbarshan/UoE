@@ -16,10 +16,8 @@ const values: { icon: typeof ShieldCheck; titleKey: TranslationKey; descKey: Tra
 ];
 
 const team = [
-  { name: { fa: "دکتر سارا رضایی", en: "Dr. Sara Rezaei" }, role: { fa: "بنیان‌گذار و مدیرعامل", en: "Founder & CEO" }, color: "#1d3b4c" },
-  { name: { fa: "امیر تهرانی", en: "Amir Tehrani" }, role: { fa: "هم‌بنیان‌گذار و CTO", en: "Co-founder & CTO" }, color: "#f39237" },
-  { name: { fa: "نگار محمدی", en: "Negar Mohammadi" }, role: { fa: "مدیر محصول", en: "Head of Product" }, color: "#2a9d8f" },
-  { name: { fa: "رضا کاظمی", en: "Reza Kazemi" }, role: { fa: "مدیر علوم داده", en: "Head of Data Science" }, color: "#6a8caf" },
+  { nameKey: "about.team.mehran.name" as TranslationKey, roleKey: "about.team.mehran.role" as TranslationKey, color: "#1d3b4c" },
+  { nameKey: "about.team.alireza.name" as TranslationKey, roleKey: "about.team.alireza.role" as TranslationKey, color: "#f39237" },
 ];
 
 export function AboutView() {
@@ -119,7 +117,7 @@ export function AboutView() {
         <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-4">
           {team.map((member, i) => (
             <motion.div
-              key={member.name.en}
+              key={member.nameKey}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -130,16 +128,14 @@ export function AboutView() {
                 className="grid size-16 place-items-center rounded-full text-xl font-bold text-white"
                 style={{ backgroundColor: member.color }}
               >
-                {locale === "fa"
-                  ? member.name.fa.charAt(0)
-                  : member.name.en.charAt(0)}
+                {t(member.nameKey).charAt(0)}
               </div>
               <div>
                 <p className="text-sm font-bold text-foreground">
-                  {locale === "fa" ? member.name.fa : member.name.en}
+                  {t(member.nameKey)}
                 </p>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  {locale === "fa" ? member.role.fa : member.role.en}
+                  {t(member.roleKey)}
                 </p>
               </div>
             </motion.div>

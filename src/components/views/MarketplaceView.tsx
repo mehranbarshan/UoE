@@ -71,7 +71,7 @@ export function MarketplaceView() {
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder={locale === "fa" ? "جستجوی پرسشنامه..." : "Search surveys..."}
+              placeholder={t("marketplace.search.placeholder")}
               className="ps-9 h-11"
             />
           </div>
@@ -96,7 +96,7 @@ export function MarketplaceView() {
         {/* Grid */}
         {filtered.length === 0 ? (
           <div className="mt-12 rounded-2xl border border-dashed border-border p-12 text-center text-muted-foreground">
-            {locale === "fa" ? "پرسشنامه‌ای یافت نشد." : "No surveys found."}
+            {t("marketplace.no.results")}
           </div>
         ) : (
           <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -122,7 +122,7 @@ export function MarketplaceView() {
                     </Badge>
                     <span className="flex items-center gap-1 text-xs font-bold text-[#2a9d8f]">
                       <Target className="size-3.5" />
-                      {s.match}% {locale === "fa" ? "تطابق" : "match"}
+                      {s.match}% {t("marketplace.match")}
                     </span>
                   </div>
 
@@ -174,7 +174,7 @@ export function MarketplaceView() {
                     {isJoined ? (
                       <>
                         <CheckCircle2 className="size-4" />
-                        {locale === "fa" ? "ملحق شدید" : "Joined"}
+                        {t("marketplace.joined")}
                       </>
                     ) : (
                       <>

@@ -6,7 +6,7 @@ import { useLanguage } from "@/lib/i18n";
 import { useNav, type ViewId } from "@/lib/store";
 
 export function Footer() {
-  const { t, locale } = useLanguage();
+  const { t, locale, formatNumber } = useLanguage();
   const { setView } = useNav();
 
   const cols: { title: string; links: { label: string; view?: ViewId }[] }[] = [
@@ -46,7 +46,7 @@ export function Footer() {
     },
   ];
 
-  const year = new Date().getFullYear();
+  const year = formatNumber(new Date().getFullYear());
 
   return (
     <footer className="mt-auto border-t border-border bg-muted/30">
@@ -102,7 +102,7 @@ export function Footer() {
             © {year} {t("brand.full")} (UOE). {t("footer.rights")}
           </p>
           <p className="text-xs text-muted-foreground" dir={locale === "fa" ? "rtl" : "ltr"}>
-            {locale === "fa" ? "ساخته‌شده با ❤️ برای پژوهش" : "Built with ❤️ for research"}
+            {t("footer.built")}
           </p>
         </div>
       </div>

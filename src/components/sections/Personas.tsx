@@ -146,18 +146,22 @@ export function Personas() {
                 onClick={() => setActive(p.id)}
                 className={cn(
                   "relative flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors sm:px-5",
-                  isActive ? "text-white" : "text-muted-foreground hover:text-foreground"
+                  isActive ? "" : "text-black hover:text-black"
                 )}
+                style={isActive ? { color: p.color } : undefined}
               >
                 {isActive && (
                   <motion.span
                     layoutId="personaPill"
                     className="absolute inset-0 -z-10 rounded-lg"
-                    style={{ backgroundColor: p.color }}
+                    style={{ backgroundColor: `${p.color}15` }}
                     transition={{ type: "spring", stiffness: 400, damping: 32 }}
                   />
                 )}
-                <Icon className="size-4" />
+                <Icon
+                  className="size-4"
+                  style={isActive ? { color: p.color } : undefined}
+                />
                 <span className="hidden sm:inline">{t(p.titleKey)}</span>
               </button>
             );
@@ -193,8 +197,8 @@ export function Personas() {
                 <div className="grid size-16 place-items-center rounded-2xl bg-white/15 backdrop-blur">
                   <persona.icon className="size-8" />
                 </div>
-                <div className="text-sm text-white/80">
-                  <PersonaStat id={persona.id} locale={locale} />
+                <div className="text-sm font-semibold text-white">
+                  <PersonaStat id={persona.id} />
                 </div>
               </div>
               {/* decorative dots */}
@@ -242,18 +246,10 @@ export function Personas() {
   );
 }
 
-function PersonaStat({ id, locale }: { id: PersonaId; locale: string }) {
+function PersonaStat({ id }: { id: PersonaId }) {
   if (id === "researcher")
-    return (
-      <p>
-        {locale === "fa" ? "۱۰٬۰۰۰+ پژوهشگر فعال" : "10,000+ active researchers"}
-      </p>
-    );
+    return <p>10K+ active researchers</p>;
   if (id === "participant")
-    return (
-      <p>{locale === "fa" ? "۸۵٬۰۰۰+ شرکت‌کننده" : "85,000+ participants"}</p>
-    );
-  return (
-    <p>{locale === "fa" ? "۳۴۰+ دانشگاه همکار" : "340+ partner universities"}</p>
-  );
+    return <p>85K+ participants</p>;
+  return <p>340+ partner universities</p>;
 }

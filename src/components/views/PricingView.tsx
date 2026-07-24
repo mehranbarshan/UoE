@@ -151,13 +151,13 @@ export function PricingView() {
 
                 <div className="mt-5 flex items-end gap-1">
                   {price === null ? (
-                    <span className="text-4xl font-extrabold text-foreground">Custom</span>
+                    <span className="text-4xl font-extrabold text-foreground">{t("pricing.custom")}</span>
                   ) : price === 0 ? (
                     <span className="text-4xl font-extrabold text-foreground">{t("pricing.free")}</span>
                   ) : (
                     <>
                       <span className="text-4xl font-extrabold text-foreground">${price}</span>
-                      <span className="mb-1 text-sm text-muted-foreground">/mo</span>
+                      <span className="mb-1 text-sm text-muted-foreground">{t("pricing.mo")}</span>
                     </>
                   )}
                 </div>
@@ -192,9 +192,7 @@ export function PricingView() {
 
         <div className="mx-auto mt-10 flex max-w-md items-center justify-center gap-2 rounded-2xl border border-border bg-muted/30 p-4 text-center text-sm text-muted-foreground">
           <Sparkles className="size-4 shrink-0 text-[#f39237]" />
-          {locale === "fa"
-            ? "همه برنامه‌ها شامل آزمایش رایگان ۱۴ روزه هوش مصنوعی هستند."
-            : "All plans include a 14-day free trial of AI features."}
+          {t("pricing.trial.note")}
         </div>
       </Section>
     </>

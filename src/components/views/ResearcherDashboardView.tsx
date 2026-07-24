@@ -59,16 +59,16 @@ const mySurveys = [
 ];
 
 export function ResearcherDashboardView() {
-  const { t, locale } = useLanguage();
+  const { t, locale, formatNumber, formatPercent } = useLanguage();
   const { setView } = useNav();
   const [active, setActive] = React.useState("dashboard.nav.overview");
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
   const stats = [
-    { label: t("dash.stat.active"), value: "4", icon: FlaskConical, color: "#1d3b4c", trend: "+2" },
-    { label: t("dash.stat.responses"), value: "3,254", icon: MessageSquareText, color: "#f39237", trend: "+412" },
-    { label: t("dash.stat.completion"), value: "87%", icon: TrendingUp, color: "#2a9d8f", trend: "+5%" },
-    { label: t("dash.stat.quality"), value: "92%", icon: ShieldCheck, color: "#6a8caf", trend: "+3%" },
+    { label: t("dash.stat.active"), value: formatNumber(4), icon: FlaskConical, color: "#1d3b4c", trend: "+2" },
+    { label: t("dash.stat.responses"), value: formatNumber(3254), icon: MessageSquareText, color: "#f39237", trend: "+412" },
+    { label: t("dash.stat.completion"), value: formatPercent(87), icon: TrendingUp, color: "#2a9d8f", trend: "+5%" },
+    { label: t("dash.stat.quality"), value: formatPercent(92), icon: ShieldCheck, color: "#6a8caf", trend: "+3%" },
   ];
 
   const chartData = responseData.map((d) => ({
@@ -164,7 +164,7 @@ export function ResearcherDashboardView() {
                 <h3 className="text-sm font-bold text-foreground">{t("dash.response.chart")}</h3>
                 <span className="flex items-center gap-1 text-xs text-muted-foreground">
                   <Activity className="size-3.5 text-[#f39237]" />
-                  7 {locale === "fa" ? "روز" : "days"}
+                  7 {t("dashboard.days.label")}
                 </span>
               </div>
               <div className="h-56 w-full">
@@ -204,7 +204,7 @@ export function ResearcherDashboardView() {
                   </PieChart>
                 </ResponsiveContainer>
                 <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-xl font-extrabold text-foreground">92%</span>
+                  <span className="text-xl font-extrabold text-foreground">{formatPercent(92)}</span>
                   <span className="text-[10px] text-muted-foreground">{t("dash.stat.quality")}</span>
                 </div>
               </div>
@@ -245,7 +245,7 @@ export function ResearcherDashboardView() {
                           {locale === "fa" ? s.titleFa : s.titleEn}
                         </p>
                         <p className="text-xs text-muted-foreground">
-                          {s.responses.toLocaleString(locale === "fa" ? "fa-IR" : "en-US")} / {s.target.toLocaleString(locale === "fa" ? "fa-IR" : "en-US")}
+                          {formatNumber(s.responses)} / {formatNumber(s.target)}
                         </p>
                       </div>
                     </div>
@@ -261,8 +261,8 @@ export function ResearcherDashboardView() {
                       )}
                     >
                       {s.status === "done"
-                        ? locale === "fa" ? "تکمیل" : "Done"
-                        : locale === "fa" ? "فعال" : "Active"}
+                        ? t("dashboard.status.done")
+                        : t("dashboard.status.active")}
                     </Badge>
                   </div>
                 );

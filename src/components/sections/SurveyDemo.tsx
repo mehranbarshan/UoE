@@ -62,7 +62,7 @@ export function SurveyDemo() {
           <ComparisonCard
             label={t("survey.before")}
             bad
-            example={locale === "fa" ? "سؤال ۱ از ۳۳" : "Question 1 of 33"}
+            example={t("survey.comparison.old")}
           />
           <ComparisonCard
             label={t("survey.after")}
@@ -199,7 +199,7 @@ export function SurveyDemo() {
                 onClick={next}
                 disabled={selected === null}
               >
-                {step === total - 1 ? (locale === "fa" ? "پایان" : "Finish") : t("survey.q.next")}
+                {step === total - 1 ? t("survey.finish") : t("survey.q.next")}
                 <Arrow className="size-4" />
               </Button>
             </div>

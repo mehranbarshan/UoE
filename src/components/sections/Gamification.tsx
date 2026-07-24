@@ -17,14 +17,14 @@ const pillars: { icon: typeof Coins; titleKey: TranslationKey; descKey: Translat
 ];
 
 const badges = [
-  { icon: Flame, label: { fa: "۷ روز پیاپی", en: "7-day streak" }, color: "#e5484d" },
-  { icon: Star, label: { fa: "۱۰۰ پاسخ", en: "100 answers" }, color: "#f39237" },
-  { icon: Crown, label: { fa: "نخبگان", en: "Top 1%" }, color: "#e9c46a" },
-  { icon: Award, label: { fa: "متخصص سلامت", en: "Health expert" }, color: "#2a9d8f" },
+  { icon: Flame, key: "gamify.badge.streak" as TranslationKey, color: "#e5484d" },
+  { icon: Star, key: "gamify.badge.answers" as TranslationKey, color: "#f39237" },
+  { icon: Crown, key: "gamify.badge.elite" as TranslationKey, color: "#e9c46a" },
+  { icon: Award, key: "gamify.badge.health" as TranslationKey, color: "#2a9d8f" },
 ];
 
 export function Gamification() {
-  const { t, locale } = useLanguage();
+  const { t, locale, formatNumber } = useLanguage();
 
   return (
     <Section className="relative overflow-hidden bg-muted/30">
@@ -82,12 +82,12 @@ export function Gamification() {
                     {t("gamify.level.label")}
                   </p>
                   <p className="text-lg font-bold text-foreground">
-                    {locale === "fa" ? "نiloofar" : "Niloofar"}
+                    {t("gamify.player.name")}
                   </p>
                 </div>
               </div>
               <div className="text-end">
-                <p className="text-2xl font-extrabold text-[#f39237]">7,340</p>
+                <p className="text-2xl font-extrabold text-[#f39237]">{formatNumber(7340)}</p>
                 <p className="text-xs text-muted-foreground">{t("dash.points")}</p>
               </div>
             </div>
@@ -119,7 +119,7 @@ export function Gamification() {
                       <Icon className="size-[18px]" />
                     </div>
                     <span className="text-center text-[10px] font-medium leading-tight text-muted-foreground">
-                      {locale === "fa" ? b.label.fa : b.label.en}
+                      {t(b.key)}
                     </span>
                   </motion.div>
                 );
@@ -182,7 +182,7 @@ export function Gamification() {
                       </p>
                     </div>
                     <span className="text-sm font-bold text-foreground">
-                      {entry.points.toLocaleString(locale === "fa" ? "fa-IR" : "en-US")}
+                      {formatNumber(entry.points)}
                     </span>
                   </div>
                 </motion.div>

@@ -23,22 +23,18 @@ export function AuthView() {
     setTimeout(() => {
       setLoading(false);
       toast.success(
-        locale === "fa"
-          ? mode === "login"
-            ? "ورود موفقیت‌آمیز بود!"
-            : "حساب شما ساخته شد!"
-          : mode === "login"
-          ? "Logged in successfully!"
-          : "Account created successfully!"
+        mode === "login"
+          ? t("auth.toast.login.success")
+          : t("auth.toast.register.success")
       );
       setView("home");
     }, 1100);
   };
 
   const onGoogle = () => {
-    toast.info(locale === "fa" ? "در حال اتصال به گوگل..." : "Connecting to Google...");
+    toast.info(t("auth.toast.google.connecting"));
     setTimeout(() => {
-      toast.success(locale === "fa" ? "ورود با گوگل موفق بود!" : "Google login successful!");
+      toast.success(t("auth.toast.google.success"));
       setView("home");
     }, 1200);
   };
@@ -61,16 +57,14 @@ export function AuthView() {
             </div>
           </div>
           <h2 className="text-3xl font-extrabold leading-tight text-foreground">
-            {locale === "fa"
-              ? "به اکوسیستم پژوهش بپیوندید"
-              : "Join the research ecosystem"}
+            {t("auth.join.ecosystem")}
           </h2>
           <ul className="space-y-3">
             {[
-              locale === "fa" ? "۱۰٬۰۰۰+ پژوهشگر فعال" : "10,000+ active researchers",
-              locale === "fa" ? "دستیار پرسشنامه هوشمند" : "AI Survey Assistant",
-              locale === "fa" ? "تطابق هوشمند مخاطب" : "Smart audience matching",
-              locale === "fa" ? "کیفیت داده تضمین‌شده" : "Guaranteed data quality",
+              t("auth.feature.researchers"),
+              t("auth.feature.assistant"),
+              t("auth.feature.matching"),
+              t("auth.feature.quality"),
             ].map((item) => (
               <li key={item} className="flex items-center gap-2.5 text-sm text-foreground">
                 <CheckCircle2 className="size-5 text-[#2a9d8f]" />
@@ -123,7 +117,7 @@ export function AuthView() {
                     <Label htmlFor="name">{t("auth.name")}</Label>
                     <div className="relative">
                       <User className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-                      <Input id="name" type="text" required className="ps-9" placeholder={locale === "fa" ? "نام شما" : "Your name"} />
+                      <Input id="name" type="text" required className="ps-9" placeholder={t("auth.name.placeholder")} />
                     </div>
                   </div>
                 )}

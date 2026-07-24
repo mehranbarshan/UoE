@@ -17,7 +17,7 @@ import { useLanguage } from "@/lib/i18n";
 import { useNav } from "@/lib/store";
 
 export function Hero() {
-  const { t, locale, dir } = useLanguage();
+  const { t, locale, dir, formatCompact, formatPercent } = useLanguage();
   const { setView } = useNav();
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
@@ -91,10 +91,10 @@ export function Hero() {
             className="mt-4 grid w-full max-w-xl grid-cols-2 gap-4 sm:grid-cols-4"
           >
             {[
-              { value: "2.4M+", label: t("hero.stat.responses") },
-              { value: "12K+", label: t("hero.stat.researchers") },
-              { value: "87%", label: t("hero.stat.completion") },
-              { value: "340+", label: t("hero.stat.universities") },
+              { value: formatCompact(2_400_000), label: t("hero.stat.responses") },
+              { value: formatCompact(12_000), label: t("hero.stat.researchers") },
+              { value: formatPercent(87), label: t("hero.stat.completion") },
+              { value: formatCompact(340), label: t("hero.stat.universities") },
             ].map((s) => (
               <div key={s.label} className="flex flex-col">
                 <span className="text-2xl font-extrabold text-foreground">{s.value}</span>

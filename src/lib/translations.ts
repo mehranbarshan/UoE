@@ -316,7 +316,72 @@ export type TranslationKey =
   | "common.learnMore"
   | "common.getStarted"
   | "common.viewAll"
-  | "common.back";
+  | "common.back"
+  | "auth.join.ecosystem"
+  | "auth.feature.researchers"
+  | "auth.feature.assistant"
+  | "auth.feature.matching"
+  | "auth.feature.quality"
+  | "auth.toast.login.success"
+  | "auth.toast.register.success"
+  | "auth.toast.google.connecting"
+  | "auth.toast.google.success"
+  | "auth.name.placeholder"
+  | "analytics.subtitle"
+  | "analytics.export.report"
+  | "analytics.export.toast"
+  | "analytics.weekly"
+  | "analytics.age.distribution"
+  | "analytics.geographic"
+  | "analytics.quality.flags"
+  | "analytics.quality.excellent"
+  | "analytics.flag.random"
+  | "analytics.flag.suspicious"
+  | "analytics.flag.speeders"
+  | "analytics.flag.verified"
+  | "dashboard.days.label"
+  | "dashboard.status.active"
+  | "dashboard.status.done"
+  | "participants.next.level.hint"
+  | "participants.profile.name"
+  | "create.q.placeholder"
+  | "create.toast.ai.complete"
+  | "create.toast.published"
+  | "create.toast.draft"
+  | "create.review.untitled"
+  | "create.ai.score"
+  | "create.ai.ambiguity"
+  | "create.ai.completion.label"
+  | "create.edu.any"
+  | "create.edu.highschool"
+  | "create.edu.bachelor"
+  | "create.edu.master"
+  | "create.edu.phd"
+  | "create.location.placeholder"
+  | "create.interests.placeholder"
+  | "create.time.estimate"
+  | "marketplace.search.placeholder"
+  | "marketplace.no.results"
+  | "marketplace.match"
+  | "marketplace.joined"
+  | "pricing.trial.note"
+  | "pricing.custom"
+  | "pricing.mo"
+  | "researchers.tools.title"
+  | "about.team.mehran.name"
+  | "about.team.mehran.role"
+  | "about.team.alireza.name"
+  | "about.team.alireza.role"
+  | "footer.built"
+  | "survey.comparison.old"
+  | "survey.finish"
+  | "gamify.badge.streak"
+  | "gamify.badge.answers"
+  | "gamify.badge.elite"
+  | "gamify.badge.health"
+  | "gamify.badge.points"
+  | "gamify.badge.champion"
+  | "gamify.player.name";
 
 type Dict = Record<TranslationKey, string>;
 
@@ -659,6 +724,83 @@ const en: Dict = {
   "common.getStarted": "Get started",
   "common.viewAll": "View all",
   "common.back": "Back to home",
+
+  "auth.join.ecosystem": "Join the research ecosystem",
+  "auth.feature.researchers": "10,000+ active researchers",
+  "auth.feature.assistant": "AI Survey Assistant",
+  "auth.feature.matching": "Smart audience matching",
+  "auth.feature.quality": "Guaranteed data quality",
+  "auth.toast.login.success": "Logged in successfully!",
+  "auth.toast.register.success": "Account created successfully!",
+  "auth.toast.google.connecting": "Connecting to Google...",
+  "auth.toast.google.success": "Google login successful!",
+  "auth.name.placeholder": "Your name",
+
+  "analytics.subtitle": "Deep insights into responses, data quality, and demographics.",
+  "analytics.export.report": "Export report",
+  "analytics.export.toast": "Report exported",
+  "analytics.weekly": "Weekly",
+  "analytics.age.distribution": "Age distribution",
+  "analytics.geographic": "Geographic spread",
+  "analytics.quality.flags": "AI quality flags",
+  "analytics.quality.excellent": "Excellent",
+  "analytics.flag.random": "Random responses flagged",
+  "analytics.flag.suspicious": "Suspicious patterns",
+  "analytics.flag.speeders": "Speeders detected",
+  "analytics.flag.verified": "Verified quality answers",
+
+  "dashboard.days.label": "days",
+  "dashboard.status.active": "Active",
+  "dashboard.status.done": "Done",
+
+  "participants.next.level.hint": "3 surveys to next level!",
+  "participants.profile.name": "Niloofar Ahmadi",
+
+  "create.q.placeholder": "Question text...",
+  "create.toast.ai.complete": "AI analysis complete!",
+  "create.toast.published": "Survey published! 🎉",
+  "create.toast.draft": "Saved as draft",
+  "create.review.untitled": "Untitled",
+  "create.ai.score": "Overall score",
+  "create.ai.ambiguity": "Ambiguity",
+  "create.ai.completion.label": "Completion",
+  "create.edu.any": "Any",
+  "create.edu.highschool": "High school",
+  "create.edu.bachelor": "Bachelor",
+  "create.edu.master": "Master",
+  "create.edu.phd": "PhD",
+  "create.location.placeholder": "e.g. Iran, Tehran",
+  "create.interests.placeholder": "Technology, health, sports...",
+  "create.time.estimate": "Estimated time",
+
+  "marketplace.search.placeholder": "Search surveys...",
+  "marketplace.no.results": "No surveys found.",
+  "marketplace.match": "match",
+  "marketplace.joined": "Joined",
+
+  "pricing.trial.note": "All plans include a 14-day free trial of AI features.",
+  "pricing.custom": "Custom",
+  "pricing.mo": "/mo",
+
+  "researchers.tools.title": "A complete research toolkit",
+
+  "about.team.mehran.name": "Mehran Barshan",
+  "about.team.mehran.role": "Founder & CEO",
+  "about.team.alireza.name": "Alireza Rahimi",
+  "about.team.alireza.role": "Co-founder",
+
+  "footer.built": "Built with ❤️ for research",
+
+  "survey.comparison.old": "Question 1 of 33",
+  "survey.finish": "Finish",
+
+  "gamify.badge.streak": "7-day streak",
+  "gamify.badge.answers": "100 quality answers",
+  "gamify.badge.elite": "Top 1% elite",
+  "gamify.badge.health": "Health specialist",
+  "gamify.badge.points": "10,000 points",
+  "gamify.badge.champion": "Champion of the month",
+  "gamify.player.name": "Niloofar",
 };
 
 const fa: Dict = {
@@ -1000,6 +1142,83 @@ const fa: Dict = {
   "common.getStarted": "شروع کنید",
   "common.viewAll": "مشاهده همه",
   "common.back": "بازگشت به خانه",
+
+  "auth.join.ecosystem": "به اکوسیستم پژوهش بپیوندید",
+  "auth.feature.researchers": "۱۰٬۰۰۰+ پژوهشگر فعال",
+  "auth.feature.assistant": "دستیار پرسشنامه هوشمند",
+  "auth.feature.matching": "تطابق هوشمند مخاطب",
+  "auth.feature.quality": "کیفیت داده تضمین‌شده",
+  "auth.toast.login.success": "ورود موفقیت‌آمیز بود!",
+  "auth.toast.register.success": "حساب شما ساخته شد!",
+  "auth.toast.google.connecting": "در حال اتصال به گوگل...",
+  "auth.toast.google.success": "ورود با گوگل موفق بود!",
+  "auth.name.placeholder": "نام شما",
+
+  "analytics.subtitle": "بینش عمیق از پاسخ‌ها، کیفیت داده و جمعیت‌شناسی.",
+  "analytics.export.report": "خروجی گزارش",
+  "analytics.export.toast": "گزارش خروجی گرفته شد",
+  "analytics.weekly": "هفتگی",
+  "analytics.age.distribution": "توزیع سنی",
+  "analytics.geographic": "پراکندگی جغرافیایی",
+  "analytics.quality.flags": "پرچم‌های کیفیت هوش مصنوعی",
+  "analytics.quality.excellent": "عالی",
+  "analytics.flag.random": "پاسخ‌های تصادفی شناسایی‌شده",
+  "analytics.flag.suspicious": "الگوهای مشکوک",
+  "analytics.flag.speeders": "پاسخ‌دهی سریع‌تر از حد معمول",
+  "analytics.flag.verified": "پاسخ‌های باکیفیت تأییدشده",
+
+  "dashboard.days.label": "روز",
+  "dashboard.status.active": "فعال",
+  "dashboard.status.done": "تکمیل",
+
+  "participants.next.level.hint": "۳ پرسشنامه تا سطح بعدی!",
+  "participants.profile.name": "نیلوفر احمدی",
+
+  "create.q.placeholder": "متن سؤال...",
+  "create.toast.ai.complete": "تحلیل هوش مصنوعی کامل شد!",
+  "create.toast.published": "پرسشنامه منتشر شد! 🎉",
+  "create.toast.draft": "به‌عنوان پیش‌نویس ذخیره شد",
+  "create.review.untitled": "بدون عنوان",
+  "create.ai.score": "امتیاز کلی",
+  "create.ai.ambiguity": "ابهام",
+  "create.ai.completion.label": "تکمیل",
+  "create.edu.any": "همه",
+  "create.edu.highschool": "دیپلم",
+  "create.edu.bachelor": "کارشناسی",
+  "create.edu.master": "کارشناسی ارشد",
+  "create.edu.phd": "دکتری",
+  "create.location.placeholder": "مثلاً ایران، تهران",
+  "create.interests.placeholder": "فناوری، سلامت، ورزش...",
+  "create.time.estimate": "تخمین زمان",
+
+  "marketplace.search.placeholder": "جستجوی پرسشنامه...",
+  "marketplace.no.results": "پرسشنامه‌ای یافت نشد.",
+  "marketplace.match": "تطابق",
+  "marketplace.joined": "ملحق شدید",
+
+  "pricing.trial.note": "همه برنامه‌ها شامل آزمایش رایگان ۱۴ روزه هوش مصنوعی هستند.",
+  "pricing.custom": "سفارشی",
+  "pricing.mo": "/ماه",
+
+  "researchers.tools.title": "ابزارهای کامل پژوهش",
+
+  "about.team.mehran.name": "مهران برشان",
+  "about.team.mehran.role": "بنیان‌گذار و مدیرعامل",
+  "about.team.alireza.name": "علیرضا رحیمی",
+  "about.team.alireza.role": "هم‌بنیان‌گذار",
+
+  "footer.built": "ساخته‌شده با ❤️ برای پژوهش",
+
+  "survey.comparison.old": "سؤال ۱ از ۳۳",
+  "survey.finish": "پایان",
+
+  "gamify.badge.streak": "پشت‌سرهم ۷ روزه",
+  "gamify.badge.answers": "۱۰۰ پاسخ باکیفیت",
+  "gamify.badge.elite": "نخبگان ۱٪",
+  "gamify.badge.health": "متخصص سلامت",
+  "gamify.badge.points": "۱۰٬۰۰۰ امتیاز",
+  "gamify.badge.champion": "قهرمان ماه",
+  "gamify.player.name": "نیلوفر",
 };
 
 export const translations: Record<Locale, Dict> = { en, fa };

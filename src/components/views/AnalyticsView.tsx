@@ -48,15 +48,15 @@ const ageData = [
   { range: "55+", value: 2 },
 ];
 
-const eduData = [
-  { name: "bachelor", label: { fa: "کارشناسی", en: "Bachelor" }, value: 44, color: "#1d3b4c" },
-  { name: "master", label: { fa: "ارشد", en: "Master" }, value: 28, color: "#f39237" },
-  { name: "phd", label: { fa: "دکتری", en: "PhD" }, value: 16, color: "#2a9d8f" },
-  { name: "highschool", label: { fa: "دیپلم", en: "High school" }, value: 12, color: "#6a8caf" },
+const eduData: { name: string; labelKey: "create.edu.bachelor" | "create.edu.master" | "create.edu.phd" | "create.edu.highschool"; value: number; color: string }[] = [
+  { name: "bachelor", labelKey: "create.edu.bachelor", value: 44, color: "#1d3b4c" },
+  { name: "master", labelKey: "create.edu.master", value: 28, color: "#f39237" },
+  { name: "phd", labelKey: "create.edu.phd", value: 16, color: "#2a9d8f" },
+  { name: "highschool", labelKey: "create.edu.highschool", value: 12, color: "#6a8caf" },
 ];
 
 export function AnalyticsView() {
-  const { t, locale } = useLanguage();
+  const { t, locale, formatNumber, formatPercent } = useLanguage();
   const { setView } = useNav();
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
@@ -65,18 +65,18 @@ export function AnalyticsView() {
   const qualityScore = 92;
 
   const stats = [
-    { label: t("dash.stat.responses"), value: "3,254", icon: Activity, color: "#f39237", trend: "+412" },
-    { label: t("dash.stat.completion"), value: "87%", icon: TrendingUp, color: "#2a9d8f", trend: "+5%" },
-    { label: t("dash.stat.quality"), value: "92%", icon: ShieldCheck, color: "#1d3b4c", trend: "+3%" },
-    { label: t("dash.stat.active"), value: "4", icon: Clock, color: "#6a8caf", trend: "+1" },
+    { label: t("dash.stat.responses"), value: formatNumber(3254), icon: Activity, color: "#f39237", trend: "+412" },
+    { label: t("dash.stat.completion"), value: formatPercent(87), icon: TrendingUp, color: "#2a9d8f", trend: "+5%" },
+    { label: t("dash.stat.quality"), value: formatPercent(92), icon: ShieldCheck, color: "#1d3b4c", trend: "+3%" },
+    { label: t("dash.stat.active"), value: formatNumber(4), icon: Clock, color: "#6a8caf", trend: "+1" },
   ];
 
   return (
     <>
-      <PageHeader badge={t("dashboard.analytics.title")} title={t("dashboard.analytics.title")} subtitle={locale === "fa" ? "بینش عمیق از پاسخ‌ها، کیفیت داده و جمعیت‌شناسی." : "Deep insights into responses, data quality, and demographics."}>
-        <Button variant="outline" className="border-[#1d3b4c]/20" onClick={() => toast.success(locale === "fa" ? "گزارش خروجی گرفته شد" : "Report exported")}>
+      <PageHeader badge={t("dashboard.analytics.title")} title={t("dashboard.analytics.title")} subtitle={t("analytics.subtitle")}>
+        <Button variant="outline" className="border-[#1d3b4c]/20" onClick={() => toast.success(t("analytics.export.toast"))}>
           <Download className="size-4" />
-          {locale === "fa" ? "خروجی گزارش" : "Export report"}
+          {t("analytics.export.report")}
         </Button>
       </PageHeader>
 
@@ -114,7 +114,7 @@ export function AnalyticsView() {
             <h3 className="text-sm font-bold text-foreground">{t("dash.response.chart")}</h3>
             <span className="flex items-center gap-1 text-xs text-muted-foreground">
               <Activity className="size-3.5 text-[#f39237]" />
-              {locale === "fa" ? "هفتگی" : "Weekly"}
+              {t("analytics.weekly")}
             </span>
           </div>
           <div className="h-64 w-full">
@@ -136,7 +136,7 @@ export function AnalyticsView() {
           <div className="rounded-2xl border border-border bg-card p-5 shadow-soft">
             <h3 className="mb-4 flex items-center gap-2 text-sm font-bold text-foreground">
               <Users className="size-4 text-[#1d3b4c]" />
-              {locale === "fa" ? "توزیع سنی" : "Age distribution"}
+              {t("analytics.age.distribution")}
             </h3>
             <div className="h-48 w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -174,7 +174,7 @@ export function AnalyticsView() {
                 <div key={d.name} className="flex items-center justify-between text-xs">
                   <span className="flex items-center gap-1.5 text-muted-foreground">
                     <span className="size-2 rounded-full" style={{ backgroundColor: d.color }} />
-                    {locale === "fa" ? d.label.fa : d.label.en}
+                    {t(d.labelKey)}
                   </span>
                   <span className="font-semibold text-foreground">{d.value}%</span>
                 </div>
@@ -197,7 +197,7 @@ export function AnalyticsView() {
               </ResponsiveContainer>
               <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-2xl font-extrabold text-foreground">{qualityScore}%</span>
-                <span className="text-[10px] text-muted-foreground">{locale === "fa" ? "عالی" : "Excellent"}</span>
+                <span className="text-[10px] text-muted-foreground">{t("analytics.quality.excellent")}</span>
               </div>
             </div>
             <div className="mt-2 grid grid-cols-2 gap-1.5">
@@ -219,7 +219,7 @@ export function AnalyticsView() {
           <div className="rounded-2xl border border-border bg-card p-5 shadow-soft">
             <h3 className="mb-4 flex items-center gap-2 text-sm font-bold text-foreground">
               <MapPin className="size-4 text-[#6a8caf]" />
-              {locale === "fa" ? "پراکندگی جغرافیایی" : "Geographic spread"}
+              {t("analytics.geographic")}
             </h3>
             <div className="space-y-3">
               {[
@@ -250,19 +250,19 @@ export function AnalyticsView() {
           <div className="rounded-2xl border border-border bg-card p-5 shadow-soft">
             <h3 className="mb-4 flex items-center gap-2 text-sm font-bold text-foreground">
               <Globe className="size-4 text-[#2a9d8f]" />
-              {locale === "fa" ? "پرچم‌های کیفیت هوش مصنوعی" : "AI quality flags"}
+              {t("analytics.quality.flags")}
             </h3>
             <div className="space-y-3">
               {[
-                { fa: "پاسخ‌های تصادفی شناسایی‌شده", en: "Random responses flagged", value: "23", color: "#e5484d" },
-                { fa: "الگوهای مشکوک", en: "Suspicious patterns", value: "11", color: "#e9c46a" },
-                { fa: "پاسخ‌دهی سریع‌تر از حد معمول", en: "Speeders detected", value: "8", color: "#f39237" },
-                { fa: "پاسخ‌های باکیفیت تأییدشده", en: "Verified quality answers", value: "3,212", color: "#2a9d8f" },
+                { key: "analytics.flag.random" as const, value: "23", color: "#e5484d" },
+                { key: "analytics.flag.suspicious" as const, value: "11", color: "#e9c46a" },
+                { key: "analytics.flag.speeders" as const, value: "8", color: "#f39237" },
+                { key: "analytics.flag.verified" as const, value: "3,212", color: "#2a9d8f" },
               ].map((f, i) => (
                 <div key={i} className="flex items-center justify-between rounded-xl border border-border bg-background p-3">
                   <span className="flex items-center gap-2 text-sm text-foreground">
                     <span className="size-2.5 rounded-full" style={{ backgroundColor: f.color }} />
-                    {locale === "fa" ? f.fa : f.en}
+                    {t(f.key)}
                   </span>
                   <span className="text-sm font-bold" style={{ color: f.color }}>
                     {f.value}

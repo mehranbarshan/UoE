@@ -102,7 +102,7 @@ export function CreateSurveyView() {
           { fa: "ترتیب سؤالات را از عمومی به خاص مرتب کنید.", en: "Order questions from general to specific." },
         ],
       });
-      toast.success(locale === "fa" ? "تحلیل هوش مصنوعی کامل شد!" : "AI analysis complete!");
+      toast.success(t("create.toast.ai.complete"));
     }, 1800);
   };
 
@@ -110,7 +110,7 @@ export function CreateSurveyView() {
   const prev = () => setStep((s) => Math.max(0, s - 1));
 
   const publish = () => {
-    toast.success(locale === "fa" ? "پرسشنامه منتشر شد! 🎉" : "Survey published! 🎉");
+    toast.success(t("create.toast.published"));
     setView("researcher-dashboard");
   };
 
@@ -259,7 +259,7 @@ export function CreateSurveyView() {
                             )}
                           </div>
                         </div>
-                        <Input value={q.text} onChange={(e) => updateQuestion(q.id, e.target.value)} placeholder={locale === "fa" ? "متن سؤال..." : "Question text..."} />
+                        <Input value={q.text} onChange={(e) => updateQuestion(q.id, e.target.value)} placeholder={t("create.q.placeholder")} />
                       </div>
                     ))}
                   </div>
@@ -318,15 +318,15 @@ export function CreateSurveyView() {
                           <div className="grid grid-cols-3 gap-2 text-center">
                             <div className="rounded-lg bg-background p-2.5">
                               <p className="text-lg font-extrabold text-[#2a9d8f]">{aiResult.score}%</p>
-                              <p className="text-[10px] text-muted-foreground">{locale === "fa" ? "امتیاز کلی" : "Overall score"}</p>
+                              <p className="text-[10px] text-muted-foreground">{t("create.ai.score")}</p>
                             </div>
                             <div className="rounded-lg bg-background p-2.5">
                               <p className="text-lg font-extrabold text-[#f39237]">{aiResult.ambiguity}</p>
-                              <p className="text-[10px] text-muted-foreground">{locale === "fa" ? "ابهام" : "Ambiguity"}</p>
+                              <p className="text-[10px] text-muted-foreground">{t("create.ai.ambiguity")}</p>
                             </div>
                             <div className="rounded-lg bg-background p-2.5">
                               <p className="text-lg font-extrabold text-[#1d3b4c]">{aiResult.completion}%</p>
-                              <p className="text-[10px] text-muted-foreground">{locale === "fa" ? "تکمیل" : "Completion"}</p>
+                              <p className="text-[10px] text-muted-foreground">{t("create.ai.completion.label")}</p>
                             </div>
                           </div>
                           <ul className="space-y-1.5">
@@ -371,23 +371,23 @@ export function CreateSurveyView() {
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="any">{locale === "fa" ? "همه" : "Any"}</SelectItem>
-                          <SelectItem value="highschool">{locale === "fa" ? "دیپلم" : "High school"}</SelectItem>
-                          <SelectItem value="bachelor">{locale === "fa" ? "کارشناسی" : "Bachelor"}</SelectItem>
-                          <SelectItem value="master">{locale === "fa" ? "کارشناسی ارشد" : "Master"}</SelectItem>
-                          <SelectItem value="phd">{locale === "fa" ? "دکتری" : "PhD"}</SelectItem>
+                          <SelectItem value="any">{t("create.edu.any")}</SelectItem>
+                          <SelectItem value="highschool">{t("create.edu.highschool")}</SelectItem>
+                          <SelectItem value="bachelor">{t("create.edu.bachelor")}</SelectItem>
+                          <SelectItem value="master">{t("create.edu.master")}</SelectItem>
+                          <SelectItem value="phd">{t("create.edu.phd")}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     <div className="space-y-1.5">
                       <Label>{t("create.audience.location")}</Label>
-                      <Input placeholder={locale === "fa" ? "مثلاً ایران، تهران" : "e.g. Iran, Tehran"} className="h-11" />
+                      <Input placeholder={t("create.location.placeholder")} className="h-11" />
                     </div>
                   </div>
 
                   <div className="space-y-1.5">
                     <Label>{t("create.audience.interests")}</Label>
-                    <Input placeholder={locale === "fa" ? "فناوری، سلامت، ورزش..." : "Technology, health, sports..."} className="h-11" />
+                    <Input placeholder={t("create.interests.placeholder")} className="h-11" />
                   </div>
 
                   <div className="space-y-1.5">
@@ -396,9 +396,7 @@ export function CreateSurveyView() {
                     </Label>
                     <Slider value={[sample]} onValueChange={(v) => setSample(v[0])} min={50} max={2000} step={50} />
                     <p className="text-xs text-muted-foreground">
-                      {locale === "fa"
-                        ? `تخمین زمان: ~${Math.ceil(sample / 80)} روز`
-                        : `Estimated time: ~${Math.ceil(sample / 80)} days`}
+                      {t("create.time.estimate")}: ~{Math.ceil(sample / 80)} {t("dashboard.days.label")}
                     </p>
                   </div>
                 </motion.div>
@@ -417,7 +415,7 @@ export function CreateSurveyView() {
                   <h2 className="text-xl font-bold text-foreground">{t("create.review.title")}</h2>
                   <div className="rounded-2xl border border-border bg-background p-5">
                     <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                      <ReviewItem label={t("create.field.title.label")} value={title || (locale === "fa" ? "بدون عنوان" : "Untitled")} />
+                      <ReviewItem label={t("create.field.title.label")} value={title || t("create.review.untitled")} />
                       <ReviewItem label={t("create.field.category")} value={t(`marketplace.filter.${category}` as never)} />
                       <ReviewItem label={t("create.field.eta")} value={`${eta} ${t("create.field.eta.suffix")}`} />
                       <ReviewItem label={t("create.questions.label")} value={`${questions.length}`} />
@@ -431,7 +429,7 @@ export function CreateSurveyView() {
                       <CheckCircle2 className="size-4" />
                       {t("create.review.publish")}
                     </Button>
-                    <Button variant="outline" className="flex-1" onClick={() => toast.info(locale === "fa" ? "به‌عنوان پیش‌نویس ذخیره شد" : "Saved as draft")}>
+                    <Button variant="outline" className="flex-1" onClick={() => toast.info(t("create.toast.draft"))}>
                       {t("create.review.draft")}
                     </Button>
                   </div>

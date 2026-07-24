@@ -96,7 +96,7 @@ export function ResearchersView() {
 
       {/* Tools grid */}
       <Section className="bg-muted/30">
-        <SectionHeading badge={t("nav.researchers")} title={locale === "fa" ? "ابزارهای کامل پژوهش" : "A complete research toolkit"} />
+        <SectionHeading badge={t("nav.researchers")} title={t("researchers.tools.title")} />
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {tools.map((tool, i) => {
             const Icon = tool.icon;

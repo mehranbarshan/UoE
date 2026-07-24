@@ -39,10 +39,10 @@ const navItems: { key: TranslationKey; icon: typeof LayoutDashboard }[] = [
 ];
 
 const myBadges = [
-  { icon: Flame, fa: "۷ روز پیاپی", en: "7-day streak", color: "#e5484d" },
-  { icon: Star, fa: "۱۰۰ پاسخ", en: "100 answers", color: "#f39237" },
-  { icon: Crown, fa: "نخبگان", en: "Top 1%", color: "#e9c46a" },
-  { icon: Award, fa: "متخصص سلامت", en: "Health expert", color: "#2a9d8f" },
+  { icon: Flame, key: "gamify.badge.streak" as TranslationKey, color: "#e5484d" },
+  { icon: Star, key: "gamify.badge.answers" as TranslationKey, color: "#f39237" },
+  { icon: Crown, key: "gamify.badge.elite" as TranslationKey, color: "#e9c46a" },
+  { icon: Award, key: "gamify.badge.health" as TranslationKey, color: "#2a9d8f" },
 ];
 
 const completed = [
@@ -52,16 +52,16 @@ const completed = [
 ];
 
 export function ParticipantDashboardView() {
-  const { t, locale } = useLanguage();
+  const { t, locale, formatNumber } = useLanguage();
   const { setView } = useNav();
   const [active, setActive] = React.useState("dashboard.nav.overview");
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
   const stats = [
-    { label: t("dash.points"), value: "7,340", icon: Coins, color: "#f39237" },
-    { label: t("dash.level"), value: "Lv 5", icon: Zap, color: "#1d3b4c" },
-    { label: t("dash.completed"), value: "47", icon: ClipboardCheck, color: "#2a9d8f" },
-    { label: t("dash.rank"), value: "#412", icon: Trophy, color: "#6a8caf" },
+    { label: t("dash.points"), value: formatNumber(7340), icon: Coins, color: "#f39237" },
+    { label: t("dash.level"), value: `Lv ${formatNumber(5)}`, icon: Zap, color: "#1d3b4c" },
+    { label: t("dash.completed"), value: formatNumber(47), icon: ClipboardCheck, color: "#2a9d8f" },
+    { label: t("dash.rank"), value: `#${formatNumber(412)}`, icon: Trophy, color: "#6a8caf" },
   ];
 
   const recommended = surveys.slice(0, 3);
@@ -157,8 +157,8 @@ export function ParticipantDashboardView() {
               <div className="mt-4">
                 <Progress value={71} className="h-3 bg-muted" />
                 <div className="mt-1.5 flex justify-between text-xs text-muted-foreground">
-                  <span>7,340 / 8,500</span>
-                  <span>71%</span>
+                  <span>{formatNumber(7340)} / {formatNumber(8500)}</span>
+                  <span>{formatNumber(71)}%</span>
                 </div>
               </div>
 
@@ -180,7 +180,7 @@ export function ParticipantDashboardView() {
                         <Icon className="size-[18px]" />
                       </div>
                       <span className="text-[10px] font-medium leading-tight text-muted-foreground">
-                        {locale === "fa" ? b.fa : b.en}
+                        {t(b.key)}
                       </span>
                     </motion.div>
                   );
@@ -203,7 +203,7 @@ export function ParticipantDashboardView() {
                         {locale === "fa" ? e.nameFa : e.nameEn}
                       </span>
                       <span className="text-xs font-bold text-foreground">
-                        {e.points.toLocaleString(locale === "fa" ? "fa-IR" : "en-US")}
+                        {formatNumber(e.points)}
                       </span>
                     </div>
                   );
