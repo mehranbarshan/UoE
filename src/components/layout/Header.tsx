@@ -28,7 +28,7 @@ const navItems: { view: ViewId; key: Parameters<ReturnType<typeof useLanguage>["
 
 export function Header() {
   const { t, locale, toggleLocale } = useLanguage();
-  const { view, setView, isLoggedIn, userRole } = useNav();
+  const { view, setView, isLoggedIn, activeMode } = useNav();
   const { theme, setTheme } = useTheme();
   const [scrolled, setScrolled] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
@@ -43,7 +43,7 @@ export function Header() {
 
   const go = (v: ViewId) => setView(v);
   const dashboardView: ViewId | null = isLoggedIn
-    ? userRole === "researcher"
+    ? activeMode === "researcher"
       ? "researcher-dashboard"
       : "participant-dashboard"
     : null;

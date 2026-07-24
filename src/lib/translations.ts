@@ -442,9 +442,8 @@ export type TranslationKey =
   | "create.qtype.consent"
   | "dash.header.support"
   | "dash.header.logout"
-  | "auth.role.label"
-  | "auth.role.researcher"
-  | "auth.role.participant";
+  | "dash.mode.researcher"
+  | "dash.mode.participant";
 
 type Dict = Record<TranslationKey, string>;
 
@@ -932,9 +931,8 @@ const en: Dict = {
   "create.qtype.consent": "Consent form",
   "dash.header.support": "Support",
   "dash.header.logout": "Log out",
-  "auth.role.label": "I am a...",
-  "auth.role.researcher": "Researcher",
-  "auth.role.participant": "Participant",
+  "dash.mode.researcher": "Researcher Mode",
+  "dash.mode.participant": "Participant Mode",
 };
 
 const fa: Dict = {
@@ -1421,9 +1419,8 @@ const fa: Dict = {
   "create.qtype.consent": "فرم رضایت",
   "dash.header.support": "پشتیبانی",
   "dash.header.logout": "خروج",
-  "auth.role.label": "من هستم...",
-  "auth.role.researcher": "پژوهشگر",
-  "auth.role.participant": "شرکت‌کننده",
+  "dash.mode.researcher": "حالت پژوهشگر",
+  "dash.mode.participant": "حالت شرکت‌کننده",
 };
 
 export const translations: Record<Locale, Dict> = { en, fa };

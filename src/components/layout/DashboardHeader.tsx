@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useTheme } from "next-themes";
-import { Moon, Sun, Languages, LogOut, LifeBuoy } from "lucide-react";
+import { Moon, Sun, Languages, LogOut, LifeBuoy, ArrowLeftRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/Logo";
 import { useLanguage } from "@/lib/i18n";
@@ -10,10 +10,11 @@ import { useNav } from "@/lib/store";
 
 export function DashboardHeader() {
   const { t, locale, toggleLocale } = useLanguage();
-  const { setView, userRole, logout } = useNav();
+  const { setView, activeMode, switchMode, logout } = useNav();
   const { theme, setTheme } = useTheme();
 
-  const dashboardView = userRole === "researcher" ? "researcher-dashboard" : "participant-dashboard";
+  const dashboardView = activeMode === "researcher" ? "researcher-dashboard" : "participant-dashboard";
+  const modeLabel = activeMode === "researcher" ? t("dash.mode.researcher") : t("dash.mode.participant");
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
@@ -27,6 +28,17 @@ export function DashboardHeader() {
         </button>
 
         <div className="flex items-center gap-1.5">
+          {/* Mode switch */}
+          <button
+            onClick={switchMode}
+            className="group flex items-center gap-1.5 rounded-lg border border-border bg-muted/50 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:border-[#f39237]/40 hover:bg-[#f39237]/5 hover:text-[#f39237]"
+          >
+            <ArrowLeftRight className="size-3.5 transition-transform group-hover:rotate-180 group-hover:scale-110" />
+            <span className="hidden sm:inline">{modeLabel}</span>
+          </button>
+
+          <div className="mx-1 hidden h-5 w-px bg-border sm:block" />
+
           <Button
             variant="ghost"
             size="sm"

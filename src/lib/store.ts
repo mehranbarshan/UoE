@@ -14,19 +14,20 @@ export type ViewId =
   | "blog"
   | "auth";
 
-export type UserRole = "researcher" | "participant";
+export type DashboardMode = "researcher" | "participant";
 
 interface NavState {
   view: ViewId;
   setView: (view: ViewId) => void;
   isLoggedIn: boolean;
-  userRole: UserRole | null;
+  activeMode: DashboardMode;
   userName: string;
-  login: (role: UserRole, name: string) => void;
+  login: (name: string) => void;
   logout: () => void;
+  switchMode: () => void;
 }
 
-export const useNav = create<NavState>((set) => ({
+export const useNav = create<NavState>((set, get) => ({
   view: "home",
   setView: (view) => {
     set({ view });
@@ -35,18 +36,31 @@ export const useNav = create<NavState>((set) => ({
     }
   },
   isLoggedIn: false,
-  userRole: null,
+  activeMode: "researcher",
   userName: "",
-  login: (role, name) => {
-    const dashboardView: ViewId = role === "researcher" ? "researcher-dashboard" : "participant-dashboard";
-    set({ isLoggedIn: true, userRole: role, userName: name, view: dashboardView });
+  login: (name) => {
+    const savedMode = (typeof window !== "undefined" && localStorage.getItem("uoe-dashboard-mode")) as DashboardMode | null;
+    const mode: DashboardMode = savedMode === "participant" ? "participant" : "researcher";
+    const dashboardView: ViewId = mode === "researcher" ? "researcher-dashboard" : "participant-dashboard";
+    set({ isLoggedIn: true, activeMode: mode, userName: name, view: dashboardView });
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   },
   logout: () => {
-    set({ isLoggedIn: false, userRole: null, userName: "", view: "home" });
+    set({ isLoggedIn: false, activeMode: "researcher", userName: "", view: "home" });
     if (typeof window !== "undefined") {
+      localStorage.removeItem("uoe-dashboard-mode");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  },
+  switchMode: () => {
+    const current = get().activeMode;
+    const next: DashboardMode = current === "researcher" ? "participant" : "researcher";
+    const dashboardView: ViewId = next === "researcher" ? "researcher-dashboard" : "participant-dashboard";
+    set({ activeMode: next, view: dashboardView });
+    if (typeof window !== "undefined") {
+      localStorage.setItem("uoe-dashboard-mode", next);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   },
