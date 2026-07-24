@@ -28,7 +28,7 @@ const navItems: { view: ViewId; key: Parameters<ReturnType<typeof useLanguage>["
 
 export function Header() {
   const { t, locale, toggleLocale } = useLanguage();
-  const { view, setView } = useNav();
+  const { view, setView, isLoggedIn, userRole } = useNav();
   const { theme, setTheme } = useTheme();
   const [scrolled, setScrolled] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
@@ -42,6 +42,11 @@ export function Header() {
   }, []);
 
   const go = (v: ViewId) => setView(v);
+  const dashboardView: ViewId | null = isLoggedIn
+    ? userRole === "researcher"
+      ? "researcher-dashboard"
+      : "participant-dashboard"
+    : null;
 
   return (
     <header
@@ -112,24 +117,45 @@ export function Header() {
             </Button>
           )}
 
-          {/* Login (desktop) */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="hidden md:inline-flex"
-            onClick={() => go("auth")}
-          >
-            {t("nav.login")}
-          </Button>
+          {/* Login / Dashboard (desktop) */}
+          {isLoggedIn && dashboardView ? (
+            <Button
+              variant="ghost"
+              size="sm"
+              className="hidden md:inline-flex"
+              onClick={() => go(dashboardView)}
+            >
+              {t("nav.dashboard")}
+            </Button>
+          ) : (
+            <Button
+              variant="ghost"
+              size="sm"
+              className="hidden md:inline-flex"
+              onClick={() => go("auth")}
+            >
+              {t("nav.login")}
+            </Button>
+          )}
 
           {/* CTA (desktop) */}
-          <Button
-            size="sm"
-            className="hidden md:inline-flex bg-[#f39237] text-white hover:bg-[#e07f24] shadow-soft"
-            onClick={() => go("create")}
-          >
-            {t("nav.start")}
-          </Button>
+          {isLoggedIn && dashboardView ? (
+            <Button
+              size="sm"
+              className="hidden md:inline-flex bg-[#f39237] text-white hover:bg-[#e07f24] shadow-soft"
+              onClick={() => go("create")}
+            >
+              {t("nav.start")}
+            </Button>
+          ) : (
+            <Button
+              size="sm"
+              className="hidden md:inline-flex bg-[#f39237] text-white hover:bg-[#e07f24] shadow-soft"
+              onClick={() => go("create")}
+            >
+              {t("nav.start")}
+            </Button>
+          )}
 
           {/* Mobile menu */}
           <Sheet>
@@ -168,11 +194,19 @@ export function Header() {
                   </SheetClose>
                 ))}
                 <div className="my-2 h-px bg-border" />
-                <SheetClose asChild>
-                  <Button variant="outline" className="justify-start" onClick={() => go("auth")}>
-                    {t("nav.login")}
-                  </Button>
-                </SheetClose>
+                {isLoggedIn && dashboardView ? (
+                  <SheetClose asChild>
+                    <Button variant="outline" className="justify-start" onClick={() => go(dashboardView)}>
+                      {t("nav.dashboard")}
+                    </Button>
+                  </SheetClose>
+                ) : (
+                  <SheetClose asChild>
+                    <Button variant="outline" className="justify-start" onClick={() => go("auth")}>
+                      {t("nav.login")}
+                    </Button>
+                  </SheetClose>
+                )}
                 <SheetClose asChild>
                   <Button
                     className="bg-[#f39237] text-white hover:bg-[#e07f24]"

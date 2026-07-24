@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Header } from "@/components/layout/Header";
+import { DashboardHeader } from "@/components/layout/DashboardHeader";
 import { Footer } from "@/components/layout/Footer";
 import { useNav } from "@/lib/store";
 import { useLanguage } from "@/lib/i18n";
@@ -49,16 +50,24 @@ function renderView(view: string) {
   }
 }
 
+const authViews = new Set<string>([
+  "researcher-dashboard",
+  "participant-dashboard",
+  "analytics",
+  "create",
+  "marketplace",
+]);
+
 export default function Home() {
-  const { view } = useNav();
+  const { view, isLoggedIn } = useNav();
   const { dir } = useLanguage();
 
-  // Auth view is full-height, no footer
-  const isAuth = view === "auth";
+  const isAuthView = view === "auth";
+  const isInDashboard = isLoggedIn && authViews.has(view);
 
   return (
     <div dir={dir} className="flex min-h-screen flex-col bg-background">
-      <Header />
+      {isInDashboard ? <DashboardHeader /> : <Header />}
       <main className="flex-1">
         <AnimatePresence mode="wait">
           <motion.div
@@ -72,7 +81,7 @@ export default function Home() {
           </motion.div>
         </AnimatePresence>
       </main>
-      {!isAuth && <Footer />}
+      {!isAuthView && !isInDashboard && <Footer />}
     </div>
   );
 }

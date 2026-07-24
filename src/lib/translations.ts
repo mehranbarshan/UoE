@@ -439,7 +439,12 @@ export type TranslationKey =
   | "create.qtype.demographic"
   | "create.qtype.openended"
   | "create.qtype.file"
-  | "create.qtype.consent";
+  | "create.qtype.consent"
+  | "dash.header.support"
+  | "dash.header.logout"
+  | "auth.role.label"
+  | "auth.role.researcher"
+  | "auth.role.participant";
 
 type Dict = Record<TranslationKey, string>;
 
@@ -925,6 +930,11 @@ const en: Dict = {
   "create.qtype.openended": "Open-ended",
   "create.qtype.file": "File upload",
   "create.qtype.consent": "Consent form",
+  "dash.header.support": "Support",
+  "dash.header.logout": "Log out",
+  "auth.role.label": "I am a...",
+  "auth.role.researcher": "Researcher",
+  "auth.role.participant": "Participant",
 };
 
 const fa: Dict = {
@@ -1409,6 +1419,11 @@ const fa: Dict = {
   "create.qtype.openended": "باز",
   "create.qtype.file": "بارگذاری فایل",
   "create.qtype.consent": "فرم رضایت",
+  "dash.header.support": "پشتیبانی",
+  "dash.header.logout": "خروج",
+  "auth.role.label": "من هستم...",
+  "auth.role.researcher": "پژوهشگر",
+  "auth.role.participant": "شرکت‌کننده",
 };
 
 export const translations: Record<Locale, Dict> = { en, fa };

@@ -7,14 +7,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useLanguage } from "@/lib/i18n";
-import { useNav } from "@/lib/store";
+import { useNav, type UserRole } from "@/lib/store";
 import { toast } from "sonner";
 
 export function AuthView() {
   const { t, locale } = useLanguage();
-  const { setView } = useNav();
+  const { login } = useNav();
   const [mode, setMode] = React.useState<"login" | "register">("login");
   const [loading, setLoading] = React.useState(false);
+  const [role, setRole] = React.useState<UserRole>("researcher");
+  const [name, setName] = React.useState("");
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
   const onSubmit = (e: React.FormEvent) => {
@@ -27,7 +29,8 @@ export function AuthView() {
           ? t("auth.toast.login.success")
           : t("auth.toast.register.success")
       );
-      setView("home");
+      const displayName = mode === "register" ? name : (locale === "fa" ? "پژوهشگر" : "Researcher");
+      login(role, displayName || (locale === "fa" ? "پژوهشگر" : "Researcher"));
     }, 1100);
   };
 
@@ -35,7 +38,7 @@ export function AuthView() {
     toast.info(t("auth.toast.google.connecting"));
     setTimeout(() => {
       toast.success(t("auth.toast.google.success"));
-      setView("home");
+      login(role, locale === "fa" ? "کاربر گوگل" : "Google User");
     }, 1200);
   };
 
@@ -113,13 +116,45 @@ export function AuthView() {
 
               <form onSubmit={onSubmit} className="space-y-4">
                 {mode === "register" && (
-                  <div className="space-y-1.5">
-                    <Label htmlFor="name">{t("auth.name")}</Label>
-                    <div className="relative">
-                      <User className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-                      <Input id="name" type="text" required className="ps-9" placeholder={t("auth.name.placeholder")} />
+                  <>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="name">{t("auth.name")}</Label>
+                      <div className="relative">
+                        <User className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+                        <Input
+                          id="name"
+                          type="text"
+                          required
+                          className="ps-9"
+                          placeholder={t("auth.name.placeholder")}
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                        />
+                      </div>
                     </div>
-                  </div>
+                    <div className="space-y-1.5">
+                      <Label>{t("auth.role.label")}</Label>
+                      <div className="grid grid-cols-2 gap-2">
+                        {([
+                          { value: "researcher" as UserRole, labelKey: "auth.role.researcher" as const },
+                          { value: "participant" as UserRole, labelKey: "auth.role.participant" as const },
+                        ]).map((r) => (
+                          <button
+                            key={r.value}
+                            type="button"
+                            onClick={() => setRole(r.value)}
+                            className={`rounded-xl border-2 px-3 py-2.5 text-sm font-medium transition-all ${
+                              role === r.value
+                                ? "border-[#f39237] bg-[#f39237]/10 text-[#f39237]"
+                                : "border-border bg-background text-muted-foreground hover:border-muted-foreground/30"
+                            }`}
+                          >
+                            {t(r.labelKey)}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </>
                 )}
                 <div className="space-y-1.5">
                   <Label htmlFor="email">{t("auth.email")}</Label>
