@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Vazirmatn } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
@@ -18,9 +19,22 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const vazirmatn = Vazirmatn({
-  variable: "--font-vazirmatn",
-  subsets: ["arabic", "latin"],
+const iranSans = localFont({
+  src: [
+    {
+      path: "../../public/fonts/IRANSansXFaNum-regular.woff2",
+      weight: "400",
+    },
+    {
+      path: "../../public/fonts/IRANSansXFaNum-medium.woff2",
+      weight: "500",
+    },
+    {
+      path: "../../public/fonts/IRANSansXFaNum-bold.woff2",
+      weight: "700",
+    },
+  ],
+  variable: "--font-iran-sans",
   display: "swap",
 });
 
@@ -59,9 +73,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fa" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${vazirmatn.variable} antialiased bg-background text-foreground`}
+        className={`${geistSans.variable} ${geistMono.variable} ${iranSans.variable} antialiased bg-background text-foreground`}
       >
         <ThemeProvider
           attribute="class"

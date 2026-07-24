@@ -215,3 +215,6 @@
 .scroll-area-uoe::-webkit-scrollbar-thumb:hover {
   background: rgba(29, 59, 76, 0.35);
 }
+body {
+  font-family: var(--font-iran-sans), sans-serif;
+}

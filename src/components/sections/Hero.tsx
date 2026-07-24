@@ -131,25 +131,27 @@ export function Hero() {
 }
 
 function HeroNetwork({ dir }: { dir: "rtl" | "ltr" }) {
+  // تراز دقیق نودها روی شعاع R=150 پیکسل (شعاع درصدی: 37.5%)
   const nodes = [
-    { id: "researcher", icon: Users, labelKey: "hero.illustration.researcher", x: "50%", y: "8%", color: "#1d3b4c" },
-    { id: "data", icon: BarChart3, labelKey: "hero.illustration.data", x: "92%", y: "40%", color: "#2a9d8f" },
-    { id: "participant", icon: FileText, labelKey: "hero.illustration.participant", x: "50%", y: "74%", color: "#f39237" },
-    { id: "ai", icon: Brain, labelKey: "hero.illustration.ai", x: "8%", y: "40%", color: "#6a8caf" },
+    { id: "researcher", icon: Users, labelKey: "hero.illustration.researcher", x: "50%", y: "12.5%", color: "#1d3b4c" },
+    { id: "data", icon: BarChart3, labelKey: "hero.illustration.data", x: "87.5%", y: "50%", color: "#2a9d8f" },
+    { id: "participant", icon: FileText, labelKey: "hero.illustration.participant", x: "50%", y: "87.5%", color: "#f39237" },
+    { id: "ai", icon: Brain, labelKey: "hero.illustration.ai", x: "12.5%", y: "50%", color: "#6a8caf" },
   ];
   const { t, locale } = useLanguage();
 
   return (
     <div className="relative aspect-square w-full">
-      {/* connecting ring */}
-      <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full" fill="none">
+      {/* SVG Background & Network Connections */}
+      <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full pointer-events-none z-0" fill="none">
         <defs>
           <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#1d3b4c" />
             <stop offset="100%" stopColor="#f39237" />
           </linearGradient>
         </defs>
-        {/* rotating dashed ring */}
+        
+        {/* دایره اصلی */}
         <motion.circle
           cx="200"
           cy="200"
@@ -163,17 +165,65 @@ function HeroNetwork({ dir }: { dir: "rtl" | "ltr" }) {
           style={{ transformOrigin: "200px 200px" }}
           opacity={0.5}
         />
-        {/* connections between nodes */}
-        <line x1="200" y1="40" x2="350" y2="160" stroke="#1d3b4c" strokeWidth="1.5" opacity="0.25" strokeDasharray="4 4" />
-        <line x1="350" y1="160" x2="200" y2="280" stroke="#2a9d8f" strokeWidth="1.5" opacity="0.25" strokeDasharray="4 4" />
-        <line x1="200" y1="280" x2="50" y2="160" stroke="#f39237" strokeWidth="1.5" opacity="0.25" strokeDasharray="4 4" />
-        <line x1="50" y1="160" x2="200" y2="40" stroke="#6a8caf" strokeWidth="1.5" opacity="0.25" strokeDasharray="4 4" />
-        <line x1="200" y1="40" x2="200" y2="280" stroke="#1d3b4c" strokeWidth="1.5" opacity="0.18" strokeDasharray="2 6" />
-        <line x1="50" y1="160" x2="350" y2="160" stroke="#1d3b4c" strokeWidth="1.5" opacity="0.18" strokeDasharray="2 6" />
+
+        {/* خطوط اتصال بین نودها */}
+        <line x1="200" y1="50" x2="350" y2="200" stroke="#1d3b4c" strokeWidth="1.5" opacity="0.25" strokeDasharray="4 4" />
+        <line x1="350" y1="200" x2="200" y2="350" stroke="#2a9d8f" strokeWidth="1.5" opacity="0.25" strokeDasharray="4 4" />
+        <line x1="200" y1="350" x2="50" y2="200" stroke="#f39237" strokeWidth="1.5" opacity="0.25" strokeDasharray="4 4" />
+        <line x1="50" y1="200" x2="200" y2="50" stroke="#6a8caf" strokeWidth="1.5" opacity="0.25" strokeDasharray="4 4" />
+        <line x1="200" y1="50" x2="200" y2="350" stroke="#1d3b4c" strokeWidth="1.5" opacity="0.18" strokeDasharray="2 6" />
+        <line x1="50" y1="200" x2="350" y2="200" stroke="#1d3b4c" strokeWidth="1.5" opacity="0.18" strokeDasharray="2 6" />
       </svg>
 
-      {/* center hub */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      {/* 🟠 فلش ۱: شروع از پژوهشگر (بالا) -> حرکت به شرکت‌کننده (پایین) از سمت راست */}
+      <motion.div
+        animate={{
+          rotate: [0, 180, 180],
+          opacity: [1, 1, 0],
+        }}
+        transition={{
+          duration: 10, // ۵ ثانیه رفت، ۵ ثانیه خاموش
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.499, 0.5],
+        }}
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{ transformOrigin: "center" }}
+      >
+        <div
+          className="absolute text-[#f39237] -translate-x-1/2 -translate-y-1/2"
+          style={{ top: "12.5%", left: "50%" }}
+        >
+          <ArrowRight className="size-4" />
+        </div>
+      </motion.div>
+
+      {/* 🔵 فلش ۲: شروع دقیقاً از شرکت‌کننده (پایین) -> حرکت به پژوهشگر (بالا) از سمت چپ */}
+      <motion.div
+        animate={{
+          rotate: [0, 180, 180],
+          opacity: [0, 1, 0],
+        }}
+        transition={{
+          duration: 10, // ۵ ثانیه خاموش، ۵ ثانیه حرکت
+          repeat: Infinity,
+          ease: "linear",
+          times: [0.5, 0.999, 1],
+        }}
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{ transformOrigin: "center" }}
+      >
+        <div
+          className="absolute text-[#1d3b4c] dark:text-[#6a8caf] -translate-x-1/2 -translate-y-1/2"
+          style={{ top: "87.5%", left: "50%" }} // قرارگیری در پایین (شرکت‌کننده)
+        >
+          {/* چرخش اولیه ۱۸۰ درجه جهت پیکان برای نشانه رفتن به سمت چپ و بالا */}
+          <ArrowRight className="size-4 rotate-180" />
+        </div>
+      </motion.div>
+
+      {/* center hub (z-10) */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
         <motion.div
           animate={{ scale: [1, 1.06, 1] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -184,7 +234,7 @@ function HeroNetwork({ dir }: { dir: "rtl" | "ltr" }) {
         </motion.div>
       </div>
 
-      {/* nodes */}
+      {/* nodes (z-20 بالا قرار گرفتن آیکون‌ها) */}
       {nodes.map((node, i) => {
         const Icon = node.icon;
         return (
@@ -193,37 +243,22 @@ function HeroNetwork({ dir }: { dir: "rtl" | "ltr" }) {
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.3 + i * 0.12 }}
-            className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5"
+            className="absolute z-20 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5 pointer-events-auto"
             style={{ left: node.x, top: node.y }}
           >
             <motion.div
-              animate={{ y: [0, -6, 0] }}
+              animate={{ y: [0, -5, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
               className="grid size-12 place-items-center rounded-2xl border border-border bg-white shadow-soft dark:bg-card sm:size-14"
             >
               <Icon className="size-5 sm:size-6" style={{ color: node.color }} />
             </motion.div>
-            <span className="rounded-full bg-white/80 px-2 py-0.5 text-[10px] font-semibold text-foreground shadow-soft backdrop-blur dark:bg-card/80">
+            <span className="rounded-full bg-white/90 px-2.5 py-0.5 text-[11px] font-semibold text-foreground shadow-soft backdrop-blur dark:bg-card/90 whitespace-nowrap">
               {t(node.labelKey as never)}
             </span>
           </motion.div>
         );
       })}
-
-      {/* exchange arrows rotating around */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0"
-        style={{ transformOrigin: "center" }}
-      >
-        <div
-          className="absolute text-[#f39237]"
-          style={{ top: "50%", left: dir === "rtl" ? "2%" : "98%", transform: "translateY(-50%)" }}
-        >
-          <ArrowLeft className="size-4" />
-        </div>
-      </motion.div>
 
       <span dir={locale === "fa" ? "rtl" : "ltr"} className="sr-only">
         {t("hero.illustration.title")}
