@@ -292,10 +292,6 @@ export type TranslationKey =
   | "auth.email"
   | "auth.password"
   | "auth.name"
-  | "auth.firstname"
-  | "auth.lastname"
-  | "auth.firstname.placeholder"
-  | "auth.lastname.placeholder"
   | "auth.google"
   | "auth.or"
   | "auth.switch.login"
@@ -763,10 +759,6 @@ const en: Dict = {
   "auth.email": "Email",
   "auth.password": "Password",
   "auth.name": "Full name",
-  "auth.firstname": "First name",
-  "auth.lastname": "Last name",
-  "auth.firstname.placeholder": "John",
-  "auth.lastname.placeholder": "Doe",
   "auth.google": "Continue with Google",
   "auth.or": "or",
   "auth.switch.login": "Already have an account? Log in",
@@ -1255,8 +1247,6 @@ const fa: Dict = {
   "auth.email": "ایمیل",
   "auth.password": "رمز عبور",
   "auth.name": "نام و نام خانوادگی",
-  "auth.firstname": "نام",
-  "auth.lastname": "نام خانوادگی",
   "auth.google": "ادامه با گوگل",
   "auth.or": "یا",
   "auth.switch.login": "حساب دارید؟ وارد شوید",
@@ -1295,8 +1285,6 @@ const fa: Dict = {
   "auth.toast.google.connecting": "در حال اتصال به گوگل...",
   "auth.toast.google.success": "ورود با گوگل موفق بود!",
   "auth.name.placeholder": "نام شما",
-  "auth.firstname.placeholder": "علی",
-  "auth.lastname.placeholder": "احمدی",
 
   "analytics.subtitle": "بینش عمیق از پاسخ‌ها، کیفیت داده و جمعیت‌شناسی.",
   "analytics.export.report": "خروجی گزارش",

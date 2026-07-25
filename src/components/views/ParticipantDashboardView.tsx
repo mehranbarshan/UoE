@@ -53,7 +53,7 @@ const completed = [
 
 export function ParticipantDashboardView() {
   const { t, locale, formatNumber } = useLanguage();
-  const { setView } = useNav();
+  const { setView, userName } = useNav();
   const [active, setActive] = React.useState("dashboard.nav.overview");
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
@@ -81,10 +81,12 @@ export function ParticipantDashboardView() {
           <div className="rounded-2xl border border-border bg-card p-3 shadow-soft">
             <div className="mb-3 flex items-center gap-3 px-2 py-2">
               <div className="grid size-10 place-items-center rounded-xl gradient-orange text-sm font-bold text-white">
-                N
+                {userName ? userName.charAt(0).toUpperCase() : "U"}
               </div>
               <div className="min-w-0">
-                <p className="truncate text-sm font-bold text-foreground">{t("dashboard.participant.welcome")}</p>
+                <p className="truncate text-sm font-bold text-foreground">
+                  {locale === "fa" ? `خوش آمدید، ${userName || "کاربر"}` : `Welcome, ${userName || "User"}`}
+                </p>
                 <p className="truncate text-xs text-muted-foreground">{t("dashboard.participant.title")}</p>
               </div>
             </div>
@@ -117,7 +119,9 @@ export function ParticipantDashboardView() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h1 className="text-2xl font-extrabold text-foreground">{t("dashboard.participant.title")}</h1>
-              <p className="text-sm text-muted-foreground">{t("dashboard.participant.welcome")}</p>
+              <p className="text-sm text-muted-foreground">
+                {locale === "fa" ? `خوش آمدید، ${userName || "کاربر"}` : `Welcome, ${userName || "User"}`}
+              </p>
             </div>
             <Button className="bg-[#f39237] text-white hover:bg-[#e07f24]" onClick={() => setView("marketplace")}>
               <Compass className="size-4" />

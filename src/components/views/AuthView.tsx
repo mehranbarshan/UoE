@@ -15,8 +15,7 @@ export function AuthView() {
   const { login } = useNav();
   const [mode, setMode] = React.useState<"login" | "register">("login");
   const [loading, setLoading] = React.useState(false);
-  const [firstName, setFirstName] = React.useState("");
-  const [lastName, setLastName] = React.useState("");
+  const [name, setName] = React.useState("");
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
   const onSubmit = (e: React.FormEvent) => {
@@ -29,9 +28,7 @@ export function AuthView() {
           ? t("auth.toast.login.success")
           : t("auth.toast.register.success")
       );
-      const displayName = mode === "register"
-        ? `${firstName} ${lastName}`.trim()
-        : (locale === "fa" ? "کاربر" : "User");
+      const displayName = mode === "register" ? name : (locale === "fa" ? "کاربر" : "User");
       login(displayName || (locale === "fa" ? "کاربر" : "User"));
     }, 1100);
   };
@@ -118,31 +115,18 @@ export function AuthView() {
 
               <form onSubmit={onSubmit} className="space-y-4">
                 {mode === "register" && (
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="space-y-1.5">
-                      <Label htmlFor="firstname">{t("auth.firstname")}</Label>
-                      <div className="relative">
-                        <User className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-                        <Input
-                          id="firstname"
-                          type="text"
-                          required
-                          className="ps-9"
-                          placeholder={t("auth.firstname.placeholder")}
-                          value={firstName}
-                          onChange={(e) => setFirstName(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="space-y-1.5">
-                      <Label htmlFor="lastname">{t("auth.lastname")}</Label>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="name">{t("auth.name")}</Label>
+                    <div className="relative">
+                      <User className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
                       <Input
-                        id="lastname"
+                        id="name"
                         type="text"
                         required
-                        placeholder={t("auth.lastname.placeholder")}
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
+                        className="ps-9"
+                        placeholder={t("auth.name.placeholder")}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </div>
                   </div>
