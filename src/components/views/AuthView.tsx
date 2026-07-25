@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Lock, User, Chrome, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { Mail, Lock, Chrome, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,7 +15,7 @@ export function AuthView() {
   const { login } = useNav();
   const [mode, setMode] = React.useState<"login" | "register">("login");
   const [loading, setLoading] = React.useState(false);
-  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
   const onSubmit = (e: React.FormEvent) => {
@@ -28,8 +28,10 @@ export function AuthView() {
           ? t("auth.toast.login.success")
           : t("auth.toast.register.success")
       );
-      const displayName = mode === "register" ? name : (locale === "fa" ? "کاربر" : "User");
-      login(displayName || (locale === "fa" ? "کاربر" : "User"));
+      const displayName = mode === "register"
+        ? email.split("@")[0] || (locale === "fa" ? "کاربر" : "User")
+        : (locale === "fa" ? "کاربر" : "User");
+      login(displayName);
     }, 1100);
   };
 
@@ -114,28 +116,19 @@ export function AuthView() {
               </div>
 
               <form onSubmit={onSubmit} className="space-y-4">
-                {mode === "register" && (
-                  <div className="space-y-1.5">
-                    <Label htmlFor="name">{t("auth.name")}</Label>
-                    <div className="relative">
-                      <User className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-                      <Input
-                        id="name"
-                        type="text"
-                        required
-                        className="ps-9"
-                        placeholder={t("auth.name.placeholder")}
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                )}
                 <div className="space-y-1.5">
                   <Label htmlFor="email">{t("auth.email")}</Label>
                   <div className="relative">
                     <Mail className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-                    <Input id="email" type="email" required className="ps-9" placeholder="you@example.com" />
+                    <Input
+                      id="email"
+                      type="email"
+                      required
+                      className="ps-9"
+                      placeholder="you@example.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
                 </div>
                 <div className="space-y-1.5">
