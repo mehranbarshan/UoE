@@ -12,12 +12,14 @@ import { ResearchersView } from "@/components/views/ResearchersView";
 import { ParticipantsView } from "@/components/views/ParticipantsView";
 import { CreateSurveyView } from "@/components/views/CreateSurveyView";
 import { MarketplaceView } from "@/components/views/MarketplaceView";
+import { SurveyRunnerView } from "@/components/views/SurveyRunnerView";
 import { ResearcherDashboardView } from "@/components/views/ResearcherDashboardView";
 import { ParticipantDashboardView } from "@/components/views/ParticipantDashboardView";
 import { AnalyticsView } from "@/components/views/AnalyticsView";
 import { PricingView } from "@/components/views/PricingView";
 import { BlogView } from "@/components/views/BlogView";
 import { AuthView } from "@/components/views/AuthView";
+import { CreateResearchOptionsModal } from "@/components/shared/CreateResearchOptionsModal";
 
 function renderView(view: string) {
   switch (view) {
@@ -33,6 +35,8 @@ function renderView(view: string) {
       return <CreateSurveyView />;
     case "marketplace":
       return <MarketplaceView />;
+    case "survey-runner":
+      return <SurveyRunnerView />;
     case "researcher-dashboard":
       return <ResearcherDashboardView />;
     case "participant-dashboard":
@@ -58,16 +62,19 @@ const authViews = new Set<string>([
   "marketplace",
 ]);
 
+const immersiveViews = new Set<string>(["survey-runner"]);
+
 export default function Home() {
   const { view, isLoggedIn } = useNav();
   const { dir } = useLanguage();
 
   const isAuthView = view === "auth";
   const isInDashboard = isLoggedIn && authViews.has(view);
+  const isImmersive = immersiveViews.has(view);
 
   return (
     <div dir={dir} className="flex min-h-screen flex-col bg-background">
-      {isInDashboard ? <DashboardHeader /> : <Header />}
+      {!isImmersive && (isInDashboard ? <DashboardHeader /> : <Header />)}
       <main className="flex-1">
         <AnimatePresence mode="wait">
           <motion.div
@@ -81,7 +88,8 @@ export default function Home() {
           </motion.div>
         </AnimatePresence>
       </main>
-      {!isAuthView && !isInDashboard && <Footer />}
+      {!isImmersive && !isAuthView && !isInDashboard && <Footer />}
+      <CreateResearchOptionsModal />
     </div>
   );
 }

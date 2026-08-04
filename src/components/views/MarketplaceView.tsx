@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Search, Clock, Coins, Users, Target, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { Search, Clock, Coins, Users, Target, ArrowRight, ArrowLeft } from "lucide-react";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Section } from "@/components/shared/Section";
 import { Input } from "@/components/ui/input";
@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/lib/i18n";
 import { useNav } from "@/lib/store";
 import { surveys, type SurveyItem } from "@/lib/content";
-import { toast } from "sonner";
+import { ExchangeCenter, TransactionHistory } from "@/components/marketplace/ExchangeCenter";
 import { cn } from "@/lib/utils";
 
 type Category = "all" | "health" | "education" | "social" | "tech" | "business";
@@ -26,10 +26,9 @@ const categoryColors: Record<string, string> = {
 
 export function MarketplaceView() {
   const { t, locale } = useLanguage();
-  const { setView } = useNav();
+  const { setView, setActiveSurveyId } = useNav();
   const [filter, setFilter] = React.useState<Category>("all");
   const [query, setQuery] = React.useState("");
-  const [joined, setJoined] = React.useState<Set<string>>(new Set());
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
   const filters: { id: Category; key: Parameters<ReturnType<typeof useLanguage>["t"]>[0] }[] = [
@@ -49,12 +48,8 @@ export function MarketplaceView() {
   });
 
   const onJoin = (s: SurveyItem) => {
-    setJoined((prev) => new Set(prev).add(s.id));
-    toast.success(
-      locale === "fa"
-        ? `به «${s.titleFa}» ملحق شدید! +${s.reward} امتیاز`
-        : `Joined "${s.titleEn}"! +${s.reward} points`
-    );
+    setActiveSurveyId(s.id);
+    setView("survey-runner");
   };
 
   const fmt = (n: number) => n.toLocaleString(locale === "fa" ? "fa-IR" : "en-US");
@@ -64,8 +59,10 @@ export function MarketplaceView() {
       <PageHeader badge={t("marketplace.subtitle")} title={t("marketplace.title")} subtitle={t("marketplace.subtitle")} />
 
       <Section className="bg-background">
+        <ExchangeCenter />
+
         {/* Search + filters */}
-        <div className="flex flex-col gap-4">
+        <div className="mt-10 flex flex-col gap-4">
           <div className="relative max-w-xl">
             <Search className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
@@ -101,7 +98,6 @@ export function MarketplaceView() {
         ) : (
           <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((s, i) => {
-              const isJoined = joined.has(s.id);
               const color = categoryColors[s.category];
               return (
                 <motion.div
@@ -162,32 +158,19 @@ export function MarketplaceView() {
                   </div>
 
                   <Button
-                    className={cn(
-                      "mt-4 w-full",
-                      isJoined
-                        ? "bg-[#2a9d8f] text-white hover:bg-[#2a9d8f]"
-                        : "bg-[#f39237] text-white hover:bg-[#e07f24]"
-                    )}
+                    className="mt-4 w-full bg-[#f39237] text-white hover:bg-[#e07f24]"
                     onClick={() => onJoin(s)}
-                    disabled={isJoined}
                   >
-                    {isJoined ? (
-                      <>
-                        <CheckCircle2 className="size-4" />
-                        {t("marketplace.joined")}
-                      </>
-                    ) : (
-                      <>
-                        {t("marketplace.join")}
-                        <Arrow className="size-4" />
-                      </>
-                    )}
+                    {t("marketplace.join")}
+                    <Arrow className="size-4" />
                   </Button>
                 </motion.div>
               );
             })}
           </div>
         )}
+
+        <TransactionHistory />
 
         <div className="mt-10 text-center">
           <Button variant="outline" onClick={() => setView("participant-dashboard")}>

@@ -76,7 +76,7 @@ const plans: Plan[] = [
 
 export function PricingView() {
   const { t, locale } = useLanguage();
-  const { setView } = useNav();
+  const { setView, openCreateOptions } = useNav();
   const [yearly, setYearly] = React.useState(false);
 
   return (
@@ -167,7 +167,7 @@ export function PricingView() {
                     "mt-6 w-full text-white",
                     plan.popular ? "bg-[#f39237] hover:bg-[#e07f24]" : "bg-[#1d3b4c] hover:bg-[#142a37]"
                   )}
-                  onClick={() => setView(plan.ctaView)}
+                  onClick={() => (plan.ctaView === "create" ? openCreateOptions() : setView(plan.ctaView))}
                 >
                   {t(plan.ctaKey)}
                 </Button>

@@ -1,6 +1,6 @@
 # UoE — University of Exchange
 
-**AI-powered bilingual survey & research platform** connecting academics with real participants. Public beta v0.2.1. Founded by Mehran Barshan & Alireza Rahimi.
+**AI-powered bilingual survey & research platform** connecting academics with real participants. Public beta v0.2.1. Founded by Mehran Barshan & Hanieh Amjadian.
 
 ---
 

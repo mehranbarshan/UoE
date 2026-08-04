@@ -43,10 +43,12 @@ export function ParticipantsView() {
   const { setView } = useNav();
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
+  const openMarketplace = () => setView("marketplace");
+
   return (
     <>
       <PageHeader badge={t("participants.subtitle")} title={t("participants.title")} subtitle={t("participants.subtitle")}>
-        <Button size="lg" className="bg-[#f39237] text-white hover:bg-[#e07f24] shadow-soft h-12 px-6" onClick={() => setView("marketplace")}>
+        <Button size="lg" className="bg-[#f39237] text-white hover:bg-[#e07f24] shadow-soft h-12 px-6" onClick={openMarketplace}>
           {t("hero.cta.secondary")}
           <Arrow className="size-4" />
         </Button>
@@ -67,7 +69,7 @@ export function ParticipantsView() {
                 transition={{ duration: 0.45, delay: i * 0.08 }}
                 className="relative rounded-2xl border border-border bg-card p-6 shadow-soft"
               >
-                <span className="absolute end-4 top-4 text-3xl font-black text-foreground/5">
+                <span className="absolute end-4 top-4 text-3xl font-black text-foreground">
                   {i + 1}
                 </span>
                 <div className="grid size-12 place-items-center rounded-2xl text-white shadow-soft" style={{ backgroundColor: step.color }}>

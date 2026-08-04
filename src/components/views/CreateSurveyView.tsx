@@ -14,12 +14,14 @@ import {
   Layers,
   Plus,
   Trash2,
+  Flag,
   ArrowRight,
   ArrowLeft,
   Loader2,
 } from "lucide-react";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Section } from "@/components/shared/Section";
+import { ValueGatedAuthModal } from "@/components/shared/ValueGatedAuthModal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -28,7 +30,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Slider } from "@/components/ui/slider";
 import { Progress } from "@/components/ui/progress";
 import { useLanguage } from "@/lib/i18n";
-import { useNav } from "@/lib/store";
+import { useNav, type QuestionSource } from "@/lib/store";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
@@ -51,19 +53,28 @@ interface QuestionDraft {
   id: string;
   type: "single" | "multi" | "text" | "scale" | "likert" | "matrix" | "ranking" | "demographic" | "openended" | "file" | "consent";
   text: string;
+  source: QuestionSource;
 }
 
 export function CreateSurveyView() {
   const { t, locale } = useLanguage();
-  const { setView } = useNav();
+  const { setView, isLoggedIn, surveySeed, setSurveySeed } = useNav();
   const [step, setStep] = React.useState(0);
-  const [title, setTitle] = React.useState("");
+  const [authOpen, setAuthOpen] = React.useState(false);
+  const [pendingAction, setPendingAction] = React.useState<"publish" | "draft" | null>(null);
+  const [title, setTitle] = React.useState(() => surveySeed?.find((s) => s.title)?.title ?? "");
+  const [isLibrary, setIsLibrary] = React.useState(() => !!surveySeed?.some((s) => s.source === "library"));
+  const [titleError, setTitleError] = React.useState(false);
   const [desc, setDesc] = React.useState("");
   const [category, setCategory] = React.useState("tech");
   const [eta, setEta] = React.useState(5);
-  const [questions, setQuestions] = React.useState<QuestionDraft[]>([
-    { id: "q1", type: "single", text: "" },
-  ]);
+  const [questions, setQuestions] = React.useState<QuestionDraft[]>(() =>
+    surveySeed && surveySeed.length > 0
+      ? surveySeed.map((s, i) => ({ id: `q${i + 1}`, type: "single", text: s.text, source: s.source }))
+      : [{ id: "q1", type: "single", text: "", source: "manual" as const }]
+  );
+  const [warned, setWarned] = React.useState<Record<string, boolean>>({});
+  const [pendingDelete, setPendingDelete] = React.useState<Record<string, boolean>>({});
   const [ageRange, setAgeRange] = React.useState<[number, number]>([18, 45]);
   const [education, setEducation] = React.useState("any");
   const [sample, setSample] = React.useState(200);
@@ -76,14 +87,53 @@ export function CreateSurveyView() {
   }>(null);
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
+  React.useEffect(() => {
+    if (surveySeed && surveySeed.length > 0) {
+      queueMicrotask(() => {
+        const seedTitle = surveySeed.find((s) => s.title)?.title ?? "";
+        const fromLibrary = surveySeed.some((s) => s.source === "library");
+        setQuestions(
+          surveySeed.map((s, i) => ({ id: `q${i + 1}`, type: "single", text: s.text, source: s.source }))
+        );
+        if (seedTitle) setTitle(seedTitle);
+        if (fromLibrary) setIsLibrary(true);
+        setSurveySeed(null);
+      });
+    }
+  }, [surveySeed, setSurveySeed]);
+
   const addQuestion = () =>
-    setQuestions((qs) => [...qs, { id: `q${qs.length + 1}`, type: "single", text: "" }]);
-  const removeQuestion = (id: string) =>
-    setQuestions((qs) => qs.filter((q) => q.id !== id));
-  const updateQuestion = (id: string, text: string) =>
-    setQuestions((qs) => qs.map((q) => (q.id === id ? { ...q, text } : q)));
-  const updateType = (id: string, type: QuestionDraft["type"]) =>
-    setQuestions((qs) => qs.map((q) => (q.id === id ? { ...q, type } : q)));
+    setQuestions((qs) => [...qs, { id: `q${qs.length + 1}`, type: "single", text: "", source: "manual" as const }]);
+  const removeQuestion = (id: string) => {
+    const q = questions.find((qq) => qq.id === id);
+    if (q && q.source !== "manual") {
+      setPendingDelete((w) => ({ ...w, [id]: true }));
+      return;
+    }
+    setQuestions((qs) => qs.filter((qq) => qq.id !== id));
+  };
+  const confirmRemove = (id: string) => {
+    setPendingDelete((w) => ({ ...w, [id]: false }));
+    setQuestions((qs) => qs.filter((qq) => qq.id !== id));
+  };
+  const updateQuestion = (id: string, text: string) => {
+    const q = questions.find((qq) => qq.id === id);
+    if (q && q.source !== "manual" && q.text !== text) {
+      setWarned((w) => ({ ...w, [id]: true }));
+    }
+    setQuestions((qs) => qs.map((qq) => (qq.id === id ? { ...qq, text } : qq)));
+  };
+  const updateType = (id: string, type: QuestionDraft["type"]) => {
+    const q = questions.find((qq) => qq.id === id);
+    if (q && q.source !== "manual" && q.type !== type) {
+      setWarned((w) => ({ ...w, [id]: true }));
+    }
+    setQuestions((qs) => qs.map((qq) => (qq.id === id ? { ...qq, type } : qq)));
+  };
+
+  const reportIssue = () => {
+    toast.success(t("create.guard.reported"));
+  };
 
   const runAI = () => {
     setAiRunning(true);
@@ -106,12 +156,44 @@ export function CreateSurveyView() {
     }, 1800);
   };
 
-  const next = () => setStep((s) => Math.min(3, s + 1));
+  const next = () => {
+    if (step === 0 && !isLibrary && !title.trim()) {
+      setTitleError(true);
+      return;
+    }
+    setStep((s) => Math.min(3, s + 1));
+  };
   const prev = () => setStep((s) => Math.max(0, s - 1));
 
   const publish = () => {
+    if (!isLoggedIn) {
+      setPendingAction("publish");
+      setAuthOpen(true);
+      return;
+    }
     toast.success(t("create.toast.published"));
     setView("researcher-dashboard");
+  };
+
+  const saveDraft = () => {
+    if (!isLoggedIn) {
+      setPendingAction("draft");
+      setAuthOpen(true);
+      return;
+    }
+    toast.info(t("create.toast.draft"));
+  };
+
+  const onModalClose = () => setAuthOpen(false);
+
+  const onLoggedIn = () => {
+    if (pendingAction === "publish") {
+      toast.success(t("create.toast.published"));
+      setView("researcher-dashboard");
+    } else if (pendingAction === "draft") {
+      toast.info(t("create.toast.draft"));
+    }
+    setPendingAction(null);
   };
 
   const stepProgress = ((step + 1) / steps.length) * 100;
@@ -185,7 +267,22 @@ export function CreateSurveyView() {
                   <h2 className="text-xl font-bold text-foreground">{t("create.step.basics")}</h2>
                   <div className="space-y-1.5">
                     <Label htmlFor="title">{t("create.field.title.label")}</Label>
-                    <Input id="title" value={title} onChange={(e) => setTitle(e.target.value)} placeholder={t("create.field.title.ph")} className="h-11" />
+                    <Input
+                      id="title"
+                      value={title}
+                      onChange={(e) => {
+                        setTitle(e.target.value);
+                        if (titleError) setTitleError(false);
+                      }}
+                      placeholder={t("create.field.title.ph")}
+                      className={cn("h-11", titleError && "border-red-500 focus-visible:ring-red-500/30")}
+                    />
+                    {titleError && (
+                      <p className="flex items-center gap-1.5 text-xs font-medium text-red-500">
+                        <AlertTriangle className="size-3.5 shrink-0" />
+                        {t("create.field.title.required")}
+                      </p>
+                    )}
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="desc">{t("create.field.desc.label")}</Label>
@@ -239,7 +336,21 @@ export function CreateSurveyView() {
                     {questions.map((q, i) => (
                       <div key={q.id} className="rounded-2xl border border-border bg-background p-4">
                         <div className="mb-2 flex items-center justify-between">
-                          <span className="text-xs font-bold text-muted-foreground">#{i + 1}</span>
+                          <span className="flex items-center gap-2 text-xs font-bold text-muted-foreground">
+                            #{i + 1}
+                            {q.source !== "manual" && (
+                              <span
+                                className={cn(
+                                  "rounded-full px-2 py-0.5 text-[10px] font-bold",
+                                  q.source === "ai"
+                                    ? "bg-[#f39237]/15 text-[#b05e10]"
+                                    : "bg-[#2a9d8f]/15 text-[#1f6f66]"
+                                )}
+                              >
+                                {q.source === "ai" ? t("create.ai.badge") : t("library.badge")}
+                              </span>
+                            )}
+                          </span>
                           <div className="flex items-center gap-2">
                             <Select value={q.type} onValueChange={(v) => updateType(q.id, v as QuestionDraft["type"])}>
                               <SelectTrigger className="h-8 w-36 text-xs">
@@ -267,6 +378,40 @@ export function CreateSurveyView() {
                           </div>
                         </div>
                         <Input value={q.text} onChange={(e) => updateQuestion(q.id, e.target.value)} placeholder={t("create.q.placeholder")} />
+                        {(warned[q.id] || pendingDelete[q.id]) && (
+                          <div className="mt-3 flex flex-col gap-2 rounded-xl border border-amber-500/30 bg-amber-50 p-3 sm:flex-row sm:items-center sm:justify-between">
+                            <p className="flex items-start gap-2 text-xs font-medium text-amber-800">
+                              <AlertTriangle className="mt-0.5 size-4 shrink-0 text-amber-500" />
+                              {t("create.guard.validity")}
+                            </p>
+                            <div className="flex shrink-0 items-center gap-2">
+                              {pendingDelete[q.id] && (
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="h-8 border-amber-500/40 text-amber-800 hover:bg-amber-100"
+                                  onClick={() => confirmRemove(q.id)}
+                                >
+                                  <Trash2 className="size-3.5" />
+                                  {t("create.guard.confirm")}
+                                </Button>
+                              )}
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="h-8 border-amber-500/40 text-amber-700 hover:bg-amber-100"
+                                onClick={() => {
+                                  setWarned((w) => ({ ...w, [q.id]: false }));
+                                  setPendingDelete((w) => ({ ...w, [q.id]: false }));
+                                  reportIssue();
+                                }}
+                              >
+                                <Flag className="size-3.5" />
+                                {t("create.guard.report")}
+                              </Button>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -436,7 +581,7 @@ export function CreateSurveyView() {
                       <CheckCircle2 className="size-4" />
                       {t("create.review.publish")}
                     </Button>
-                    <Button variant="outline" className="flex-1" onClick={() => toast.info(t("create.toast.draft"))}>
+                    <Button variant="outline" className="flex-1" onClick={saveDraft}>
                       {t("create.review.draft")}
                     </Button>
                   </div>
@@ -460,6 +605,13 @@ export function CreateSurveyView() {
           </div>
         </div>
       </Section>
+
+      <ValueGatedAuthModal
+        isOpen={authOpen}
+        onClose={onModalClose}
+        onLoggedIn={onLoggedIn}
+        variant="publish_research"
+      />
     </>
   );
 }

@@ -5,6 +5,7 @@ import { ArrowRight, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/i18n";
 import { useNav } from "@/lib/store";
+import type { ViewId } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
 export function PageHeader({
@@ -23,8 +24,18 @@ export function PageHeader({
   className?: string;
 }) {
   const { t, locale } = useLanguage();
-  const { setView } = useNav();
+  const { setView, isLoggedIn, activeMode } = useNav();
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
+  const backTarget: ViewId = isLoggedIn
+    ? activeMode === "participant"
+      ? "participant-dashboard"
+      : "researcher-dashboard"
+    : "home";
+  const backLabel = isLoggedIn
+    ? activeMode === "participant"
+      ? t("common.back.participant")
+      : t("common.back.researcher")
+    : t("common.back");
 
   return (
     <section className={cn("relative overflow-hidden gradient-hero", className)}>
@@ -43,11 +54,11 @@ export function PageHeader({
         >
           <div className="flex items-center gap-3">
             <button
-              onClick={() => setView("home")}
+              onClick={() => setView(backTarget)}
               className="flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors hover:text-[#f39237]"
             >
               <Arrow className="size-3.5 rotate-180" />
-              {t("common.back")}
+              {backLabel}
             </button>
           </div>
           {badge && (

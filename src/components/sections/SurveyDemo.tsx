@@ -4,9 +4,11 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Clock, Sparkles, Check, ArrowRight, ArrowLeft, Star, Zap } from "lucide-react";
 import { Section, SectionHeading } from "@/components/shared/Section";
+import { ValueGatedAuthModal } from "@/components/shared/ValueGatedAuthModal";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useLanguage } from "@/lib/i18n";
+import { useNav } from "@/lib/store";
 import { demoQuestions } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +23,8 @@ const features: { icon: typeof Clock; key: Parameters<ReturnType<typeof useLangu
 
 export function SurveyDemo() {
   const { t, locale } = useLanguage();
+  const { isLoggedIn } = useNav();
+  const [authOpen, setAuthOpen] = React.useState(false);
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
   const [step, setStep] = React.useState(0);
@@ -32,10 +36,18 @@ export function SurveyDemo() {
     if (step < total - 1) {
       setStep((s) => s + 1);
       setSelected(null);
+    } else if (!isLoggedIn) {
+      setAuthOpen(true);
     } else {
       setStep(0);
       setSelected(null);
     }
+  };
+
+  const onModalClose = () => {
+    setAuthOpen(false);
+    setStep(0);
+    setSelected(null);
   };
 
   const back = () => {
@@ -209,6 +221,13 @@ export function SurveyDemo() {
           </motion.div>
         </div>
       </div>
+
+      <ValueGatedAuthModal
+        isOpen={authOpen}
+        onClose={onModalClose}
+        variant="survey_completed"
+        earnedPoints={50}
+      />
     </Section>
   );
 }

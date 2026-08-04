@@ -392,3 +392,116 @@ export const levelProgression = [
   { level: 7, titleFa: "پژوهشگر برجسته", titleEn: "Research Scholar", points: 15000 },
   { level: 8, titleFa: "پژوهشگر استاد", titleEn: "Master Researcher", points: 25000 },
 ];
+
+// Verified standard questionnaires for the research library
+export interface LibraryQuestionnaire {
+  id: string;
+  titleFa: string;
+  titleEn: string;
+  authorFa: string;
+  authorEn: string;
+  year: number;
+  reliability: string;
+  validity: string;
+  estimatedMinutes: number;
+  descriptionFa: string;
+  descriptionEn: string;
+  questions: { textFa: string; textEn: string }[];
+}
+
+export const standardLibrary: LibraryQuestionnaire[] = [
+  {
+    id: "lib-sf36",
+    titleFa: "پرسشنامه کیفیت زندگی (SF-36)",
+    titleEn: "Short Form Health Survey (SF-36)",
+    authorFa: "ویر و شربورن",
+    authorEn: "Ware & Sherbourne",
+    year: 1992,
+    reliability: "آلفای کرونباخ ۰/۹۰",
+    validity: "روایی سازه تأیید شده",
+    estimatedMinutes: 5,
+    descriptionFa: "ارزیابی سلامت جسمی و روانی در هشت بعد اصلی کیفیت زندگی.",
+    descriptionEn: "Assesses physical and mental health across eight quality-of-life domains.",
+    questions: [
+      { textFa: "به طور کلی، وضعیت سلامت خود را چگونه ارزیابی می‌کنید؟", textEn: "In general, how would you rate your health?" },
+      { textFa: "آیا فعالیت‌های روزانه شما به دلیل مشکلات جسمی محدود شده است؟", textEn: "Have your daily activities been limited by physical problems?" },
+      { textFa: "در طول ۴ هفته گذشته چقدر احساس خستگی کرده‌اید؟", textEn: "In the past 4 weeks, how much have you felt worn out?" },
+    ],
+  },
+  {
+    id: "lib-pss",
+    titleFa: "مقیاس استرس ادراک‌شده (PSS-10)",
+    titleEn: "Perceived Stress Scale (PSS-10)",
+    authorFa: "کوهن و همکاران",
+    authorEn: "Cohen et al.",
+    year: 1983,
+    reliability: "آلفای کرونباخ ۰/۸۷",
+    validity: "روایی همگرا تأیید شده",
+    estimatedMinutes: 4,
+    descriptionFa: "سنجش میزان استرس درک‌شده در ماه گذشته با رویکرد روان‌سنجی کلاسیک.",
+    descriptionEn: "Measures perceived stress over the past month using classical psychometrics.",
+    questions: [
+      { textFa: "در ماه گذشته، هر چند وقت یک‌بار احساس کرده‌اید قادر به کنترل امور نیستید؟", textEn: "In the past month, how often have you felt unable to control important things?" },
+      { textFa: "هر چند وقت یک‌بار در مورد اتفاقات غیرمنتظره مضطرب شده‌اید؟", textEn: "How often have you felt nervous and stressed about unexpected events?" },
+      { textFa: "هر چند وقت یک‌بار احساس کرده‌اید مشکلات آن‌قدر زیاد هستند که از عهده آن‌ها برنمی‌آیید؟", textEn: "How often have you felt that difficulties were piling up so high you could not overcome them?" },
+    ],
+  },
+  {
+    id: "lib-ghq",
+    titleFa: "پرسشنامه سلامت عمومی (GHQ-12)",
+    titleEn: "General Health Questionnaire (GHQ-12)",
+    authorFa: "گلدبرگ",
+    authorEn: "Goldberg",
+    year: 1972,
+    reliability: "آلفای کرونباخ ۰/۸۵",
+    validity: "حساسیت ۸۴٪، ویژگی ۸۲٪",
+    estimatedMinutes: 3,
+    descriptionFa: "غربالگری اختلالات روانی خفیف در جمعیت عمومی و بالینی.",
+    descriptionEn: "Screens for minor psychiatric disorders in general and clinical populations.",
+    questions: [
+      { textFa: "آیا در هفته گذشته قادر به تمرکز بر کارهای خود بوده‌اید؟", textEn: "Have you been able to concentrate on whatever you are doing this week?" },
+      { textFa: "آیا در هفته گذشته به دلیل نگرانی زیاد، خواب شما مختل شده است؟", textEn: "Have you lost much sleep over worry in the past week?" },
+      { textFa: "آیا در هفته گذشته احساس کرده‌اید که نقش مفیدی در کارها دارید؟", textEn: "Have you felt you were playing a useful part in things this week?" },
+    ],
+  },
+  {
+    id: "lib-scl",
+    titleFa: "مقیاس اضطراب بک (BAI)",
+    titleEn: "Beck Anxiety Inventory (BAI)",
+    authorFa: "بک و استیر",
+    authorEn: "Beck & Steer",
+    year: 1988,
+    reliability: "آلفای کرونباخ ۰/۹۲",
+    validity: "روایی افتراقی تأیید شده",
+    estimatedMinutes: 6,
+    descriptionFa: "سنجش شدت علائم اضطرابی در چهارده شاخص رفتاری و شناختی.",
+    descriptionEn: "Measures anxiety symptom severity across fourteen behavioral and cognitive indices.",
+    questions: [
+      { textFa: "بی‌حسی یا سوزن‌سوزن شدن بدن", textEn: "Numbness or tingling" },
+      { textFa: "احساس گرما در صورت", textEn: "Feeling of hot flashes" },
+      { textFa: "لرزش دست‌ها یا پاها", textEn: "Trembling hands or legs" },
+    ],
+  },
+];
+
+// AI assistant sample generated questions (used for the AI copilot demo)
+export const aiSampleQuestions: { textFa: string; textEn: string }[] = [
+  { textFa: "این هدف پژوهشی تا چه اندازه برای شما اولویت دارد؟", textEn: "How much of a priority is this research goal for you?" },
+  { textFa: "در یک سال گذشته چه تغییرات مهمی در این حوزه تجربه کرده‌اید؟", textEn: "What significant changes have you experienced in this area in the past year?" },
+  { textFa: "کدام یک از عوامل زیر بیشترین تأثیر را بر نتیجه دارد؟", textEn: "Which of the following factors has the most influence on the outcome?" },
+  { textFa: "هر چند وقت یک‌بار با این موضوع مواجه می‌شوید؟", textEn: "How often do you encounter this issue?" },
+  { textFa: "چه ابزارها یا منابعی برای مدیریت این موضوع استفاده می‌کنید؟", textEn: "What tools or resources do you use to manage this issue?" },
+];
+
+// Additional questions the AI co-pilot appends when the researcher asks for more items
+export const aiMoreQuestions: { textFa: string; textEn: string }[] = [
+  { textFa: "چه عواملی در محیط کار یا زندگی شما به این موضوع دامن می‌زند؟", textEn: "What factors in your work or life environment fuel this issue?" },
+  { textFa: "چقدر بر مهارت‌های خود در مدیریت این موضوع اطمینان دارید؟", textEn: "How confident are you in your ability to manage this issue?" },
+  { textFa: "آیا حمایت کافی از سوی اطرافیان یا سازمان خود دریافت می‌کنید؟", textEn: "Do you receive enough support from those around you or your organization?" },
+  { textFa: "این موضوع چه تأثیری بر کیفیت خواب و استراحت شما دارد؟", textEn: "How does this issue affect the quality of your sleep and rest?" },
+  { textFa: "هر چند وقت یک‌بار به فکر تغییر شغل یا محیط خود می‌افتید؟", textEn: "How often do you consider changing your job or environment?" },
+  { textFa: "چه راهبردهایی برای مقابله با این موضوع به شما کمک می‌کند؟", textEn: "Which coping strategies help you deal with this issue?" },
+  { textFa: "آیا در ماه گذشته در روابط شما تنش یا تعارض افزایش یافته است؟", textEn: "Have conflicts or tension in your relationships increased over the past month?" },
+  { textFa: "تا چه اندازه وضعیت فعلی بر عملکرد روزانه شما اثر گذاشته است؟", textEn: "To what extent has your current situation affected your daily functioning?" },
+];
+

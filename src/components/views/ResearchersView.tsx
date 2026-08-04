@@ -49,14 +49,14 @@ const tools = [
 
 export function ResearchersView() {
   const { t, locale } = useLanguage();
-  const { setView } = useNav();
+  const { setView, openCreateOptions } = useNav();
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
   return (
     <>
       <PageHeader badge={t("researchers.subtitle")} title={t("researchers.title")} subtitle={t("researchers.subtitle")}>
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-          <Button size="lg" className="bg-[#f39237] text-white hover:bg-[#e07f24] shadow-soft h-12 px-6" onClick={() => setView("create")}>
+          <Button size="lg" className="bg-[#f39237] text-white hover:bg-[#e07f24] shadow-soft h-12 px-6" onClick={openCreateOptions}>
             {t("nav.start")}
             <Arrow className="size-4" />
           </Button>
@@ -79,15 +79,15 @@ export function ResearchersView() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="relative flex flex-col items-center gap-3 rounded-2xl border border-border bg-card p-5 text-center shadow-soft"
+                className="relative rounded-2xl border border-border bg-card p-5 shadow-soft"
               >
-                <span className="absolute -top-2.5 start-1/2 -translate-x-1/2 rounded-full bg-background px-2 text-xs font-bold text-muted-foreground">
+                <span className="absolute end-4 top-4 text-3xl font-black text-foreground">
                   {i + 1}
                 </span>
                 <div className="grid size-12 place-items-center rounded-2xl text-white shadow-soft" style={{ backgroundColor: step.color }}>
                   <Icon className="size-6" />
                 </div>
-                <p className="text-sm font-semibold text-foreground">{t(step.key)}</p>
+                <p className="mt-4 text-sm font-semibold text-foreground">{t(step.key)}</p>
               </motion.div>
             );
           })}

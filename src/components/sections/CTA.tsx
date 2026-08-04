@@ -9,7 +9,7 @@ import { useNav } from "@/lib/store";
 
 export function CTA() {
   const { t, locale } = useLanguage();
-  const { setView } = useNav();
+  const { setView, openCreateOptions } = useNav();
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
   return (
@@ -19,13 +19,13 @@ export function CTA() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5 }}
-        className="relative overflow-hidden rounded-3xl border border-[#f39237]/30 bg-gradient-to-br from-[#fff3e6] via-background to-background p-8 shadow-soft sm:p-14 dark:from-[#1d3b4c]/40"
+        className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-[#fff3e6] via-background to-background p-8 shadow-soft sm:p-14 dark:from-[#1a3444]/40"
       >
         <div className="pointer-events-none absolute -end-20 -top-20 size-72 rounded-full bg-[#f39237]/15 blur-3xl" />
         <div className="pointer-events-none absolute -start-20 -bottom-20 size-72 rounded-full bg-[#1d3b4c]/10 blur-3xl" />
 
         <div className="relative mx-auto flex max-w-2xl flex-col items-center text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#f39237]/30 bg-white/70 px-3 py-1 text-xs font-semibold text-[#c97020] shadow-soft backdrop-blur dark:bg-white/5">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-3 py-1 text-xs font-semibold text-primary shadow-soft backdrop-blur dark:bg-secondary/30">
             <Sparkles className="size-3.5" />
             UOE
           </span>
@@ -39,7 +39,7 @@ export function CTA() {
             <Button
               size="lg"
               className="bg-[#f39237] text-white hover:bg-[#e07f24] shadow-soft h-12 px-6 text-base"
-              onClick={() => setView("create")}
+              onClick={openCreateOptions}
             >
               {t("cta.primary")}
               <Arrow className="size-4" />
@@ -47,7 +47,7 @@ export function CTA() {
             <Button
               size="lg"
               variant="outline"
-              className="h-12 px-6 text-base border-[#1d3b4c]/20 hover:bg-[#1d3b4c]/5"
+              className="h-12 px-6 text-base border-border hover:bg-secondary/50"
               onClick={() => setView("marketplace")}
             >
               {t("cta.secondary")}

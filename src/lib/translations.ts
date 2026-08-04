@@ -168,6 +168,19 @@ export type TranslationKey =
   | "stats.researchers"
   | "stats.universities"
   | "stats.countries"
+  | "faq.badge"
+  | "faq.title"
+  | "faq.subtitle"
+  | "faq.q1"
+  | "faq.a1"
+  | "faq.q2"
+  | "faq.a2"
+  | "faq.q3"
+  | "faq.a3"
+  | "faq.q4"
+  | "faq.a4"
+  | "faq.q5"
+  | "faq.a5"
   | "cta.title"
   | "cta.subtitle"
   | "cta.primary"
@@ -253,34 +266,175 @@ export type TranslationKey =
   | "create.review.title"
   | "create.review.publish"
   | "create.review.draft"
+  | "create.options.title"
+  | "create.options.subtitle"
+  | "create.options.manual.tag"
+  | "create.options.manual.title"
+  | "create.options.manual.desc"
+  | "create.options.library.tag"
+  | "create.options.library.title"
+  | "create.options.library.desc"
+  | "create.options.ai.tag"
+  | "create.options.ai.title"
+  | "create.options.ai.desc"
+  | "create.options.back"
+  | "library.title"
+  | "library.subtitle"
+  | "library.search.placeholder"
+  | "library.empty"
+  | "library.reliability"
+  | "library.validity"
+  | "library.use"
+  | "library.questions"
+  | "library.report"
+  | "library.report.done"
+  | "create.ai.assistant.title"
+  | "create.ai.assistant.subtitle"
+  | "create.ai.assistant.placeholder"
+  | "create.ai.assistant.generate"
+  | "create.ai.assistant.generating"
+  | "create.ai.assistant.suggested"
+  | "create.ai.assistant.use"
+  | "create.ai.assistant.prompt.ph"
+  | "create.ai.badge"
+  | "library.badge"
+  | "create.field.title.required"
+  | "library.estimatedTime"
+  | "library.minutes"
+  | "library.reference"
+  | "create.ai.chat.inputPlaceholder"
+  | "create.ai.chat.send"
+  | "create.ai.chat.chip.more"
+  | "create.ai.chat.chip.library"
+  | "create.ai.chat.use"
+  | "create.ai.chat.reply.generated"
+  | "create.ai.chat.reply.more"
+  | "create.ai.chat.reply.library"
+  | "create.ai.chat.reply.fallback"
+  | "create.guard.validity"
+  | "create.guard.report"
+  | "create.guard.reported"
+  | "create.guard.confirm"
   | "dashboard.researcher.title"
   | "dashboard.researcher.welcome"
+  | "dashboard.welcome"
   | "dashboard.participant.title"
   | "dashboard.participant.welcome"
   | "dashboard.analytics.title"
   | "dashboard.nav.overview"
+  | "dashboard.nav.profile"
+  | "dashboard.nav.credits"
   | "dashboard.nav.surveys"
-  | "dashboard.nav.responses"
-  | "dashboard.nav.audience"
-  | "dashboard.nav.quality"
   | "dashboard.nav.reports"
   | "dashboard.nav.settings"
+  | "dashboard.nav.achievements"
   | "dash.stat.active"
   | "dash.stat.responses"
   | "dash.stat.completion"
   | "dash.stat.quality"
   | "dash.recent.title"
   | "dash.response.chart"
-  | "dash.quality.chart"
   | "dash.demographics.title"
   | "dash.my.surveys"
   | "dash.completed"
   | "dash.points"
   | "dash.level"
-  | "dash.badges"
   | "dash.rank"
-  | "dash.available"
   | "dash.recommended"
+  | "participant.settings.title"
+  | "participant.profile.name"
+  | "participant.profile.birthdate"
+  | "participant.profile.gender"
+  | "participant.profile.gender.male"
+  | "participant.profile.gender.female"
+  | "participant.profile.degree"
+  | "participant.profile.city"
+  | "participant.profile.city.tehran"
+  | "participant.profile.city.isfahan"
+  | "participant.profile.city.shiraz"
+  | "participant.profile.city.mashhad"
+  | "participant.profile.city.tabriz"
+  | "participant.profile.city.other"
+  | "participant.profile.job"
+  | "participant.profile.job.student"
+  | "participant.profile.job.employee"
+  | "participant.profile.job.freelancer"
+  | "participant.profile.job.teacher"
+  | "participant.profile.job.researcher"
+  | "participant.profile.job.other"
+  | "participant.settings.profile"
+  | "participant.settings.name"
+  | "participant.settings.email"
+  | "participant.settings.interests"
+  | "participant.settings.interests.desc"
+  | "participant.settings.notifications"
+  | "participant.settings.notifications.surveys"
+  | "participant.settings.notifications.rewards"
+  | "participant.settings.notifications.reminders"
+  | "participant.settings.save"
+  | "profile.verified"
+  | "profile.avatar.updated"
+  | "profile.tab.personal"
+  | "profile.tab.financial"
+  | "profile.tab.security"
+  | "profile.credits.balance"
+  | "profile.credits.earned"
+  | "profile.credits.validResponse"
+  | "profile.credits.points"
+  | "profile.credits.convert.title"
+  | "profile.credits.convert.rate"
+  | "profile.credits.convert.pointsLabel"
+  | "profile.credits.convert.equivalent"
+  | "profile.credits.convert.decrement"
+  | "profile.credits.convert.increment"
+  | "profile.credits.convert.cta"
+  | "profile.credits.convert.success"
+  | "profile.credits.convert.insufficient"
+  | "profile.credits.purchase.title"
+  | "profile.credits.package.100"
+  | "profile.credits.package.500"
+  | "profile.credits.package.1000"
+  | "profile.credits.currency"
+  | "profile.credits.purchase.cta"
+  | "profile.credits.purchase.toast"
+  | "profile.credits.recommended"
+  | "profile.credits.discount"
+  | "profile.credits.history"
+  | "profile.credits.history.date"
+  | "profile.credits.history.type"
+  | "profile.credits.history.amount"
+  | "profile.credits.history.status"
+  | "profile.credits.history.success"
+  | "profile.credits.history.convert"
+  | "profile.credits.history.purchase"
+  | "profile.personal.name"
+  | "profile.personal.username"
+  | "profile.personal.email"
+  | "profile.personal.phone"
+  | "profile.personal.university"
+  | "profile.personal.field"
+  | "profile.personal.degree"
+  | "profile.degree.bachelor"
+  | "profile.degree.highschool"
+  | "profile.degree.master"
+  | "profile.degree.phd"
+  | "profile.degree.postdoc"
+  | "profile.degree.other"
+  | "profile.financial.bank"
+  | "profile.financial.sheba"
+  | "profile.financial.desc"
+  | "profile.security.password"
+  | "profile.security.current"
+  | "profile.security.new"
+  | "profile.security.confirm"
+  | "profile.security.updated"
+  | "profile.security.sessions"
+  | "profile.security.device"
+  | "profile.security.location"
+  | "profile.security.currentSession"
+  | "profile.security.revoke"
+  | "profile.security.revoked"
+  | "profile.save"
   | "blog.title"
   | "blog.subtitle"
   | "blog.readmore"
@@ -317,6 +471,8 @@ export type TranslationKey =
   | "common.getStarted"
   | "common.viewAll"
   | "common.back"
+  | "common.back.researcher"
+  | "common.back.participant"
   | "auth.join.ecosystem"
   | "auth.feature.researchers"
   | "auth.feature.assistant"
@@ -327,6 +483,23 @@ export type TranslationKey =
   | "auth.toast.google.connecting"
   | "auth.toast.google.success"
   | "auth.name.placeholder"
+  | "valuegate.title"
+  | "valuegate.title.survey"
+  | "valuegate.title.publish"
+  | "valuegate.title.general"
+  | "valuegate.subtitle"
+  | "valuegate.subtitle.publish"
+  | "valuegate.subtitle.general"
+  | "valuegate.google"
+  | "valuegate.or"
+  | "valuegate.email.placeholder"
+  | "valuegate.email.cta"
+  | "valuegate.unlock.1"
+  | "valuegate.unlock.2"
+  | "valuegate.unlock.3"
+  | "valuegate.toast.google.connecting"
+  | "valuegate.toast.google.success"
+  | "valuegate.toast.email.sent"
   | "analytics.subtitle"
   | "analytics.export.report"
   | "analytics.export.toast"
@@ -344,6 +517,88 @@ export type TranslationKey =
   | "dashboard.status.done"
   | "participants.next.level.hint"
   | "participants.profile.name"
+  | "participant.filter.all"
+  | "participant.filter.fastest"
+  | "participant.filter.reward"
+  | "participant.filter.matched"
+  | "participant.cat.health"
+  | "participant.cat.education"
+  | "participant.cat.social"
+  | "participant.cat.tech"
+  | "participant.cat.business"
+  | "participant.level.current"
+  | "participant.level.next"
+  | "participant.level.toNext"
+  | "participant.level.remaining"
+  | "participant.wallet.total"
+  | "participant.wallet.convert"
+  | "participant.wallet.withdraw"
+  | "participant.wallet.withdraw.title"
+  | "participant.wallet.withdraw.desc"
+  | "participant.wallet.withdraw.confirm"
+  | "participant.wallet.withdraw.success"
+  | "participant.wallet.convert.success"
+  | "participant.history.title"
+  | "participant.history.earned"
+  | "participant.history.report"
+  | "participant.history.report.success"
+  | "exchange.tab.packages"
+  | "exchange.tab.rewards"
+  | "exchange.tab.convert"
+  | "exchange.packages.subtitle"
+  | "exchange.package.responses"
+  | "exchange.package.delivery"
+  | "exchange.package.days"
+  | "exchange.package.badge.popular"
+  | "exchange.package.badge.discount"
+  | "exchange.package.feature.ai"
+  | "exchange.package.s1.f1"
+  | "exchange.package.s1.f2"
+  | "exchange.package.pro.f2"
+  | "exchange.package.pro.f3"
+  | "exchange.package.thesis.f1"
+  | "exchange.package.thesis.f2"
+  | "exchange.package.thesis.f3"
+  | "exchange.package.order"
+  | "exchange.toman"
+  | "exchange.checkout.title"
+  | "exchange.checkout.desc"
+  | "exchange.checkout.package"
+  | "exchange.checkout.delivery"
+  | "exchange.checkout.price"
+  | "exchange.checkout.confirm"
+  | "exchange.checkout.success"
+  | "exchange.rewards.subtitle"
+  | "exchange.reward.points"
+  | "exchange.reward.redeem"
+  | "exchange.reward.insufficient"
+  | "exchange.reward.min"
+  | "exchange.reward.success"
+  | "exchange.reward.1.title"
+  | "exchange.reward.1.desc"
+  | "exchange.reward.2.title"
+  | "exchange.reward.2.desc"
+  | "exchange.reward.3.title"
+  | "exchange.reward.3.desc"
+  | "exchange.convert.subtitle"
+  | "exchange.convert.input.label"
+  | "exchange.convert.output.responses"
+  | "exchange.convert.ratio"
+  | "exchange.convert.confirm"
+  | "exchange.convert.success"
+  | "exchange.convert.error.amount"
+  | "exchange.convert.error.balance"
+  | "exchange.balance"
+  | "exchange.history.title"
+  | "exchange.history.date"
+  | "exchange.history.type"
+  | "exchange.history.amount"
+  | "exchange.history.status"
+  | "exchange.history.status.success"
+  | "exchange.history.status.pending"
+  | "exchange.history.type.purchase"
+  | "exchange.history.type.convert"
+  | "exchange.history.type.payout"
   | "create.q.placeholder"
   | "create.toast.ai.complete"
   | "create.toast.published"
@@ -370,11 +625,14 @@ export type TranslationKey =
   | "researchers.tools.title"
   | "about.team.mehran.name"
   | "about.team.mehran.role"
-  | "about.team.alireza.name"
-  | "about.team.alireza.role"
+  | "about.team.hanieh.name"
+  | "about.team.hanieh.role"
   | "footer.built"
   | "survey.comparison.old"
   | "survey.finish"
+  | "survey.submit"
+  | "survey.runner.title"
+  | "survey.runner.back"
   | "gamify.badge.streak"
   | "gamify.badge.answers"
   | "gamify.badge.elite"
@@ -443,7 +701,100 @@ export type TranslationKey =
   | "dash.header.support"
   | "dash.header.logout"
   | "dash.mode.researcher"
-  | "dash.mode.participant";
+  | "dash.mode.participant"
+  | "dash.wallet.title"
+  | "dash.wallet.balance"
+  | "dash.wallet.charge"
+  | "dash.wallet.earn"
+  | "dash.wallet.hint"
+  | "dash.wallet.recharge.title"
+  | "dash.wallet.recharge.desc"
+  | "dash.wallet.recharge.confirm"
+  | "dash.wallet.recharge.success"
+  | "dash.status.live"
+  | "dash.status.paused"
+  | "dash.status.completed"
+  | "dash.status.draft"
+  | "dash.status.label"
+  | "dash.export"
+  | "dash.export.spss"
+  | "dash.export.excel"
+  | "dash.export.csv"
+  | "dash.export.tooltip"
+  | "dash.export.toast"
+  | "dash.remaining"
+  | "dash.pause"
+  | "dash.resume"
+  | "dash.pause.toast"
+  | "dash.resume.toast"
+  | "dash.share"
+  | "dash.share.title"
+  | "dash.share.directLink"
+  | "dash.share.copyLink"
+  | "dash.share.copied"
+  | "dash.share.qr"
+  | "dash.share.qr.hint"
+  | "dash.share.telegram"
+  | "dash.share.whatsapp"
+  | "dash.share.email"
+  | "dash.overview.recent"
+  | "dash.responses.valid"
+  | "dash.responses.suspect"
+  | "dash.quality.flags"
+  | "dash.quality.speed"
+  | "dash.quality.random"
+  | "dash.quality.suspect"
+  | "dash.quality.review"
+  | "dash.quality.aiNote"
+  | "dash.reports.tabulation"
+  | "dash.reports.insights"
+  | "dash.reports.exportTitle"
+  | "dash.reports.exportDesc"
+  | "dash.reports.exportAll"
+  | "dash.reports.variable"
+  | "dash.reports.ageGroup"
+  | "dash.reports.insight.1"
+  | "dash.reports.insight.2"
+  | "dash.reports.insight.3"
+  | "dash.placeholder"
+  | "dash.close"
+  | "dash.survey.back"
+  | "dash.survey.preview"
+  | "dash.survey.duplicate"
+  | "dash.survey.delete"
+  | "dash.survey.delete.confirm.title"
+  | "dash.survey.delete.confirm.desc"
+  | "dash.survey.delete.confirm.btn"
+  | "dash.survey.delete.success"
+  | "dash.survey.duplicate.success"
+  | "dash.survey.saved"
+  | "dash.survey.metric.population"
+  | "dash.survey.metric.responses"
+  | "dash.survey.metric.views"
+  | "dash.survey.metric.completion"
+  | "dash.survey.tab.data"
+  | "dash.survey.tab.charts"
+  | "dash.survey.tab.settings"
+  | "dash.survey.data.respondent"
+  | "dash.survey.data.date"
+  | "dash.survey.data.duration"
+  | "dash.survey.data.quality"
+  | "dash.survey.data.export"
+  | "dash.survey.charts.distribution"
+  | "dash.survey.charts.question"
+  | "dash.survey.settings.audience"
+  | "dash.survey.settings.params"
+  | "dash.survey.settings.age"
+  | "dash.survey.settings.gender"
+  | "dash.survey.settings.education"
+  | "dash.survey.settings.region"
+  | "dash.survey.settings.questions"
+  | "dash.survey.settings.target"
+  | "dash.survey.settings.period"
+  | "dash.survey.settings.save"
+  | "dash.survey.preview.title"
+  | "dash.survey.preview.hint"
+  | "dash.survey.preview.done";
 
 type Dict = Record<TranslationKey, string>;
 
@@ -628,6 +979,20 @@ const en: Dict = {
   "stats.universities": "Partner universities",
   "stats.countries": "Countries",
 
+  "faq.badge": "Answers to your questions",
+  "faq.title": "Frequently Asked Questions",
+  "faq.subtitle": "Everything you need to know about how UOE works, answer exchange, and AI.",
+  "faq.q1": "Is UOE free for researchers?",
+  "faq.a1": "Yes! By participating in other researchers' questionnaires, you earn points (credits) and use them to publish your own questionnaire completely free. Special plans are also available to speed things up.",
+  "faq.q2": "How do you ensure responses are real and valid?",
+  "faq.a2": "UOE uses AI algorithms and behavioral signals to assess data quality. Bot responses, random clicking patterns, and unnatural response speeds are detected and removed from your final research output.",
+  "faq.q3": "How does the smart exchange system work?",
+  "faq.a3": "With each questionnaire you answer, points are added to your account based on your time and accuracy. This interactive system guarantees your questionnaire reaches exactly the statistical population you're targeting.",
+  "faq.q4": "Can I create and edit questionnaires with AI?",
+  "faq.a4": "Yes. The UOE AI assistant helps you build standard, scientifically validated questionnaires based on your research goals, or convert your existing questionnaire file directly into a smart form.",
+  "faq.q5": "In what format can I receive the data output?",
+  "faq.a5": "You can download collected data at any time in standard data-analysis formats such as Excel, CSV, and files ready to import into SPSS.",
+
   "cta.title": "Ready to run better research?",
   "cta.subtitle": "Join thousands of researchers and participants building the future of academic data collection.",
   "cta.primary": "Start your first study",
@@ -717,35 +1082,176 @@ const en: Dict = {
   "create.review.title": "Review & publish",
   "create.review.publish": "Publish survey",
   "create.review.draft": "Save as draft",
+  "create.options.title": "Choose your research creation method",
+  "create.options.subtitle": "How do you want to design or choose your questionnaire?",
+  "create.options.manual.tag": "Free design",
+  "create.options.manual.title": "Step-by-step creation",
+  "create.options.manual.desc": "Enter your questions and options manually and build your questionnaire structure.",
+  "create.options.library.tag": "Validated & reliable",
+  "create.options.library.title": "Choose from the standard bank",
+  "create.options.library.desc": "Search among hundreds of scientifically validated standard questionnaires with a research profile.",
+  "create.options.ai.tag": "Recommended ✨",
+  "create.options.ai.title": "Smart creation with AI",
+  "create.options.ai.desc": "Describe your paper title or research goal and AI will suggest the best questionnaires for you.",
+  "create.options.back": "Back to options",
+  "library.title": "Standard Questionnaire Bank",
+  "library.subtitle": "Validated questionnaires with reliability & validity credentials",
+  "library.search.placeholder": "Search questionnaires, topics or authors...",
+  "library.empty": "No questionnaires found",
+  "library.reliability": "Reliability",
+  "library.validity": "Validity",
+  "library.use": "Use this questionnaire",
+  "library.questions": "questions",
+  "library.report": "Report scientific issue",
+  "library.report.done": "Your report has been submitted",
+  "create.field.title.required": "Please enter the survey title",
+  "library.estimatedTime": "Estimated time",
+  "library.minutes": "min",
+  "library.reference": "Reference paper",
+  "create.ai.chat.inputPlaceholder": "Type your message...",
+  "create.ai.chat.send": "Send",
+  "create.ai.chat.chip.more": "Suggest more questions",
+  "create.ai.chat.chip.library": "Match with standard library",
+  "create.ai.chat.use": "Use these questions",
+  "create.ai.chat.reply.generated": "Here are suggested questions for your topic:",
+  "create.ai.chat.reply.more": "More questions on this topic:",
+  "create.ai.chat.reply.library": "This standard questionnaire matches your topic:",
+  "create.ai.chat.reply.fallback": "Please clarify your research topic.",
+  "create.ai.assistant.title": "AI Research Assistant",
+  "create.ai.assistant.subtitle": "Describe your thesis title or research goal and let AI draft the questionnaire",
+  "create.ai.assistant.placeholder": "e.g. Investigating the effect of remote work on mental health...",
+  "create.ai.assistant.generate": "Generate questionnaire",
+  "create.ai.assistant.generating": "AI is generating questions...",
+  "create.ai.assistant.suggested": "Suggested questions",
+  "create.ai.assistant.use": "Use these questions",
+  "create.ai.assistant.prompt.ph": "Your research topic or goal...",
+  "create.guard.validity": "Changing or removing this question may affect the reliability and validity of the standard questionnaire.",
+  "create.guard.report": "Report scientific issue",
+  "create.guard.reported": "Your report has been submitted to the science team.",
+  "create.guard.confirm": "Delete anyway",
+  "create.ai.badge": "AI suggested",
+  "library.badge": "Standard library",
 
   "dashboard.researcher.title": "Researcher Dashboard",
   "dashboard.researcher.welcome": "Welcome back, Dr. Sadeghi",
+  "dashboard.welcome": "Welcome!",
   "dashboard.participant.title": "Participant Dashboard",
   "dashboard.participant.welcome": "Welcome back, Niloofar",
   "dashboard.analytics.title": "Analytics",
   "dashboard.nav.overview": "Overview",
+  "dashboard.nav.profile": "My Profile",
+  "dashboard.nav.credits": "Credits & Wallet",
   "dashboard.nav.surveys": "Surveys",
-  "dashboard.nav.responses": "Responses",
-  "dashboard.nav.audience": "Audience",
-  "dashboard.nav.quality": "Data quality",
   "dashboard.nav.reports": "Reports",
   "dashboard.nav.settings": "Settings",
+  "dashboard.nav.achievements": "Achievements",
   "dash.stat.active": "Active surveys",
   "dash.stat.responses": "Total responses",
   "dash.stat.completion": "Completion rate",
-  "dash.stat.quality": "Avg. data quality",
+  "dash.stat.quality": "Data quality",
   "dash.recent.title": "Recent responses",
   "dash.response.chart": "Responses over time",
-  "dash.quality.chart": "Quality distribution",
   "dash.demographics.title": "Demographics",
   "dash.my.surveys": "My surveys",
   "dash.completed": "Completed surveys",
   "dash.points": "Points",
   "dash.level": "Level",
-  "dash.badges": "Badges",
   "dash.rank": "Global rank",
-  "dash.available": "Available surveys",
   "dash.recommended": "Recommended for you",
+  "participant.settings.title": "Account settings",
+  "participant.profile.name": "Full name",
+  "participant.profile.birthdate": "Date of birth",
+  "participant.profile.gender": "Gender",
+  "participant.profile.gender.male": "Male",
+  "participant.profile.gender.female": "Female",
+  "participant.profile.degree": "Education level",
+  "participant.profile.city": "City",
+  "participant.profile.city.tehran": "Tehran",
+  "participant.profile.city.isfahan": "Isfahan",
+  "participant.profile.city.shiraz": "Shiraz",
+  "participant.profile.city.mashhad": "Mashhad",
+  "participant.profile.city.tabriz": "Tabriz",
+  "participant.profile.city.other": "Other",
+  "participant.profile.job": "Occupation",
+  "participant.profile.job.student": "Student",
+  "participant.profile.job.employee": "Employee",
+  "participant.profile.job.freelancer": "Freelancer",
+  "participant.profile.job.teacher": "Teacher",
+  "participant.profile.job.researcher": "Researcher",
+  "participant.profile.job.other": "Other",
+  "participant.settings.profile": "Profile",
+  "participant.settings.name": "Full name",
+  "participant.settings.email": "Email",
+  "participant.settings.interests": "Interest preferences",
+  "participant.settings.interests.desc": "Choose surveys matched to your interests.",
+  "participant.settings.notifications": "Notifications",
+  "participant.settings.notifications.surveys": "New surveys",
+  "participant.settings.notifications.rewards": "Rewards & points",
+  "participant.settings.notifications.reminders": "Completion reminders",
+  "participant.settings.save": "Save changes",
+  "profile.verified": "Verified researcher",
+  "profile.avatar.updated": "Profile picture updated.",
+  "profile.tab.personal": "Personal info",
+  "profile.tab.financial": "Financial info",
+  "profile.tab.security": "Security",
+  "profile.credits.balance": "Research credit balance",
+  "profile.credits.earned": "Points earned from answering (as a participant)",
+  "profile.credits.validResponse": "valid responses",
+  "profile.credits.points": "points",
+  "profile.credits.convert.title": "Convert points to credits",
+  "profile.credits.convert.rate": "Each valid response = 50 participant points",
+  "profile.credits.convert.pointsLabel": "Responses to convert",
+  "profile.credits.convert.equivalent": "Equals",
+  "profile.credits.convert.decrement": "Decrease",
+  "profile.credits.convert.increment": "Increase",
+  "profile.credits.convert.cta": "Convert points to credits",
+  "profile.credits.convert.success": "Points converted successfully.",
+  "profile.credits.convert.insufficient": "Not enough points.",
+  "profile.credits.purchase.title": "Buy credit online",
+  "profile.credits.package.100": "100-response pack",
+  "profile.credits.package.500": "500-response pack (recommended)",
+  "profile.credits.package.1000": "1,000-response pack (thesis special)",
+  "profile.credits.currency": "Toman",
+  "profile.credits.purchase.cta": "Pay",
+  "profile.credits.purchase.toast": "Payment completed successfully.",
+  "profile.credits.recommended": "Recommended",
+  "profile.credits.discount": "Discount",
+  "profile.credits.history": "Transaction history",
+  "profile.credits.history.date": "Date",
+  "profile.credits.history.type": "Operation",
+  "profile.credits.history.amount": "Amount",
+  "profile.credits.history.status": "Status",
+  "profile.credits.history.success": "Successful",
+  "profile.credits.history.convert": "Points conversion",
+  "profile.credits.history.purchase": "Credit purchase",
+  "profile.personal.name": "Full name",
+  "profile.personal.username": "Username",
+  "profile.personal.email": "Email",
+  "profile.personal.phone": "Phone",
+  "profile.personal.university": "University / Institute",
+  "profile.personal.field": "Field of study",
+  "profile.personal.degree": "Academic qualification",
+  "profile.degree.highschool": "High school / Pre-university",
+  "profile.degree.bachelor": "Bachelor's",
+  "profile.degree.master": "Master's",
+  "profile.degree.phd": "PhD",
+  "profile.degree.postdoc": "Postdoc / Faculty",
+  "profile.degree.other": "Other",
+  "profile.financial.bank": "Bank name",
+  "profile.financial.sheba": "Bank IBAN (SHABA)",
+  "profile.financial.desc": "Used for rewards withdrawal and refund processing.",
+  "profile.security.password": "Change password",
+  "profile.security.current": "Current password",
+  "profile.security.new": "New password",
+  "profile.security.confirm": "Confirm new password",
+  "profile.security.updated": "Password updated successfully.",
+  "profile.security.sessions": "Active sessions",
+  "profile.security.device": "Device",
+  "profile.security.location": "Location",
+  "profile.security.currentSession": "Current session",
+  "profile.security.revoke": "Revoke session",
+  "profile.security.revoked": "Session revoked.",
+  "profile.save": "Save changes",
 
   "blog.title": "The UOE Blog",
   "blog.subtitle": "Research methods, product updates, and stories from the field.",
@@ -786,6 +1292,8 @@ const en: Dict = {
   "common.getStarted": "Get started",
   "common.viewAll": "View all",
   "common.back": "Back to home",
+  "common.back.researcher": "Back to researcher dashboard",
+  "common.back.participant": "Back to participant dashboard",
 
   "auth.join.ecosystem": "Join the research ecosystem",
   "auth.feature.researchers": "10,000+ active researchers",
@@ -797,6 +1305,24 @@ const en: Dict = {
   "auth.toast.google.connecting": "Connecting to Google...",
   "auth.toast.google.success": "Google login successful!",
   "auth.name.placeholder": "Your name",
+
+  "valuegate.title": "Your responses were saved successfully! 🎉",
+  "valuegate.title.survey": "Your responses were saved successfully! 🎉",
+  "valuegate.title.publish": "Save & publish your research 🚀",
+  "valuegate.title.general": "Log in / Sign up to UOE 🌟",
+  "valuegate.subtitle": "Activate your account to view your dedicated analysis and save {points} points from this study.",
+  "valuegate.subtitle.publish": "Create your account to publish your questionnaire and collect real data.",
+  "valuegate.subtitle.general": "Log in or create an account to continue on UOE.",
+  "valuegate.google": "Continue quickly with Google",
+  "valuegate.or": "or continue with email",
+  "valuegate.email.placeholder": "you@example.com",
+  "valuegate.email.cta": "Get login link",
+  "valuegate.unlock.1": "Receive your scientific analysis report",
+  "valuegate.unlock.2": "Save earned points to your wallet",
+  "valuegate.unlock.3": "Create free questionnaires",
+  "valuegate.toast.google.connecting": "Connecting to Google...",
+  "valuegate.toast.google.success": "Google login successful!",
+  "valuegate.toast.email.sent": "Login link sent! Check your inbox.",
 
   "analytics.subtitle": "Deep insights into responses, data quality, and demographics.",
   "analytics.export.report": "Export report",
@@ -817,6 +1343,90 @@ const en: Dict = {
 
   "participants.next.level.hint": "3 surveys to next level!",
   "participants.profile.name": "Niloofar Ahmadi",
+
+  "participant.filter.all": "All surveys",
+  "participant.filter.fastest": "Fastest (under 3 min)",
+  "participant.filter.reward": "Highest reward",
+  "participant.filter.matched": "Matched to your field",
+  "participant.cat.health": "Health",
+  "participant.cat.education": "Education",
+  "participant.cat.social": "Social",
+  "participant.cat.tech": "Technology",
+  "participant.cat.business": "Business",
+  "participant.level.current": "Level",
+  "participant.level.next": "to Level",
+  "participant.level.toNext": "points to next level",
+  "participant.level.remaining": "points left to next level",
+  "participant.wallet.total": "Total earned points",
+  "participant.wallet.convert": "Convert points to research credit",
+  "participant.wallet.withdraw": "Request point withdrawal",
+  "participant.wallet.withdraw.title": "Withdraw points",
+  "participant.wallet.withdraw.desc": "Your points can be converted to gift cards or research credit. Our team will contact you within 48 hours.",
+  "participant.wallet.withdraw.confirm": "Submit request",
+  "participant.wallet.withdraw.success": "Your withdrawal request has been submitted.",
+  "participant.wallet.convert.success": "Points converted to research credit successfully.",
+  "participant.history.title": "My participation history",
+  "participant.history.earned": "Points received",
+  "participant.history.report": "Report missing points",
+  "participant.history.report.success": "Your report has been submitted. We will review it shortly.",
+
+  "exchange.tab.packages": "Buy respondent packages (for researchers)",
+  "exchange.tab.rewards": "Rewards store & payout (for participants)",
+  "exchange.tab.convert": "Convert points to research credit",
+  "exchange.packages.subtitle": "Valid response packages for your research — no more sample-size anxiety.",
+  "exchange.package.responses": "valid responses",
+  "exchange.package.delivery": "Delivery",
+  "exchange.package.days": "days",
+  "exchange.package.badge.popular": "Most popular",
+  "exchange.package.badge.discount": "Bulk discount",
+  "exchange.package.feature.ai": "AI data quality filtering",
+  "exchange.package.s1.f1": "Valid responses from your target audience",
+  "exchange.package.s1.f2": "Summary results report",
+  "exchange.package.pro.f2": "Fast delivery (2 days)",
+  "exchange.package.pro.f3": "Advanced analytics report",
+  "exchange.package.thesis.f1": "Bulk-discounted pricing",
+  "exchange.package.thesis.f2": "Phased delivery up to 4 days",
+  "exchange.package.thesis.f3": "Thesis-dedicated support",
+  "exchange.package.order": "Order & charge account",
+  "exchange.toman": "Toman",
+  "exchange.checkout.title": "Order summary",
+  "exchange.checkout.desc": "Review your order details and confirm payment.",
+  "exchange.checkout.package": "Package",
+  "exchange.checkout.delivery": "Delivery time",
+  "exchange.checkout.price": "Total payable",
+  "exchange.checkout.confirm": "Pay & confirm order",
+  "exchange.checkout.success": "Order placed — your account will be credited shortly.",
+  "exchange.rewards.subtitle": "Turn your points into rewards or cash out.",
+  "exchange.reward.points": "points",
+  "exchange.reward.redeem": "Redeem / Cash out",
+  "exchange.reward.insufficient": "Insufficient points",
+  "exchange.reward.min": "Minimum",
+  "exchange.reward.success": "Reward redeemed successfully.",
+  "exchange.reward.1.title": "Research charge card",
+  "exchange.reward.1.desc": "Convert points into credit for your own surveys",
+  "exchange.reward.2.title": "Book & article discount code",
+  "exchange.reward.2.desc": "Get a discount code for trusted academic sources",
+  "exchange.reward.3.title": "Direct bank transfer (card-to-card)",
+  "exchange.reward.3.desc": "Transfer the value of your points straight to your bank card",
+  "exchange.convert.subtitle": "Convert your points into research credit to publish surveys.",
+  "exchange.convert.input.label": "Points to convert",
+  "exchange.convert.output.responses": "valid responses for your surveys",
+  "exchange.convert.ratio": "Every 50 points = 1 valid response for your research",
+  "exchange.convert.confirm": "Confirm & convert",
+  "exchange.convert.success": "Points converted to research credit successfully.",
+  "exchange.convert.error.amount": "Points must be greater than zero.",
+  "exchange.convert.error.balance": "You don't have enough points.",
+  "exchange.balance": "Your balance",
+  "exchange.history.title": "Transaction & exchange history",
+  "exchange.history.date": "Date",
+  "exchange.history.type": "Type",
+  "exchange.history.amount": "Amount",
+  "exchange.history.status": "Status",
+  "exchange.history.status.success": "Success",
+  "exchange.history.status.pending": "Pending",
+  "exchange.history.type.purchase": "Respondent package purchase",
+  "exchange.history.type.convert": "Points to credit conversion",
+  "exchange.history.type.payout": "Reward payout",
 
   "create.q.placeholder": "Question text...",
   "create.toast.ai.complete": "AI analysis complete!",
@@ -848,13 +1458,16 @@ const en: Dict = {
 
   "about.team.mehran.name": "Mehran Barshan",
   "about.team.mehran.role": "Founder & CEO",
-  "about.team.alireza.name": "Alireza Rahimi",
-  "about.team.alireza.role": "Co-founder",
+  "about.team.hanieh.name": "Hanieh Amjadian",
+  "about.team.hanieh.role": "Co-founder",
 
   "footer.built": "Built with ❤️ for research",
 
   "survey.comparison.old": "Question 1 of 33",
   "survey.finish": "Finish",
+  "survey.submit": "Submit & earn points",
+  "survey.runner.title": "Questionnaire",
+  "survey.runner.back": "Back to surveys",
 
   "gamify.badge.streak": "7-day streak",
   "gamify.badge.answers": "100 quality answers",
@@ -933,6 +1546,102 @@ const en: Dict = {
   "dash.header.logout": "Log out",
   "dash.mode.researcher": "Researcher Mode",
   "dash.mode.participant": "Participant Mode",
+
+  "dash.wallet.title": "research points",
+  "dash.wallet.balance": "Research credit balance",
+  "dash.wallet.charge": "Charge credit",
+  "dash.wallet.earn": "Earn credit by responding",
+  "dash.wallet.hint": "Every 50 points = 1 valid response for your questionnaire",
+  "dash.wallet.recharge.title": "Recharge credit",
+  "dash.wallet.recharge.desc": "Choose an amount to add to your research wallet.",
+  "dash.wallet.recharge.confirm": "Pay & recharge",
+  "dash.wallet.recharge.success": "Your credit has been recharged successfully!",
+  "dash.status.live": "Collecting data",
+  "dash.status.paused": "Paused",
+  "dash.status.completed": "Completed",
+  "dash.status.draft": "Draft",
+  "dash.status.label": "Status",
+  "dash.export": "Quick export",
+  "dash.export.spss": "SPSS (.sav)",
+  "dash.export.excel": "Excel (.xlsx)",
+  "dash.export.csv": "CSV",
+  "dash.export.tooltip": "Download cleaned data directly with variable codes",
+  "dash.export.toast": "Data export started",
+  "dash.remaining": "remaining",
+  "dash.pause": "Pause collection",
+  "dash.resume": "Resume collection",
+  "dash.pause.toast": "Data collection paused",
+  "dash.resume.toast": "Data collection resumed",
+  "dash.share": "Share",
+  "dash.share.title": "Share questionnaire",
+  "dash.share.directLink": "Direct questionnaire link",
+  "dash.share.copyLink": "Copy link",
+  "dash.share.copied": "Copied!",
+  "dash.share.qr": "QR code",
+  "dash.share.qr.hint": "Perfect for academic posters, email and Telegram channels.",
+  "dash.share.telegram": "Telegram",
+  "dash.share.whatsapp": "WhatsApp",
+  "dash.share.email": "Email",
+
+  "dash.overview.recent": "Recent activity",
+  "dash.responses.valid": "Valid",
+  "dash.responses.suspect": "Suspect",
+  "dash.quality.flags": "Quality flags",
+  "dash.quality.speed": "Unusually fast responses",
+  "dash.quality.random": "Random answering patterns",
+  "dash.quality.suspect": "Suspect respondents",
+  "dash.quality.review": "Review",
+  "dash.quality.aiNote": "25 suspicious responses were flagged for review; we recommend excluding them from your dataset before analysis.",
+  "dash.reports.tabulation": "Cross-tabulation",
+  "dash.reports.insights": "AI insights summary",
+  "dash.reports.exportTitle": "Batch data export",
+  "dash.reports.exportDesc": "Download the full cleaned dataset with variable codes (SPSS / Excel / CSV).",
+  "dash.reports.exportAll": "Export all",
+  "dash.reports.variable": "Variable",
+  "dash.reports.ageGroup": "Age group",
+  "dash.reports.insight.1": "Q7 responses show a significant correlation with respondents' employment status (r=0.72).",
+  "dash.reports.insight.2": "Data quality is notably higher between 8–12 AM.",
+  "dash.reports.insight.3": "32% of responses were submitted from mobile devices.",
+  "dash.placeholder": "This section is under development.",
+
+  "dash.close": "Close",
+  "dash.survey.back": "Back to surveys",
+  "dash.survey.preview": "Preview",
+  "dash.survey.duplicate": "Duplicate survey",
+  "dash.survey.delete": "Delete survey",
+  "dash.survey.delete.confirm.title": "Delete survey",
+  "dash.survey.delete.confirm.desc": "Deleting this survey will also remove all of its responses. This action cannot be undone.",
+  "dash.survey.delete.confirm.btn": "Delete",
+  "dash.survey.delete.success": "Survey deleted.",
+  "dash.survey.duplicate.success": "Survey duplicated successfully.",
+  "dash.survey.saved": "Changes saved.",
+  "dash.survey.metric.population": "Target population",
+  "dash.survey.metric.responses": "Total submissions",
+  "dash.survey.metric.views": "Total views",
+  "dash.survey.metric.completion": "Completion rate",
+  "dash.survey.tab.data": "Data & Table",
+  "dash.survey.tab.charts": "Charts",
+  "dash.survey.tab.settings": "Settings & Audience",
+  "dash.survey.data.respondent": "Respondent",
+  "dash.survey.data.date": "Date",
+  "dash.survey.data.duration": "Duration",
+  "dash.survey.data.quality": "Quality",
+  "dash.survey.data.export": "Export table",
+  "dash.survey.charts.distribution": "Option distribution",
+  "dash.survey.charts.question": "Sample question",
+  "dash.survey.settings.audience": "Target audience",
+  "dash.survey.settings.params": "Survey parameters",
+  "dash.survey.settings.age": "Age",
+  "dash.survey.settings.gender": "Gender",
+  "dash.survey.settings.education": "Education",
+  "dash.survey.settings.region": "Region",
+  "dash.survey.settings.questions": "Number of questions",
+  "dash.survey.settings.target": "Response target",
+  "dash.survey.settings.period": "Collection period",
+  "dash.survey.settings.save": "Save changes",
+  "dash.survey.preview.title": "Questionnaire preview",
+  "dash.survey.preview.hint": "This is exactly how participants see your questionnaire.",
+  "dash.survey.preview.done": "Preview finished.",
 };
 
 const fa: Dict = {
@@ -951,10 +1660,10 @@ const fa: Dict = {
   "brand.full": "دانشگاه تبادل",
 
   "hero.badge": "اکنون در نسخه عمومی — پژوهش مبتنی بر هوش مصنوعی",
-  "hero.title": "دانشگاه تبادل",
-  "hero.subtitle": "پل ارتباطی بین پژوهشگران و جامعه آماری",
+  "hero.title": "پلتفرم هوشمند پژوهش و جمع‌آوری داده",
+  "hero.subtitle": "ارزیابی پاسخ‌ها و کیفیت بالای داده‌ها",
   "hero.description":
-    "پژوهش‌های بهتر با پاسخ‌دهندگان واقعی، داده‌های باکیفیت‌تر و تجربه‌ای جذاب‌تر. پژوهش را سریع‌تر، هوشمندتر و جذاب‌تر از طریق مشارکت باکیفیت در پرسشنامه‌ها می‌سازیم.",
+    "ارتباط مستقیم بین پژوهشگران و جامعه آماری هدف؛ ساخت پرسشنامه هوشمند، حذف پاسخ‌های فیک و تحلیل لحظه‌ای داده‌ها.",
   "hero.cta.primary": "شروع پژوهش",
   "hero.cta.secondary": "شرکت در پرسشنامه‌ها",
   "hero.stat.responses": "پاسخ جمع‌آوری‌شده",
@@ -985,7 +1694,7 @@ const fa: Dict = {
   "solution.1.desc": "هوش مصنوعی هر پرسشنامه را به شرکت‌کنندگانی متصل می‌کند که محتمل‌ترین پاسخ‌های معنادار را دارند.",
   "solution.2.title": "تجربه جذاب",
   "solution.2.desc": "کارت‌های تعاملی، انیمیشن پیشرفت و میکروتعامل‌ها، شرکت‌کنندگان را پرانگیزه نگه می‌دارند.",
-  "solution.3.title": "سیگنال‌های کیفیت",
+  "solution.3.title": "حذف پاسخ‌های فیک",
   "solution.3.desc": "هوش مصنوعی پاسخ‌های تصادفی یا مشکوک را تشخیص می‌دهد تا پژوهشگران به داده خود اعتماد کنند.",
   "solution.4.title": "اکوسیستم پاداش",
   "solution.4.desc": "امتیاز، سطح و نشان، مشارکت را به سفری تبدیل می‌کند که مردم می‌خواهند ادامه دهند.",
@@ -1050,8 +1759,8 @@ const fa: Dict = {
   "ai.subtitle": "سه لایه هوش که پشت هر پرسشنامه کار می‌کنند.",
   "ai.assistant.title": "دستیار پرسشنامه هوشمند",
   "ai.assistant.desc": "نويسندگی را پیش از انتشار بهبود دهید، نه بعد از جمع‌آوری.",
-  "ai.assistant.f1": "بهبود ادبیات پرسشنامه",
-  "ai.assistant.f2": "تشخیص سؤالات مبهم",
+  "ai.assistant.f1": "تبدیل فایل موجود به فرم هوشمند",
+  "ai.assistant.f2": "معرفی پرسشنامه‌های دارای روایی و پایایی",
   "ai.assistant.f3": "پیشنهاد ساختار بهتر",
   "ai.assistant.f4": "پیش‌بینی نرخ تکمیل",
   "ai.quality.title": "کیفیت داده با هوش مصنوعی",
@@ -1081,7 +1790,7 @@ const fa: Dict = {
   "gamify.next.level": "۱۲۰ امتیاز تا سطح ۳",
 
   "marketplace.title": "بازار پرسشنامه‌ها",
-  "marketplace.subtitle": "پرسشنامه‌های زنده منطبق با پروفایل شما. با یک ضربه ملحق شوید.",
+  "marketplace.subtitle": "پرسشنامه‌های زنده منطبق با پروفایل شما، با یک ضربه ملحق شوید.",
   "marketplace.filter.all": "همه",
   "marketplace.filter.health": "سلامت",
   "marketplace.filter.education": "آموزش",
@@ -1115,6 +1824,20 @@ const fa: Dict = {
   "stats.researchers": "پژوهشگر فعال",
   "stats.universities": "دانشگاه همکار",
   "stats.countries": "کشور",
+
+  "faq.badge": "پاسخ به سوالات شما",
+  "faq.title": "سوالات متداول",
+  "faq.subtitle": "هر آنچه لازم است درباره نحوه کارکرد UOE، تبادل پاسخ‌ها و هوش مصنوعی بدانید.",
+  "faq.q1": "آیا استفاده از UOE برای پژوهشگران رایگان است؟",
+  "faq.a1": "بله! شما می‌توانید با مشارکت در پاسخ‌دهی به پرسشنامه‌های سایر پژوهشگران، امتیاز (اعتبار) کسب کنید و از این امتیازها برای ثبت و انتشار پرسشنامه خود به صورت صددرصد رایگان استفاده نمایید. همچنین پلن‌های ویژه برای سرعت‌بخشی بیشتر نیز در دسترس است.",
+  "faq.q2": "چگونه از واقعی و معتبر بودن پاسخ‌ها اطمینان حاصل می‌شود؟",
+  "faq.a2": "UOE از الگوریتم‌های هوش مصنوعی و سیگنال‌های رفتاری برای سنجش کیفیت داده‌ها استفاده می‌کند. پاسخ‌های سرکاری، الگوی کلیک‌های تصادفی، و سرعت پاسخ‌دهی غیرطبیعی شناسایی شده و از خروجی نهایی پژوهش شما حذف می‌شوند.",
+  "faq.q3": "سیستم تبادل هوشمند چطور کار می‌کند؟",
+  "faq.a3": "با پاسخ به هر پرسشنامه، با توجه به زمان و دقت شما، امتیازی به حساب کاربری‌تان اضافه می‌شود. این سیستم تعاملی ضمانت می‌کند که پرسشنامه شما دقیقاً به دست جامعه آماری مورد نظرتان برسد.",
+  "faq.q4": "آیا امکان ساخت و ویرایش پرسشنامه با هوش مصنوعی وجود دارد؟",
+  "faq.a4": "بله، دستیار هوش مصنوعی UOE به شما کمک می‌کند تا بر اساس اهداف پژوهشی خود، پرسشنامه‌های استاندارد علمی همراه با روایی و پایایی مناسب بسازید یا فایل پرسشنامه موجود خود را مستقیماً به فرم هوشمند تبدیل کنید.",
+  "faq.q5": "خروجی داده‌ها به چه صورتی قابل دریافت است؟",
+  "faq.a5": "شما می‌توانید در هر لحظه خروجی داده‌های جمع‌آوری شده را در قالب فرمت‌های استاندارد تحلیل داده مانند Excel، CSV و فایل‌های آماده ورود به SPSS دریافت کنید.",
 
   "cta.title": "آماده اجرای پژوهش بهتر هستید؟",
   "cta.subtitle": "به هزاران پژوهشگر و شرکت‌کننده بپیوندید که آینده جمع‌آوری داده دانشگاهی را می‌سازند.",
@@ -1161,7 +1884,7 @@ const fa: Dict = {
 
   "participants.title": "برای شرکت‌کنندگان",
   "participants.subtitle": "نظرات خود را به امتیاز، سطح و تأثیر تبدیل کنید.",
-  "participants.how.title": "مشارکت چگونه کار می‌کند",
+  "participants.how.title": "مشارکت چگونه کار می‌کند؟",
   "participants.how.1": "پروفایل خود را در دو دقیقه بسازید",
   "participants.how.2": "پرسشنامه‌های منطبق با خود دریافت کنید",
   "participants.how.3": "به پرسشنامه‌های جذاب و موبایل‌محور پاسخ دهید",
@@ -1205,35 +1928,176 @@ const fa: Dict = {
   "create.review.title": "بازبینی و انتشار",
   "create.review.publish": "انتشار پرسشنامه",
   "create.review.draft": "ذخیره به‌عنوان پیش‌نویس",
+  "create.options.title": "روش ساخت پژوهش خود را انتخاب کنید",
+  "create.options.subtitle": "چگونه می‌خواهید پرسشنامه خود را طراحی یا انتخاب نمایید؟",
+  "create.options.manual.tag": "طراحی آزاد",
+  "create.options.manual.title": "ایجاد مرحله به مرحله",
+  "create.options.manual.desc": "سوالات و گزینه‌های خود را به صورت دستی وارد کرده و ساختار پرسشنامه را بسازید.",
+  "create.options.library.tag": "دارای روایی و پایایی",
+  "create.options.library.title": "انتخاب از بانک استاندارد",
+  "create.options.library.desc": "جستجو در میان صدها پرسشنامه علمی استاندارد تاییدشده با شناسنامه پژوهشی.",
+  "create.options.ai.tag": "پیشنهادی ✨",
+  "create.options.ai.title": "ساخت هوشمند با هوش مصنوعی",
+  "create.options.ai.desc": "عنوان مقاله یا هدف پژوهش خود را توضیح دهید تا AI بهترین پرسشنامه‌ها را به شما پیشنهاد دهد.",
+  "create.options.back": "بازگشت به گزینه‌ها",
+  "library.title": "بانک پرسشنامه‌های استاندارد",
+  "library.subtitle": "پرسشنامه‌های معتبر با شناسنامه روایی و پایایی",
+  "library.search.placeholder": "جستجوی پرسشنامه، موضوع یا نویسنده...",
+  "library.empty": "پرسشنامه‌ای یافت نشد",
+  "library.reliability": "پایایی",
+  "library.validity": "روایی",
+  "library.use": "استفاده از این پرسشنامه",
+  "library.questions": "سوال",
+  "library.report": "گزارش اشکال علمی",
+  "library.report.done": "گزارش شما ثبت شد",
+  "create.field.title.required": "لطفاً عنوان پرسشنامه را وارد کنید",
+  "library.estimatedTime": "زمان تقریبی",
+  "library.minutes": "دقیقه",
+  "library.reference": "مقاله مرجع",
+  "create.ai.chat.inputPlaceholder": "پیام خود را بنویسید...",
+  "create.ai.chat.send": "ارسال",
+  "create.ai.chat.chip.more": "پیشنهاد سوالات بیشتر",
+  "create.ai.chat.chip.library": "تطبیق با بانک استاندارد",
+  "create.ai.chat.use": "استفاده از این سوالات",
+  "create.ai.chat.reply.generated": "در اینجا چند سوال پیشنهادی برای موضوع شما آمده است:",
+  "create.ai.chat.reply.more": "سوالات بیشتری در این زمینه برای شما آماده شده است:",
+  "create.ai.chat.reply.library": "این پرسشنامه استاندارد با موضوع شما تطابق دارد:",
+  "create.ai.chat.reply.fallback": "لطفاً موضوع پژوهش خود را دقیق‌تر توضیح دهید.",
+  "create.ai.assistant.title": "دستیار هوشمند پژوهش",
+  "create.ai.assistant.subtitle": "عنوان مقاله یا هدف پژوهش خود را توضیح دهید تا AI پرسشنامه را طراحی کند",
+  "create.ai.assistant.placeholder": "مثلاً: بررسی تأثیر دورکاری بر سلامت روان کارمندان...",
+  "create.ai.assistant.generate": "تولید پرسشنامه",
+  "create.ai.assistant.generating": "هوش مصنوعی در حال تولید سوالات است...",
+  "create.ai.assistant.suggested": "سوالات پیشنهادی",
+  "create.ai.assistant.use": "استفاده از این سوالات",
+  "create.ai.assistant.prompt.ph": "موضوع یا هدف پژوهش شما...",
+  "create.guard.validity": "تغییر یا حذف این سوال ممکن است پایایی و روایی استاندارد پرسشنامه را تحت تاثیر قرار دهد.",
+  "create.guard.report": "گزارش اشکال علمی",
+  "create.guard.reported": "گزارش شما به تیم علمی ارسال شد.",
+  "create.guard.confirm": "حذف در هر صورت",
+  "create.ai.badge": "پیشنهاد AI",
+  "library.badge": "بانک استاندارد",
 
   "dashboard.researcher.title": "داشبورد پژوهشگر",
   "dashboard.researcher.welcome": "خوش آمدید، دکتر صادقی",
+  "dashboard.welcome": "خوش آمدید!",
   "dashboard.participant.title": "داشبورد شرکت‌کننده",
   "dashboard.participant.welcome": "خوش آمدید، نیلوفر",
   "dashboard.analytics.title": "تحلیل‌ها",
   "dashboard.nav.overview": "نمای کلی",
+  "dashboard.nav.profile": "پروفایل من",
+  "dashboard.nav.credits": "اعتبار و کیف پول",
   "dashboard.nav.surveys": "پرسشنامه‌ها",
-  "dashboard.nav.responses": "پاسخ‌ها",
-  "dashboard.nav.audience": "جامعه",
-  "dashboard.nav.quality": "کیفیت داده",
   "dashboard.nav.reports": "گزارش‌ها",
   "dashboard.nav.settings": "تنظیمات",
+  "dashboard.nav.achievements": "دستاوردها",
   "dash.stat.active": "پرسشنامه فعال",
   "dash.stat.responses": "کل پاسخ‌ها",
   "dash.stat.completion": "نرخ تکمیل",
-  "dash.stat.quality": "میانگین کیفیت داده",
+  "dash.stat.quality": "کیفیت داده",
   "dash.recent.title": "پاسخ‌های اخیر",
   "dash.response.chart": "پاسخ‌ها در زمان",
-  "dash.quality.chart": "توزیع کیفیت",
   "dash.demographics.title": "جمعیت‌شناسی",
   "dash.my.surveys": "پرسشنامه‌های من",
   "dash.completed": "پرسشنامه‌های تکمیل‌شده",
   "dash.points": "امتیاز",
   "dash.level": "سطح",
-  "dash.badges": "نشان‌ها",
   "dash.rank": "رتبه جهانی",
-  "dash.available": "پرسشنامه‌های موجود",
   "dash.recommended": "پیشنهادی برای شما",
+  "participant.settings.title": "تنظیمات حساب",
+  "participant.profile.name": "نام و نام خانوادگی",
+  "participant.profile.birthdate": "تاریخ تولد",
+  "participant.profile.gender": "جنسیت",
+  "participant.profile.gender.male": "مرد",
+  "participant.profile.gender.female": "زن",
+  "participant.profile.degree": "مقطع تحصیلی",
+  "participant.profile.city": "شهر محل سکونت",
+  "participant.profile.city.tehran": "تهران",
+  "participant.profile.city.isfahan": "اصفهان",
+  "participant.profile.city.shiraz": "شیراز",
+  "participant.profile.city.mashhad": "مشهد",
+  "participant.profile.city.tabriz": "تبریز",
+  "participant.profile.city.other": "سایر",
+  "participant.profile.job": "شغل",
+  "participant.profile.job.student": "دانشجو",
+  "participant.profile.job.employee": "کارمند",
+  "participant.profile.job.freelancer": "فریلنسر / شغل آزاد",
+  "participant.profile.job.teacher": "معلم / مدرس",
+  "participant.profile.job.researcher": "پژوهشگر",
+  "participant.profile.job.other": "سایر",
+  "participant.settings.profile": "پروفایل",
+  "participant.settings.name": "نام و نام خانوادگی",
+  "participant.settings.email": "ایمیل",
+  "participant.settings.interests": "تنظیم علاقه‌مندی‌ها",
+  "participant.settings.interests.desc": "پرسشنامه‌های منطبق با علاقه‌مندی‌های خود را انتخاب کنید.",
+  "participant.settings.notifications": "اعلان‌ها",
+  "participant.settings.notifications.surveys": "پرسشنامه‌های جدید",
+  "participant.settings.notifications.rewards": "پاداش‌ها و امتیازها",
+  "participant.settings.notifications.reminders": "یادآوری تکمیل",
+  "participant.settings.save": "ذخیره تغییرات",
+  "profile.verified": "احراز هویت شده",
+  "profile.avatar.updated": "عکس پروفایل به‌روزرسانی شد.",
+  "profile.tab.personal": "اطلاعات کاربری",
+  "profile.tab.financial": "اطلاعات مالی",
+  "profile.tab.security": "امنیت",
+  "profile.credits.balance": "موجودی اعتبار پژوهشگری",
+  "profile.credits.earned": "امتیازات کسب‌شده از پاسخ‌دهی (به عنوان شرکت‌کننده)",
+  "profile.credits.validResponse": "پاسخ معتبر",
+  "profile.credits.points": "امتیاز",
+  "profile.credits.convert.title": "تبدیل امتیاز به اعتبار",
+  "profile.credits.convert.rate": "هر ۱ پاسخ معتبر = ۵۰ امتیاز شرکت‌کننده",
+  "profile.credits.convert.pointsLabel": "تعداد پاسخ",
+  "profile.credits.convert.equivalent": "معادل",
+  "profile.credits.convert.decrement": "کاهش",
+  "profile.credits.convert.increment": "افزایش",
+  "profile.credits.convert.cta": "تبدیل سریع امتیاز به اعتبار",
+  "profile.credits.convert.success": "امتیاز با موفقیت تبدیل شد.",
+  "profile.credits.convert.insufficient": "امتیاز کافی نیست.",
+  "profile.credits.purchase.title": "خرید آنلاین اعتبار",
+  "profile.credits.package.100": "بسته ۱۰۰ پاسخ",
+  "profile.credits.package.500": "بسته ۵۰۰ پاسخ (پیشنهادی)",
+  "profile.credits.package.1000": "بسته ۱٬۰۰۰ پاسخ (ویژه پایان‌نامه)",
+  "profile.credits.currency": "تومان",
+  "profile.credits.purchase.cta": "پرداخت",
+  "profile.credits.purchase.toast": "پرداخت با موفقیت انجام شد.",
+  "profile.credits.recommended": "پیشنهادی",
+  "profile.credits.discount": "تخفیف",
+  "profile.credits.history": "تاریخچه تراکنش‌ها",
+  "profile.credits.history.date": "تاریخ",
+  "profile.credits.history.type": "نوع عملیات",
+  "profile.credits.history.amount": "تعداد/مقدار",
+  "profile.credits.history.status": "وضعیت",
+  "profile.credits.history.success": "موفق",
+  "profile.credits.history.convert": "تبدیل امتیاز",
+  "profile.credits.history.purchase": "خرید اعتبار",
+  "profile.personal.name": "نام و نام خانوادگی",
+  "profile.personal.username": "نام کاربری",
+  "profile.personal.email": "ایمیل",
+  "profile.personal.phone": "تلفن",
+  "profile.personal.university": "دانشگاه / موسسه",
+  "profile.personal.field": "رشته تحصیلی",
+  "profile.personal.degree": "مقطع تحصیلی",
+  "profile.degree.highschool": "دیپلم و پیش‌دانشگاهی",
+  "profile.degree.bachelor": "کارشناسی",
+  "profile.degree.master": "کارشناسی ارشد",
+  "profile.degree.phd": "دکتری تخصصی (Ph.D)",
+  "profile.degree.postdoc": "پست‌دکتری / هیئت علمی",
+  "profile.degree.other": "سایر",
+  "profile.financial.bank": "نام بانک",
+  "profile.financial.sheba": "شماره شبا",
+  "profile.financial.desc": "برای دریافت پاداش‌ها و بازپرداخت‌ها استفاده می‌شود.",
+  "profile.security.password": "تغییر رمز عبور",
+  "profile.security.current": "رمز عبور فعلی",
+  "profile.security.new": "رمز عبور جدید",
+  "profile.security.confirm": "تکرار رمز عبور جدید",
+  "profile.security.updated": "رمز عبور با موفقیت تغییر کرد.",
+  "profile.security.sessions": "جلسات فعال",
+  "profile.security.device": "دستگاه",
+  "profile.security.location": "موقعیت مکانی",
+  "profile.security.currentSession": "جلسه فعلی",
+  "profile.security.revoke": "خروج از جلسه",
+  "profile.security.revoked": "جلسه خاتمه یافت.",
+  "profile.save": "ذخیره تغییرات",
 
   "blog.title": "بلاگ UOE",
   "blog.subtitle": "روش‌های پژوهش، به‌روزرسانی‌های محصول و داستان‌هایی از میدان.",
@@ -1274,6 +2138,8 @@ const fa: Dict = {
   "common.getStarted": "شروع کنید",
   "common.viewAll": "مشاهده همه",
   "common.back": "بازگشت به خانه",
+  "common.back.researcher": "بازگشت به داشبورد پژوهشگر",
+  "common.back.participant": "داشبورد",
 
   "auth.join.ecosystem": "به اکوسیستم پژوهش بپیوندید",
   "auth.feature.researchers": "۱۰٬۰۰۰+ پژوهشگر فعال",
@@ -1285,6 +2151,24 @@ const fa: Dict = {
   "auth.toast.google.connecting": "در حال اتصال به گوگل...",
   "auth.toast.google.success": "ورود با گوگل موفق بود!",
   "auth.name.placeholder": "نام شما",
+
+  "valuegate.title": "پاسخ‌های شما با موفقیت ثبت شد! 🎉",
+  "valuegate.title.survey": "پاسخ‌های شما با موفقیت ثبت شد! 🎉",
+  "valuegate.title.publish": "ذخیره و انتشار پژوهش 🚀",
+  "valuegate.title.general": "ورود / ثبت‌نام در UOE 🌟",
+  "valuegate.subtitle": "برای مشاهده تحلیل اختصاصی و ذخیره {points} امتیاز این پژوهش، حساب خود را فعال کنید.",
+  "valuegate.subtitle.publish": "برای انتشار پرسشنامه و جمع‌آوری دیتای واقعی، حساب کاربری خود را بسازید.",
+  "valuegate.subtitle.general": "برای ادامه فعالیت در UOE وارد شوید یا حساب کاربری بسازید.",
+  "valuegate.google": "ادامه سریع با گوگل",
+  "valuegate.or": "یا با ایمیل وارد شوید",
+  "valuegate.email.placeholder": "you@example.com",
+  "valuegate.email.cta": "دریافت لینک ورود",
+  "valuegate.unlock.1": "دریافت گزارش تحلیل علمی",
+  "valuegate.unlock.2": "ذخیره امتیازهای کسب‌شده در کیف پول",
+  "valuegate.unlock.3": "امکان ساخت پرسشنامه رایگان",
+  "valuegate.toast.google.connecting": "در حال اتصال به گوگل...",
+  "valuegate.toast.google.success": "ورود با گوگل موفق بود!",
+  "valuegate.toast.email.sent": "لینک ورود ارسال شد! ایمیل خود را بررسی کنید.",
 
   "analytics.subtitle": "بینش عمیق از پاسخ‌ها، کیفیت داده و جمعیت‌شناسی.",
   "analytics.export.report": "خروجی گزارش",
@@ -1305,6 +2189,90 @@ const fa: Dict = {
 
   "participants.next.level.hint": "۳ پرسشنامه تا سطح بعدی!",
   "participants.profile.name": "نیلوفر احمدی",
+
+  "participant.filter.all": "همه پرسشنامه‌ها",
+  "participant.filter.fastest": "سریع‌ترین‌ها (زیر ۳ دقیقه)",
+  "participant.filter.reward": "بیشترین امتیاز",
+  "participant.filter.matched": "مرتبط با رشته/علاقه شما",
+  "participant.cat.health": "سلامت",
+  "participant.cat.education": "آموزش",
+  "participant.cat.social": "اجتماعی",
+  "participant.cat.tech": "فناوری",
+  "participant.cat.business": "کسب‌وکار",
+  "participant.level.current": "سطح",
+  "participant.level.next": "تا سطح",
+  "participant.level.toNext": "امتیاز تا سطح بعد",
+  "participant.level.remaining": "امتیاز مانده تا سطح بعد",
+  "participant.wallet.total": "کل امتیازهای کسب‌شده",
+  "participant.wallet.convert": "تبدیل امتیاز به شارژ پژوهش",
+  "participant.wallet.withdraw": "درخواست نقد کردن امتیازها",
+  "participant.wallet.withdraw.title": "نقد کردن امتیازها",
+  "participant.wallet.withdraw.desc": "امتیازهای شما به کارت هدیه یا اعتبار پژوهشی تبدیل می‌شود. تیم ما ظرف ۴۸ ساعت با شما تماس می‌گیرد.",
+  "participant.wallet.withdraw.confirm": "ثبت درخواست",
+  "participant.wallet.withdraw.success": "درخواست نقد کردن امتیاز شما ثبت شد.",
+  "participant.wallet.convert.success": "امتیازها با موفقیت به اعتبار پژوهشی تبدیل شدند.",
+  "participant.history.title": "تاریخچه مشارکت‌های من",
+  "participant.history.earned": "امتیاز دریافت شد",
+  "participant.history.report": "گزارش عدم ثبت امتیاز",
+  "participant.history.report.success": "گزارش شما ثبت شد و به‌زودی بررسی می‌شود.",
+
+  "exchange.tab.packages": "خرید بسته پاسخ‌دهنده (ویژه پژوهشگران)",
+  "exchange.tab.rewards": "ویترین جوایز و تسویه (ویژه شرکت‌کنندگان)",
+  "exchange.tab.convert": "تبدیل امتیاز به اعتبار پژوهشی",
+  "exchange.packages.subtitle": "بسته‌های پاسخ معتبر برای پژوهش‌های شما؛ بدون دغدغه تعیین حجم نمونه.",
+  "exchange.package.responses": "پاسخ معتبر",
+  "exchange.package.delivery": "تحویل",
+  "exchange.package.days": "روز",
+  "exchange.package.badge.popular": "پرطرفدارترین",
+  "exchange.package.badge.discount": "تخفیف حجمی",
+  "exchange.package.feature.ai": "فیلتر کیفیت داده با هوش مصنوعی",
+  "exchange.package.s1.f1": "پاسخ معتبر از جامعه هدف",
+  "exchange.package.s1.f2": "گزارش خلاصه نتایج",
+  "exchange.package.pro.f2": "تحویل سریع (۲ روز)",
+  "exchange.package.pro.f3": "گزارش پیشرفته و تحلیل داده",
+  "exchange.package.thesis.f1": "قیمت اقتصادی (تخفیف حجمی)",
+  "exchange.package.thesis.f2": "تحویل مرحله‌ای تا ۴ روز",
+  "exchange.package.thesis.f3": "پشتیبانی تخصصی پایان‌نامه",
+  "exchange.package.order": "سفارش و شارژ حساب",
+  "exchange.toman": "تومان",
+  "exchange.checkout.title": "خلاصه سفارش",
+  "exchange.checkout.desc": "جزئیات سفارش را بررسی و پرداخت را تأیید کنید.",
+  "exchange.checkout.package": "بسته",
+  "exchange.checkout.delivery": "زمان تحویل",
+  "exchange.checkout.price": "قابل پرداخت",
+  "exchange.checkout.confirm": "پرداخت و تأیید سفارش",
+  "exchange.checkout.success": "سفارش شما ثبت شد؛ حساب شما به‌زودی شارژ می‌شود.",
+  "exchange.rewards.subtitle": "امتیازهای خود را به جایزه تبدیل کنید یا تسویه کنید.",
+  "exchange.reward.points": "امتیاز",
+  "exchange.reward.redeem": "دریافت جایزه / تسویه",
+  "exchange.reward.insufficient": "امتیاز ناکافی",
+  "exchange.reward.min": "حداقل",
+  "exchange.reward.success": "جایزه با موفقیت دریافت شد و به حساب شما اعمال شد.",
+  "exchange.reward.1.title": "کارت شارژ پژوهشی",
+  "exchange.reward.1.desc": "تبدیل امتیاز به شارژ اعتبار برای پرسشنامه‌های خود",
+  "exchange.reward.2.title": "کد تخفیف خرید کتاب / مقالات علمی",
+  "exchange.reward.2.desc": "دریافت کد تخفیف برای خرید منابع علمی معتبر",
+  "exchange.reward.3.title": "تسویه حساب مستقیم (کارت به کارت)",
+  "exchange.reward.3.desc": "انتقال مستقیم ارزش امتیازها به کارت بانکی شما",
+  "exchange.convert.subtitle": "امتیازهای خود را به اعتبار پژوهشی برای انتشار پرسشنامه تبدیل کنید.",
+  "exchange.convert.input.label": "تعداد امتیاز برای تبدیل",
+  "exchange.convert.output.responses": "پاسخ معتبر برای پرسشنامه‌های شما",
+  "exchange.convert.ratio": "هر ۵۰ امتیاز = ۱ پاسخ معتبر برای پژوهش شما",
+  "exchange.convert.confirm": "تأیید و تبدیل سریع",
+  "exchange.convert.success": "امتیازها با موفقیت به اعتبار پژوهشی تبدیل شدند.",
+  "exchange.convert.error.amount": "تعداد امتیاز باید بزرگ‌تر از صفر باشد.",
+  "exchange.convert.error.balance": "موجودی امتیاز شما کافی نیست.",
+  "exchange.balance": "موجودی شما",
+  "exchange.history.title": "تاریخچه تراکنش‌ها و تبدیل‌ها",
+  "exchange.history.date": "تاریخ",
+  "exchange.history.type": "نوع تراکنش",
+  "exchange.history.amount": "مقدار/امتیاز",
+  "exchange.history.status": "وضعیت",
+  "exchange.history.status.success": "موفق",
+  "exchange.history.status.pending": "در حال بررسی",
+  "exchange.history.type.purchase": "خرید بسته پاسخ‌دهنده",
+  "exchange.history.type.convert": "تبدیل امتیاز به اعتبار",
+  "exchange.history.type.payout": "تسویه جایزه",
 
   "create.q.placeholder": "متن سؤال...",
   "create.toast.ai.complete": "تحلیل هوش مصنوعی کامل شد!",
@@ -1336,13 +2304,16 @@ const fa: Dict = {
 
   "about.team.mehran.name": "مهران برشان",
   "about.team.mehran.role": "بنیان‌گذار و مدیرعامل",
-  "about.team.alireza.name": "علیرضا رحیمی",
-  "about.team.alireza.role": "هم‌بنیان‌گذار",
+  "about.team.hanieh.name": "حانیه امجدیان",
+  "about.team.hanieh.role": "هم‌بنیان‌گذار",
 
   "footer.built": "ساخته‌شده با ❤️ برای پژوهش",
 
   "survey.comparison.old": "سؤال ۱ از ۳۳",
   "survey.finish": "پایان",
+  "survey.submit": "ثبت و دریافت امتیاز",
+  "survey.runner.title": "پرسشنامه",
+  "survey.runner.back": "بازگشت به پرسشنامه‌ها",
 
   "gamify.badge.streak": "پشت‌سرهم ۷ روزه",
   "gamify.badge.answers": "۱۰۰ پاسخ باکیفیت",
@@ -1421,6 +2392,102 @@ const fa: Dict = {
   "dash.header.logout": "خروج",
   "dash.mode.researcher": "حالت پژوهشگر",
   "dash.mode.participant": "حالت شرکت‌کننده",
+
+  "dash.wallet.title": "امتیاز پژوهشی",
+  "dash.wallet.balance": "موجودی اعتبار پژوهشی",
+  "dash.wallet.charge": "شارژ اعتبار",
+  "dash.wallet.earn": "کسب اعتبار با پاسخ‌دهی",
+  "dash.wallet.hint": "هر ۵۰ امتیاز = ۱ پاسخ معتبر برای پرسشنامه شما",
+  "dash.wallet.recharge.title": "شارژ اعتبار",
+  "dash.wallet.recharge.desc": "مبلغ دلخواه برای اضافه‌شدن به کیف پول پژوهشی خود را انتخاب کنید.",
+  "dash.wallet.recharge.confirm": "پرداخت و شارژ",
+  "dash.wallet.recharge.success": "اعتبار شما با موفقیت شارژ شد!",
+  "dash.status.live": "در حال جمع‌آوری داده",
+  "dash.status.paused": "متوقف",
+  "dash.status.completed": "پایان‌یافته",
+  "dash.status.draft": "پیش‌نویس",
+  "dash.status.label": "وضعیت",
+  "dash.export": "خروجی سریع",
+  "dash.export.spss": "SPSS (.sav)",
+  "dash.export.excel": "Excel (.xlsx)",
+  "dash.export.csv": "CSV",
+  "dash.export.tooltip": "دانلود مستقیم داده‌های تمیزشده همراه با کدهای متغیر",
+  "dash.export.toast": "خروجی داده آغاز شد",
+  "dash.remaining": "باقیمانده",
+  "dash.pause": "توقف جمع‌آوری",
+  "dash.resume": "ادامه جمع‌آوری",
+  "dash.pause.toast": "جمع‌آوری داده متوقف شد",
+  "dash.resume.toast": "جمع‌آوری داده ادامه یافت",
+  "dash.share": "اشتراک‌گذاری",
+  "dash.share.title": "اشتراک‌گذاری پرسشنامه",
+  "dash.share.directLink": "لینک مستقیم پرسشنامه",
+  "dash.share.copyLink": "کپی لینک",
+  "dash.share.copied": "کپی شد!",
+  "dash.share.qr": "کد QR",
+  "dash.share.qr.hint": "مناسب برای پوسترهای علمی، ایمیل و کانال‌های تلگرام.",
+  "dash.share.telegram": "تلگرام",
+  "dash.share.whatsapp": "واتساپ",
+  "dash.share.email": "ایمیل",
+
+  "dash.overview.recent": "فعالیت‌های اخیر",
+  "dash.responses.valid": "معتبر",
+  "dash.responses.suspect": "مشکوک",
+  "dash.quality.flags": "نشانگرهای کیفیت",
+  "dash.quality.speed": "پاسخ‌های سریع‌تر از حد طبیعی",
+  "dash.quality.random": "الگوهای پاسخ تصادفی",
+  "dash.quality.suspect": "پاسخ‌دهندگان مشکوک",
+  "dash.quality.review": "بررسی",
+  "dash.quality.aiNote": "به ۲۵ پاسخ مشکوک برچسب «بررسی» زده شده است؛ توصیه می‌شود پیش از تحلیل، آن‌ها را از مجموعه داده حذف کنید.",
+  "dash.reports.tabulation": "جدول متقاطع",
+  "dash.reports.insights": "خلاصه بینش هوش مصنوعی",
+  "dash.reports.exportTitle": "خروجی انبوه داده",
+  "dash.reports.exportDesc": "دانلود کامل داده‌های تمیزشده همراه با کدهای متغیر (SPSS / Excel / CSV).",
+  "dash.reports.exportAll": "خروجی همه",
+  "dash.reports.variable": "متغیر",
+  "dash.reports.ageGroup": "گروه سنی",
+  "dash.reports.insight.1": "پاسخ‌های سؤال ۷ همبستگی معناداری با وضعیت شغلی پاسخ‌دهندگان دارد (r=0.72).",
+  "dash.reports.insight.2": "کیفیت داده در ساعات ۸ تا ۱۲ صبح به‌طور قابل‌توجهی بالاتر است.",
+  "dash.reports.insight.3": "۳۲٪ پاسخ‌ها از دستگاه‌های موبایل ثبت شده‌اند.",
+  "dash.placeholder": "این بخش در حال توسعه است.",
+
+  "dash.close": "بستن",
+  "dash.survey.back": "بازگشت به پرسشنامه‌ها",
+  "dash.survey.preview": "پیش‌نمایش",
+  "dash.survey.duplicate": "کپی پرسشنامه",
+  "dash.survey.delete": "حذف پرسشنامه",
+  "dash.survey.delete.confirm.title": "حذف پرسشنامه",
+  "dash.survey.delete.confirm.desc": "با حذف این پرسشنامه، تمام پاسخ‌های آن نیز حذف می‌شود. این عمل قابل بازگشت نیست.",
+  "dash.survey.delete.confirm.btn": "حذف",
+  "dash.survey.delete.success": "پرسشنامه حذف شد.",
+  "dash.survey.duplicate.success": "پرسشنامه با موفقیت کپی شد.",
+  "dash.survey.saved": "تغییرات ذخیره شد.",
+  "dash.survey.metric.population": "جامعه آماری",
+  "dash.survey.metric.responses": "تعداد پاسخ‌ها",
+  "dash.survey.metric.views": "تعداد بازدید",
+  "dash.survey.metric.completion": "نرخ تکمیل",
+  "dash.survey.tab.data": "نتایج و داده‌ها",
+  "dash.survey.tab.charts": "نمودارها و تحلیل‌ها",
+  "dash.survey.tab.settings": "تنظیمات و جامعه هدف",
+  "dash.survey.data.respondent": "پاسخ‌دهنده",
+  "dash.survey.data.date": "تاریخ",
+  "dash.survey.data.duration": "مدت پاسخ",
+  "dash.survey.data.quality": "کیفیت",
+  "dash.survey.data.export": "خروجی جدول",
+  "dash.survey.charts.distribution": "توزیع گزینه‌ها",
+  "dash.survey.charts.question": "سؤال نمونه",
+  "dash.survey.settings.audience": "جامعه هدف",
+  "dash.survey.settings.params": "پارامترهای پرسشنامه",
+  "dash.survey.settings.age": "سن",
+  "dash.survey.settings.gender": "جنسیت",
+  "dash.survey.settings.education": "تحصیلات",
+  "dash.survey.settings.region": "منطقه",
+  "dash.survey.settings.questions": "تعداد سؤالات",
+  "dash.survey.settings.target": "هدف پاسخ",
+  "dash.survey.settings.period": "بازه اجرا",
+  "dash.survey.settings.save": "ذخیره تغییرات",
+  "dash.survey.preview.title": "پیش‌نمایش پرسشنامه",
+  "dash.survey.preview.hint": "دقیقاً همان چیزی که پاسخ‌دهندگان می‌بینند.",
+  "dash.survey.preview.done": "پیش‌نمایش به پایان رسید.",
 };
 
 export const translations: Record<Locale, Dict> = { en, fa };

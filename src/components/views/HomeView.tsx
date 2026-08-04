@@ -6,7 +6,8 @@ import { Personas } from "@/components/sections/Personas";
 import { SurveyDemo } from "@/components/sections/SurveyDemo";
 import { AIFeatures } from "@/components/sections/AIFeatures";
 import { Gamification } from "@/components/sections/Gamification";
-import { Stats } from "@/components/sections/Stats";
+import { FAQ } from "@/components/sections/FAQ";
+// import { Stats } from "@/components/sections/Stats";
 import { CTA } from "@/components/sections/CTA";
 
 export function HomeView() {
@@ -18,7 +19,8 @@ export function HomeView() {
       <SurveyDemo />
       <AIFeatures />
       <Gamification />
-      <Stats />
+      <FAQ />
+      {/* <Stats /> */}
       <CTA />
     </>
   );

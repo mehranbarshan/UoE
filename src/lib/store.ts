@@ -7,6 +7,7 @@ export type ViewId =
   | "participants"
   | "create"
   | "marketplace"
+  | "survey-runner"
   | "researcher-dashboard"
   | "participant-dashboard"
   | "analytics"
@@ -16,12 +17,28 @@ export type ViewId =
 
 export type DashboardMode = "researcher" | "participant";
 
+export type QuestionSource = "manual" | "library" | "ai";
+
+export interface SeedQuestion {
+  text: string;
+  source: QuestionSource;
+  type?: string;
+  title?: string;
+}
+
 interface NavState {
   view: ViewId;
   setView: (view: ViewId) => void;
   isLoggedIn: boolean;
   activeMode: DashboardMode;
   userName: string;
+  activeSurveyId: string | null;
+  setActiveSurveyId: (id: string | null) => void;
+  createOptionsOpen: boolean;
+  openCreateOptions: () => void;
+  closeCreateOptions: () => void;
+  surveySeed: SeedQuestion[] | null;
+  setSurveySeed: (seed: SeedQuestion[] | null) => void;
   login: (name: string) => void;
   logout: () => void;
   switchMode: () => void;
@@ -38,6 +55,13 @@ export const useNav = create<NavState>((set, get) => ({
   isLoggedIn: false,
   activeMode: "researcher",
   userName: "",
+  activeSurveyId: null,
+  setActiveSurveyId: (id) => set({ activeSurveyId: id }),
+  createOptionsOpen: false,
+  openCreateOptions: () => set({ createOptionsOpen: true }),
+  closeCreateOptions: () => set({ createOptionsOpen: false }),
+  surveySeed: null,
+  setSurveySeed: (seed) => set({ surveySeed: seed }),
   login: (name) => {
     const savedMode = (typeof window !== "undefined" && localStorage.getItem("uoe-dashboard-mode")) as DashboardMode | null;
     const mode: DashboardMode = savedMode === "participant" ? "participant" : "researcher";

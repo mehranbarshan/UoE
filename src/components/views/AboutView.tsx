@@ -17,7 +17,7 @@ const values: { icon: typeof ShieldCheck; titleKey: TranslationKey; descKey: Tra
 
 const team = [
   { nameKey: "about.team.mehran.name" as TranslationKey, roleKey: "about.team.mehran.role" as TranslationKey, color: "#1d3b4c" },
-  { nameKey: "about.team.alireza.name" as TranslationKey, roleKey: "about.team.alireza.role" as TranslationKey, color: "#f39237" },
+  { nameKey: "about.team.hanieh.name" as TranslationKey, roleKey: "about.team.hanieh.role" as TranslationKey, color: "#f39237" },
 ];
 
 export function AboutView() {

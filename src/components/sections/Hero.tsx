@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -18,7 +17,7 @@ import { useNav } from "@/lib/store";
 
 export function Hero() {
   const { t, locale, dir, formatCompact, formatPercent } = useLanguage();
-  const { setView } = useNav();
+  const { setView, openCreateOptions } = useNav();
   const Arrow = locale === "fa" ? ArrowLeft : ArrowRight;
 
   return (
@@ -29,14 +28,13 @@ export function Hero() {
       <div className="pointer-events-none absolute -top-24 start-1/2 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-[#f39237]/15 blur-3xl" />
       <div className="pointer-events-none absolute top-40 end-0 h-72 w-72 rounded-full bg-[#1d3b4c]/10 blur-3xl" />
 
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:gap-8 lg:px-8 lg:py-28">
-        {/* Left: copy */}
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 py-10 sm:px-6 lg:grid-cols-2 lg:gap-8 lg:px-8 lg:py-14">
         <div className="flex flex-col items-start gap-6">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-[#f39237]/30 bg-white/70 px-3.5 py-1.5 text-xs font-semibold text-[#c97020] shadow-soft backdrop-blur dark:bg-white/5"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-3.5 py-1.5 text-xs font-semibold text-primary shadow-soft backdrop-blur dark:bg-secondary/30"
           >
             <Sparkles className="size-3.5" />
             {t("hero.badge")}
@@ -51,7 +49,7 @@ export function Hero() {
             <h1 className="text-balance text-4xl font-extrabold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               <span className="gradient-text">{t("hero.title")}</span>
             </h1>
-            <p className="text-xl font-semibold text-[#1d3b4c] dark:text-[#f7ae6a] sm:text-2xl">
+            <p className="text-xl font-semibold text-foreground sm:text-2xl">
               {t("hero.subtitle")}
             </p>
             <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -68,7 +66,7 @@ export function Hero() {
             <Button
               size="lg"
               className="bg-[#f39237] text-white hover:bg-[#e07f24] shadow-soft h-12 px-6 text-base"
-              onClick={() => setView("create")}
+              onClick={openCreateOptions}
             >
               {t("hero.cta.primary")}
               <Arrow className="size-4" />
@@ -76,14 +74,14 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="h-12 px-6 text-base border-[#1d3b4c]/20 hover:bg-[#1d3b4c]/5"
+              className="h-12 px-6 text-base border-border hover:bg-secondary/50"
               onClick={() => setView("marketplace")}
             >
               {t("hero.cta.secondary")}
             </Button>
           </motion.div>
-
-          {/* stats */}
+          {/* stats temporarily disabled */}
+          {/*
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
@@ -101,9 +99,10 @@ export function Hero() {
                 <span className="text-xs text-muted-foreground">{s.label}</span>
               </div>
             ))}
-          </motion.div>
+          </motion.div> 
+        */}
         </div>
-
+       
         {/* Right: network illustration */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
@@ -118,9 +117,9 @@ export function Hero() {
       {/* scroll hint */}
       <div className="relative flex justify-center pb-6">
         <motion.div
+          className="-mt-6 flex flex-col items-center gap-1 text-muted-foreground"
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-1 text-muted-foreground"
         >
           <span className="text-xs">{t("hero.scroll")}</span>
           <ChevronDown className="size-4" />

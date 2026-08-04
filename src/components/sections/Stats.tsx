@@ -76,7 +76,7 @@ export function Stats() {
 
         <div className="pointer-events-none absolute -end-16 -top-16 size-64 rounded-full bg-[#f39237]/20 blur-3xl" />
 
-        <div className="pointer-events-none absolute -start-16 -bottom-16 size-64 rounded-full bg-white/10 blur-3xl" />
+        <div className="pointer-events-none absolute -start-16 -bottom-16 size-64 rounded-full bg-white/5 blur-3xl" />
 
 
         <div className="relative">

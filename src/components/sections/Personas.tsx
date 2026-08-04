@@ -193,6 +193,7 @@ export function Personas() {
                   {t(persona.descKey)}
                 </p>
               </div>
+              {/*
               <div className="flex items-center gap-3">
                 <div className="grid size-16 place-items-center rounded-2xl bg-white/15 backdrop-blur">
                   <persona.icon className="size-8" />
@@ -201,10 +202,11 @@ export function Personas() {
                   <PersonaStat id={persona.id} />
                 </div>
               </div>
+             */} 
               {/* decorative dots */}
               <div className="pointer-events-none absolute -bottom-8 -end-8 size-40 rounded-full bg-white/10 blur-2xl" />
             </div>
-
+             
             {/* Right features */}
             <div className="p-8 lg:col-span-3">
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">

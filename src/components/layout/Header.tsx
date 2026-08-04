@@ -28,13 +28,13 @@ const navItems: { view: ViewId; key: Parameters<ReturnType<typeof useLanguage>["
 
 export function Header() {
   const { t, locale, toggleLocale } = useLanguage();
-  const { view, setView, isLoggedIn, activeMode } = useNav();
+  const { view, setView, isLoggedIn, activeMode, openCreateOptions } = useNav();
   const { theme, setTheme } = useTheme();
   const [scrolled, setScrolled] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true);
+    queueMicrotask(() => setMounted(true));
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -143,7 +143,7 @@ export function Header() {
             <Button
               size="sm"
               className="hidden md:inline-flex bg-[#f39237] text-white hover:bg-[#e07f24] shadow-soft"
-              onClick={() => go("create")}
+              onClick={openCreateOptions}
             >
               {t("nav.start")}
             </Button>
@@ -151,7 +151,7 @@ export function Header() {
             <Button
               size="sm"
               className="hidden md:inline-flex bg-[#f39237] text-white hover:bg-[#e07f24] shadow-soft"
-              onClick={() => go("create")}
+              onClick={openCreateOptions}
             >
               {t("nav.start")}
             </Button>
@@ -210,7 +210,7 @@ export function Header() {
                 <SheetClose asChild>
                   <Button
                     className="bg-[#f39237] text-white hover:bg-[#e07f24]"
-                    onClick={() => go("create")}
+                    onClick={openCreateOptions}
                   >
                     {t("nav.start")}
                   </Button>
